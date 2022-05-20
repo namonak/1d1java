@@ -14,19 +14,17 @@ class No15552 {
 
         solve(bufferedReader, bufferedWriter);
 
-        System.out.println(bufferedWriter);
-
         bufferedWriter.flush();
         bufferedWriter.close();
     }
 
-    static void solve(BufferedReader bufferedReader, BufferedWriter bufferedWriter) throws IOException{
-        StringTokenizer stringTokenizer;
+    static void solve(BufferedReader br, BufferedWriter bw) throws IOException{
+        StringTokenizer st;
 
-        int testCase = Integer.parseInt(bufferedReader.readLine());
+        int testCase = Integer.parseInt(br.readLine());
         for (int i = 0; i < testCase; i++) {
-            stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-            bufferedWriter.write((Integer.parseInt(stringTokenizer.nextToken()) + Integer.parseInt(stringTokenizer.nextToken()))+"\n");
+            st = new StringTokenizer(br.readLine());
+            bw.write((Integer.parseInt(st.nextToken()) + Integer.parseInt(st.nextToken()))+"\n");
         }
     }
 }

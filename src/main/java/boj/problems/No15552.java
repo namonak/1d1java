@@ -9,22 +9,20 @@ import java.util.StringTokenizer;
 
 class No15552 {
     public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(bufferedReader, bufferedWriter);
+        solve(input, output);
 
-        bufferedWriter.flush();
-        bufferedWriter.close();
+        output.flush();
+        output.close();
     }
 
-    static void solve(BufferedReader br, BufferedWriter bw) throws IOException{
-        StringTokenizer st;
-
-        int testCase = Integer.parseInt(br.readLine());
+    static void solve(BufferedReader input, BufferedWriter output) throws IOException{
+        int testCase = Integer.parseInt(input.readLine());
         for (int i = 0; i < testCase; i++) {
-            st = new StringTokenizer(br.readLine());
-            bw.write((Integer.parseInt(st.nextToken()) + Integer.parseInt(st.nextToken()))+"\n");
+            StringTokenizer st = new StringTokenizer(input.readLine());
+            output.write((Integer.parseInt(st.nextToken()) + Integer.parseInt(st.nextToken()))+"\n");
         }
     }
 }

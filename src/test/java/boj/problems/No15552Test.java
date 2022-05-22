@@ -4,37 +4,32 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
-import java.util.StringTokenizer;
+import java.util.stream.Collectors;
 
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class No15552Test {
+    File path = new File(".");
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No15552_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No15552_output.txt";
+
     @Test
     @DisplayName("빠른 A+B 테스트")
-    void 빠른_A_더하기_B_테스트() {
-        File path = new File(".");
-        String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No15552_input.txt";
-        String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No15552_output.txt";
+    void 빠른_A_더하기_B_테스트() throws IOException {
+        BufferedReader br_given = new BufferedReader(new FileReader(input));
+        BufferedReader br_want = new BufferedReader(new FileReader(output));
+        StringWriter sw = new StringWriter();
+        BufferedWriter bw_got = new BufferedWriter(sw);
 
-        try {
-            BufferedReader given = new BufferedReader(new FileReader(input));
-            BufferedReader want = new BufferedReader(new FileReader(output));
-            StringWriter sw = new StringWriter();
-            BufferedWriter bw = new BufferedWriter(sw);
+        No15552.solve(br_given, bw_got);
 
-            No15552.solve(given, bw);
+        bw_got.close();
 
-            bw.close();
+        BufferedReader br_got = new BufferedReader(new StringReader(sw.getBuffer().toString()));
 
-            BufferedReader actual = new BufferedReader(new StringReader(sw.getBuffer().toString()));
+        String got = br_got.lines().collect(Collectors.joining());
+        String want = br_want.lines().collect(Collectors.joining());
 
-            assertEquals(actual.read(), want.read());
-            assertEquals(actual.read(), want.read());
-            assertEquals(actual.read(), want.read());
-            assertEquals(actual.read(), want.read());
-            assertEquals(actual.read(), want.read());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        assertEquals(got, want);
     }
 }

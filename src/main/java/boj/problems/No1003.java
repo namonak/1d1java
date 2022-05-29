@@ -5,10 +5,10 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
 
 class No1003 {
-    static int zero = 0;
-    static int one = 0;
+    static Integer[][] dp = new Integer[41][2];
 
     public static void main(String[] args) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -20,25 +20,27 @@ class No1003 {
         output.close();
     }
 
-    private static int fibonacci(int number) {
-        if (0 == number) {
-            zero++;
-            return 0;
+    private static Integer[] fibonacci(int N) {
+        if(dp[N][0] == null || dp[N][1] == null) {
+            dp[N][0] = fibonacci(N - 1)[0] + fibonacci(N - 2)[0];
+            dp[N][1] = fibonacci(N - 1)[1] + fibonacci(N - 2)[1];
         }
-        if (1 == number) {
-            one++;
-            return 1;
-        }
-        return fibonacci(number - 1) + fibonacci(number - 2);
+        return dp[N];
+
     }
 
     static void solve(BufferedReader input, BufferedWriter output) throws IOException {
-        int testCase = Integer.parseInt(input.readLine());
-        for (int i = 0; i < testCase; i++) {
-            fibonacci(Integer.parseInt(input.readLine()));
-            output.write(zero + " " + one + "\n");
-            zero = 0;
-            one = 0;
+        int T = Integer.parseInt(input.readLine());
+
+        dp[0][0] = 1;
+        dp[0][1] = 0;
+        dp[1][0] = 0;
+        dp[1][1] = 1;
+
+        while(T-- > 0){
+            StringTokenizer st = new StringTokenizer(input.readLine());
+            Integer[] result = fibonacci(Integer.parseInt(st.nextToken()));
+            output.write(result[0] + result[1] + "\n");
         }
     }
 }

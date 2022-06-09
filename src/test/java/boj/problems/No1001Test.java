@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -18,7 +16,7 @@ public class No1001Test {
     @Test
     @DisplayName("A-B 테스트")
     void A_빼기_B_테스트() throws IOException {
-        System.out.println("A+B : https://www.acmicpc.net/problem/1001");
+        System.out.println("A-B : https://www.acmicpc.net/problem/1001");
 
         BufferedReader br_given = new BufferedReader(new StringReader("3 2"));
         StringWriter sw = new StringWriter();

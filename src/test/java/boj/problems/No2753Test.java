@@ -31,7 +31,8 @@ public class No2753Test {
 
         윤년_테스트케이스[] testCase = {
                 new 윤년_테스트케이스(2000, 1),
-                new 윤년_테스트케이스(1999, 0)
+                new 윤년_테스트케이스(1999, 0),
+                new 윤년_테스트케이스(1900, 0)
         };
 
         for (윤년_테스트케이스 tc : testCase) {
@@ -47,7 +48,7 @@ public class No2753Test {
 
             String got = br_got.lines().collect(Collectors.joining());
 
-            assertEquals(tc.want, got);
+            assertEquals(tc.want, Integer.parseInt(got));
         }
     }
 }

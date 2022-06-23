@@ -25,7 +25,7 @@ public class No9498Test {
 
 
     @Test
-    @DisplayName("시험 성적 테스")
+    @DisplayName("시험 성적 테스트")
     void 시험_성적_테스트() throws IOException {
         System.out.println("시험 성적 : https://www.acmicpc.net/problem/9498");
 

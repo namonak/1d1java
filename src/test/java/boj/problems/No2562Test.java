@@ -29,7 +29,7 @@ public class No2562Test {
         StringWriter sw = new StringWriter();
         BufferedWriter bw_got = new BufferedWriter(sw);
 
-        No1003.solve(br_given, bw_got);
+        No2562.solve(br_given, bw_got);
 
         bw_got.close();
 

@@ -29,7 +29,7 @@ public class No2798Test {
         System.out.println("블랙잭 : https://www.acmicpc.net/problem/2798");
 
         블랙잭_테스트케이스[] testCase = {
-                //new 블랙잭_테스트케이스("5 21" + System.lineSeparator() + "5 6 7 8 9", "21"),
+                new 블랙잭_테스트케이스("5 21" + System.lineSeparator() + "5 6 7 8 9", "21"),
                 new 블랙잭_테스트케이스("10 500" + System.lineSeparator() + "93 181 245 214 315 36 185 138 216 295", "497")
         };
 

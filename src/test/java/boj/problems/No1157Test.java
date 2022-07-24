@@ -32,7 +32,7 @@ public class No1157Test {
                 new 단어_공부_테스트케이스("Mississipi", "?"),
                 new 단어_공부_테스트케이스("zZa", "Z"),
                 new 단어_공부_테스트케이스("z", "Z"),
-                new 단어_공부_테스트케이스("baaa", "a")
+                new 단어_공부_테스트케이스("baaa", "A")
         };
 
         for (No1157Test.단어_공부_테스트케이스 단어_공부_테스트케이스 : testCase) {

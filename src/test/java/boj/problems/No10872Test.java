@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -15,29 +13,41 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class No10872Test {
-    File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No10872_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No10872_output.txt";
+    static class 팩토리얼_테스트케이스 {
+        int given;
+        int want;
+
+        public 팩토리얼_테스트케이스(int given, int want) {
+            this.given = given;
+            this.want = want;
+        }
+    }
+
 
     @Test
     @DisplayName("팩토리얼 테스트")
     void 팩토리얼_테스트() throws IOException {
         System.out.println("팩토리얼 : https://www.acmicpc.net/problem/10872");
 
-        BufferedReader br_given = new BufferedReader(new FileReader(input));
-        BufferedReader br_want = new BufferedReader(new FileReader(output));
-        StringWriter sw = new StringWriter();
-        BufferedWriter bw_got = new BufferedWriter(sw);
+        팩토리얼_테스트케이스[] testCase = {
+                new 팩토리얼_테스트케이스(10, 3628800),
+                new 팩토리얼_테스트케이스(0, 1)
+        };
 
-        No10872.solve(br_given, bw_got);
+        for (팩토리얼_테스트케이스 tc : testCase) {
+            BufferedReader br_given = new BufferedReader(new StringReader(String.valueOf(tc.given)));
+            StringWriter sw = new StringWriter();
+            BufferedWriter bw_got = new BufferedWriter(sw);
 
-        bw_got.close();
+            No10872.solve(br_given, bw_got);
 
-        BufferedReader br_got = new BufferedReader(new StringReader(sw.getBuffer().toString()));
+            bw_got.close();
 
-        String got = br_got.lines().collect(Collectors.joining());
-        String want = br_want.lines().collect(Collectors.joining());
+            BufferedReader br_got = new BufferedReader(new StringReader(sw.getBuffer().toString()));
 
-        assertEquals(want, got);
+            String got = br_got.lines().collect(Collectors.joining());
+
+            assertEquals(tc.want, Integer.parseInt(got));
+        }
     }
 }

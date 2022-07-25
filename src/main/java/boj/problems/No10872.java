@@ -19,12 +19,13 @@ public class No10872 {
 
     static void solve(BufferedReader input, BufferedWriter output) throws IOException {
         int number = Integer.parseInt(input.readLine());
-        int result = 1;
 
-        for (int i = 2; i <= number; i++) {
-            result *= i;
-        }
+        output.write(factorial(number) + "\n");
+    }
 
-        output.write(String.valueOf(result));
+    private static int factorial(int number) {
+        if (number <= 1) return 1;
+
+        return number * factorial(number - 1);
     }
 }

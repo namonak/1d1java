@@ -14,10 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class No11654Test {
     static class 아스키_코드_테스트케이스 {
-        int given;
+        String given;
         int want;
 
-        public 아스키_코드_테스트케이스(int given, int want) {
+        public 아스키_코드_테스트케이스(String given, int want) {
             this.given = given;
             this.want = want;
         }
@@ -29,16 +29,16 @@ public class No11654Test {
         System.out.println("아스키 코드 : https://www.acmicpc.net/problem/11654");
 
         아스키_코드_테스트케이스[] testCase = {
-                new 아스키_코드_테스트케이스('A', 65),
-                new 아스키_코드_테스트케이스('C', 67),
-                new 아스키_코드_테스트케이스('0', 48),
-                new 아스키_코드_테스트케이스('9', 57),
-                new 아스키_코드_테스트케이스('a', 97),
-                new 아스키_코드_테스트케이스('z', 122),
+                new 아스키_코드_테스트케이스("A", 65),
+                new 아스키_코드_테스트케이스("C", 67),
+                new 아스키_코드_테스트케이스("0", 48),
+                new 아스키_코드_테스트케이스("9", 57),
+                new 아스키_코드_테스트케이스("a", 97),
+                new 아스키_코드_테스트케이스("z", 122),
         };
 
         for (아스키_코드_테스트케이스 tc : testCase) {
-            BufferedReader br_given = new BufferedReader(new StringReader(String.valueOf(tc.given)));
+            BufferedReader br_given = new BufferedReader(new StringReader(tc.given));
             StringWriter sw = new StringWriter();
             BufferedWriter bw_got = new BufferedWriter(sw);
 

@@ -38,6 +38,6 @@ public class No10871Test {
         String got = br_got.lines().collect(Collectors.joining());
         String want = br_want.lines().collect(Collectors.joining());
 
-        assertEquals(want, got);
+        assertEquals(want + " ", got);
     }
 }

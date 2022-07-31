@@ -1,4 +1,4 @@
-package boj.problems;
+package boj.problems.step19;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

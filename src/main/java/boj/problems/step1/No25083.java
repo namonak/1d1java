@@ -1,4 +1,4 @@
-package boj.problems;
+package boj.problems.step1;
 
 public class No25083 {
     public static void main(String[] args){

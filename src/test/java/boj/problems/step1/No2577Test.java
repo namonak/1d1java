@@ -1,4 +1,4 @@
-package boj.problems;
+package boj.problems.step1;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,8 +16,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class No2577Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No2577_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No2577_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step1/No2577_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step1/No2577_output.txt";
 
     @Test
     @DisplayName("숫자의 개수 테스트")

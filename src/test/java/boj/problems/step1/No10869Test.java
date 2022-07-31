@@ -1,4 +1,4 @@
-package boj.problems;
+package boj.problems.step1;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,22 +14,22 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class No10430Test {
+public class No10869Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No10430_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No10430_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step1/No10869_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step1/No10869_output.txt";
 
     @Test
-    @DisplayName("나머지")
-    void 나머지_테스트() throws IOException {
-        System.out.println("나머지 : https://www.acmicpc.net/problem/10430");
+    @DisplayName("사칙연산 테스트")
+    void 사칙연산_테스트() throws IOException {
+        System.out.println("사칙연산 : https://www.acmicpc.net/problem/10869");
 
         BufferedReader br_given = new BufferedReader(new FileReader(input));
         BufferedReader br_want = new BufferedReader(new FileReader(output));
         StringWriter sw = new StringWriter();
         BufferedWriter bw_got = new BufferedWriter(sw);
 
-        No10430.solve(br_given, bw_got);
+        No10869.solve(br_given, bw_got);
 
         bw_got.close();
 
@@ -38,6 +38,6 @@ public class No10430Test {
         String got = br_got.lines().collect(Collectors.joining());
         String want = br_want.lines().collect(Collectors.joining());
 
-        assertEquals(want, got);
+        assertEquals(got, want);
     }
 }

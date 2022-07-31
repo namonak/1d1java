@@ -1,13 +1,14 @@
-package boj.problems;
+package boj.problems.step1;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.StringTokenizer;
+import java.util.ArrayList;
+import java.util.List;
 
-public class No10430 {
+public class No2588 {
     public static void main(String[] args) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -19,14 +20,19 @@ public class No10430 {
     }
 
     static void solve(BufferedReader input, BufferedWriter output) throws IOException {
-        StringTokenizer st = new StringTokenizer(input.readLine());
-        int A = Integer.parseInt(st.nextToken());
-        int B = Integer.parseInt(st.nextToken());
-        int C = Integer.parseInt(st.nextToken());
+        int a = Integer.parseInt(input.readLine());
+        int b = Integer.parseInt(input.readLine());
 
-        output.write((A + B) % C + "\n");
-        output.write(((A % C) + (B % C)) % C + "\n");
-        output.write((A * B) % C + "\n");
-        output.write(((A % C) * (B % C)) % C + "\n");
+        List<Integer> list = new ArrayList<>();
+
+        while (b != 0) {
+            list.add(a * (b % 10));
+            b /= 10;
+        }
+
+        output.write(list.get(0) + "\n");
+        output.write(list.get(1) + "\n");
+        output.write(list.get(2) + "\n");
+        output.write(list.get(0) + list.get(1) * 10 + list.get(2) * 100 +"\n");
     }
 }

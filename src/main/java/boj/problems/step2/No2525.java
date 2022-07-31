@@ -1,4 +1,4 @@
-package boj.problems;
+package boj.problems.step2;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,7 +7,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class No14681 {
+public class No2525 {
+    public static final int ONE_HOUR = 60;
+    public static final int ONE_DAY = 24;
+
     public static void main(String[] args) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -19,25 +22,23 @@ public class No14681 {
     }
 
     static void solve(BufferedReader input, BufferedWriter output) throws IOException {
-        int x = Integer.parseInt(input.readLine());
-        int y = Integer.parseInt(input.readLine());
+        StringTokenizer st = new StringTokenizer(input.readLine());
 
-        output.write(getQuadrant(x, y) + "\n");
-    }
+        int hour = Integer.parseInt(st.nextToken());
+        int minute = Integer.parseInt(st.nextToken());
+        int timeToAdd = Integer.parseInt(input.readLine());
 
-    private static int getQuadrant(int x, int y) {
-        if (x > 0 && y > 0) {
-            return 1;
+        minute += timeToAdd;
+        
+        if (minute >= ONE_HOUR) {
+            hour += minute / ONE_HOUR;
+            minute %= ONE_HOUR;
         }
 
-        if (x < 0 && y > 0) {
-            return 2;
+        if (hour >= ONE_DAY) {
+            hour %= ONE_DAY;
         }
 
-        if (x < 0 && y < 0) {
-            return 3;
-        }
-
-        return 4;
+        output.write(hour + " " + minute + "\n");
     }
 }

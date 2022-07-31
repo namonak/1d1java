@@ -1,4 +1,4 @@
-package boj.problems;
+package boj.problems.step2;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,9 +7,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class No2525 {
-    public static final int ONE_HOUR = 60;
-    public static final int ONE_DAY = 24;
+public class No2884 {
+
+    public static final int PRESET_TIME = 45;
+    public static final int MIDNIGHT = 0;
 
     public static void main(String[] args) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -23,22 +24,23 @@ public class No2525 {
 
     static void solve(BufferedReader input, BufferedWriter output) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
-
+        
         int hour = Integer.parseInt(st.nextToken());
         int minute = Integer.parseInt(st.nextToken());
-        int timeToAdd = Integer.parseInt(input.readLine());
-
-        minute += timeToAdd;
         
-        if (minute >= ONE_HOUR) {
-            hour += minute / ONE_HOUR;
-            minute %= ONE_HOUR;
+        if (minute < PRESET_TIME) {
+            if (hour == MIDNIGHT) {
+                hour = 23;
+            } else {
+                hour--;
+            }
+            minute = minute + 60 - PRESET_TIME;
+
+            output.write(hour + " " + minute + "\n");
+
+            return;
         }
 
-        if (hour >= ONE_DAY) {
-            hour %= ONE_DAY;
-        }
-
-        output.write(hour + " " + minute + "\n");
+        output.write(hour + " " + (minute - PRESET_TIME) + "\n");
     }
 }

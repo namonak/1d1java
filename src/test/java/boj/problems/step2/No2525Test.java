@@ -1,4 +1,4 @@
-package boj.problems;
+package boj.problems.step2;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,25 +12,26 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class No14681Test {
-    static class 사분면_고르기_테스트케이스{
+public class No2525Test {
+    static class 오븐_시계_테스트케이스{
         String given;
         String want;
 
-        public 사분면_고르기_테스트케이스(String given, String want) {
+        public 오븐_시계_테스트케이스(String given, String want) {
             this.given = given;
             this.want = want;
         }
     }
 
     @Test
-    @DisplayName("사분면 고르기 테스트")
-    void 사분면_고르기_테스트() throws IOException {
-        System.out.println("사분면 고르기 : https://www.acmicpc.net/problem/14681");
+    @DisplayName("오븐 시계 테스트")
+    void 오븐_시계_테스트() throws IOException {
+        System.out.println("오븐 시계 : https://www.acmicpc.net/problem/2525");
 
-        사분면_고르기_테스트케이스[] testCase = {
-                new 사분면_고르기_테스트케이스("12" + System.lineSeparator() + "5" + System.lineSeparator(), "1"),
-                new 사분면_고르기_테스트케이스("9" + System.lineSeparator() + "-13" + System.lineSeparator(), "4")
+        오븐_시계_테스트케이스[] testCase = {
+                new 오븐_시계_테스트케이스("14 30" + System.lineSeparator() + "20", "14 50"),
+                new 오븐_시계_테스트케이스("17 40" + System.lineSeparator() + "80", "19 0"),
+                new 오븐_시계_테스트케이스("23 48" + System.lineSeparator() + "25", "0 13"),
         };
 
         for (int i = 0; i < testCase.length; i++) {
@@ -39,7 +40,7 @@ public class No14681Test {
             StringWriter sw = new StringWriter();
             BufferedWriter bw_got = new BufferedWriter(sw);
 
-            No14681.solve(br_given, bw_got);
+            No2525.solve(br_given, bw_got);
 
             bw_got.close();
 

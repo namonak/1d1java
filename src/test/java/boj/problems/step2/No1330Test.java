@@ -1,4 +1,4 @@
-package boj.problems;
+package boj.problems.step2;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,26 +12,26 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class No2884Test {
-    static class 알람_시계_테스트케이스{
+public class No1330Test {
+    static class 두_수_비교하기_테스트케이스 {
         String given;
         String want;
 
-        public 알람_시계_테스트케이스(String given, String want) {
+        public 두_수_비교하기_테스트케이스(String given, String want) {
             this.given = given;
             this.want = want;
         }
     }
 
     @Test
-    @DisplayName("알람 시계 테스트")
-    void 알람_시계_테스트() throws IOException {
-        System.out.println("알람 시계 : https://www.acmicpc.net/problem/2884");
+    @DisplayName("두 수 비교하기 테스트")
+    void 두_수_비교하기_테스트() throws IOException {
+        System.out.println("두 수 비교하기 : https://www.acmicpc.net/problem/1330");
 
-        알람_시계_테스트케이스[] testCase = {
-                new 알람_시계_테스트케이스("10 10", "9 25"),
-                new 알람_시계_테스트케이스("0 30", "23 45"),
-                new 알람_시계_테스트케이스("23 40", "22 55")
+        두_수_비교하기_테스트케이스[] testCase = {
+            new 두_수_비교하기_테스트케이스("1 2", "<"),
+            new 두_수_비교하기_테스트케이스("10 2", ">"),
+            new 두_수_비교하기_테스트케이스("5 5", "=="),
         };
 
         for (int i = 0; i < testCase.length; i++) {
@@ -40,7 +40,7 @@ public class No2884Test {
             StringWriter sw = new StringWriter();
             BufferedWriter bw_got = new BufferedWriter(sw);
 
-            No2884.solve(br_given, bw_got);
+            No1330.solve(br_given, bw_got);
 
             bw_got.close();
 

@@ -1,4 +1,4 @@
-package boj.problems;
+package boj.problems.step2;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class No2753 {
+public class No14681 {
     public static void main(String[] args) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -18,12 +18,25 @@ public class No2753 {
     }
 
     static void solve(BufferedReader input, BufferedWriter output) throws IOException {
-        int year = Integer.parseInt(input.readLine());
+        int x = Integer.parseInt(input.readLine());
+        int y = Integer.parseInt(input.readLine());
 
-        if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
-            output.write(1 + "\n");
-            return;
+        output.write(getQuadrant(x, y) + "\n");
+    }
+
+    private static int getQuadrant(int x, int y) {
+        if (x > 0 && y > 0) {
+            return 1;
         }
-        output.write(0 + "\n");
+
+        if (x < 0 && y > 0) {
+            return 2;
+        }
+
+        if (x < 0 && y < 0) {
+            return 3;
+        }
+
+        return 4;
     }
 }

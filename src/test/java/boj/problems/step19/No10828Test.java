@@ -15,29 +15,38 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class No10828Test {
+    public static final int TESTCASE_NUM = 2;
+
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No10828_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No10828_output.txt";
+    String[] input = new String[TESTCASE_NUM];
+    String[] output = new String[TESTCASE_NUM];
 
     @Test
     @DisplayName("스택")
     void 스택_테스트() throws IOException {
         System.out.println("스택 : https://www.acmicpc.net/problem/10828");
 
-        BufferedReader br_given = new BufferedReader(new FileReader(input));
-        BufferedReader br_want = new BufferedReader(new FileReader(output));
-        StringWriter sw = new StringWriter();
-        BufferedWriter bw_got = new BufferedWriter(sw);
+        input[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/step19/No10828_input_1.txt";
+        output[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/step19/No10828_output_1.txt";
+        input[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/step19/No10828_input_2.txt";
+        output[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/step19/No10828_output_2.txt";
 
-        No10828.solve(br_given, bw_got);
+        for (int i = 0; i < TESTCASE_NUM; i++) {
+            BufferedReader br_given = new BufferedReader(new FileReader(input[i]));
+            BufferedReader br_want = new BufferedReader(new FileReader(output[i]));
+            StringWriter sw = new StringWriter();
+            BufferedWriter bw_got = new BufferedWriter(sw);
 
-        bw_got.close();
+            No10828.solve(br_given, bw_got);
 
-        BufferedReader br_got = new BufferedReader(new StringReader(sw.getBuffer().toString()));
+            bw_got.close();
 
-        String got = br_got.lines().collect(Collectors.joining());
-        String want = br_want.lines().collect(Collectors.joining());
+            BufferedReader br_got = new BufferedReader(new StringReader(sw.getBuffer().toString()));
 
-        assertEquals(want, got);
+            String got = br_got.lines().collect(Collectors.joining());
+            String want = br_want.lines().collect(Collectors.joining());
+
+            assertEquals(want, got);
+        }
     }
 }

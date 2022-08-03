@@ -1,29 +1,35 @@
-package boj.problems;
+package boj.problems.step4;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class No10818Test {
+public class No2562Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No10818_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No10818_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No2562_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No2562_output.txt";
 
     @Test
-    @DisplayName("최소, 최대")
-    void 최소_최대_테스트() throws IOException {
-        System.out.println("최소, 최대 : https://www.acmicpc.net/problem/10818");
+    @DisplayName("최댓값 테스트")
+    void 최댓값_테스트() throws IOException {
+        System.out.println("최댓값 : https://www.acmicpc.net/problem/2562");
 
         BufferedReader br_given = new BufferedReader(new FileReader(input));
         BufferedReader br_want = new BufferedReader(new FileReader(output));
         StringWriter sw = new StringWriter();
         BufferedWriter bw_got = new BufferedWriter(sw);
 
-        No10818.solve(br_given, bw_got);
+        No2562.solve(br_given, bw_got);
 
         bw_got.close();
 

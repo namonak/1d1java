@@ -1,4 +1,4 @@
-package boj.problems;
+package boj.problems.step4;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -6,9 +6,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
-public class No2562 {
+public class No3052 {
+    public static final int DIVISOR = 42;
+
     public static void main(String[] args) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -21,25 +24,18 @@ public class No2562 {
 
     static void solve(BufferedReader input, BufferedWriter output) throws IOException {
         int[] arr = makeArray(input);
+        HashSet<Integer> resultHash = new HashSet<Integer>();
 
-        int maxIdx = getMaxIndex(arr);
-
-        output.write(arr[maxIdx] + "\n" + (maxIdx + 1));
-    }
-
-    private static int getMaxIndex(int[] arr) {
-        int maxIdx = 0;
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > arr[maxIdx]) {
-                maxIdx = i;
-            }
+            resultHash.add(arr[i] % DIVISOR);
         }
-        return maxIdx;
+
+        output.write(resultHash.size() + "\n");
     }
 
-    private static int[] makeArray(BufferedReader input) throws IOException {
+    private static int[] makeArray(BufferedReader input) throws IOException{
         List<Integer> List = new ArrayList<>();
-        String tmp = null;
+        String tmp;
 
         while ((tmp = input.readLine()) != null) {
             List.add(Integer.parseInt(tmp));

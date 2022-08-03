@@ -1,4 +1,4 @@
-package boj.problems;
+package boj.problems.step4;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

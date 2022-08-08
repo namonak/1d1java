@@ -5,8 +5,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 public class No2750 {
     public static void main(String[] args) throws IOException {
@@ -21,26 +19,20 @@ public class No2750 {
 
     static void solve(BufferedReader input, BufferedWriter output) throws IOException {
         int n = Integer.parseInt(input.readLine());
-        int[] arr = makeArray(input);
-        int[] sorted = insertionSorting(arr);
+        int arr[] = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(input.readLine());
+        }
+
+        int[] sorted = insertionSort(arr);
 
         for (int i = 0; i < n; i++) {
             output.write(sorted[i] + "\n");
         }
     }
 
-    private static int[] makeArray(BufferedReader input) throws IOException {
-        List<Integer> List = new ArrayList<>();
-        String tmp = null;
-
-        while ((tmp = input.readLine()) != null) {
-            List.add(Integer.parseInt(tmp));
-        }
-
-        return List.stream().mapToInt(i -> i).toArray();
-    }
-
-    private static int[] insertionSorting(int[] arr) {
+    private static int[] insertionSort(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             int j = i;
 

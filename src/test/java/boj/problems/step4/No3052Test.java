@@ -16,13 +16,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class No3052Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No3052_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No3052_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step4/No3052_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step4/No3052_output.txt";
 
     @Test
     @DisplayName("나머지 테스트")
     void 나머지_테스트() throws IOException {
-        System.out.println("최댓값 : https://www.acmicpc.net/problem/3052");
+        System.out.println("나머지 : https://www.acmicpc.net/problem/3052");
 
         BufferedReader br_given = new BufferedReader(new FileReader(input));
         BufferedReader br_want = new BufferedReader(new FileReader(output));

@@ -16,8 +16,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class No2562Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No2562_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No2562_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step4/No2562_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step4/No2562_output.txt";
 
     @Test
     @DisplayName("최댓값 테스트")

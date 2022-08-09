@@ -38,7 +38,7 @@ public class No1978 {
         if (number == 2) return true;
         if (number % 2 == 0) return false;
 
-        for (int div = 2; div < number; div++) {
+        for (int div = 3; div <= (int)Math.sqrt(number); div += 2) {
             if (number % div == 0) return false;
         }
         return true;

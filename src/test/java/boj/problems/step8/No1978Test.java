@@ -26,7 +26,7 @@ public class No1978Test {
 
         BufferedReader br_given = new BufferedReader(new FileReader(input));
         BufferedReader br_want = new BufferedReader(new FileReader(output));
-        StringWriter sw = new StringWriter();4
+        StringWriter sw = new StringWriter();
         BufferedWriter bw_got = new BufferedWriter(sw);
 
         No1978.solve(br_given, bw_got);

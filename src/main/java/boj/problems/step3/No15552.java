@@ -1,4 +1,4 @@
-package boj.problems;
+package boj.problems.step3;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-class No10950 {
+class No15552 {
     public static void main(String[] args) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -18,7 +18,7 @@ class No10950 {
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static void solve(BufferedReader input, BufferedWriter output) throws IOException{
         int testCase = Integer.parseInt(input.readLine());
         for (int i = 0; i < testCase; i++) {
             StringTokenizer st = new StringTokenizer(input.readLine());

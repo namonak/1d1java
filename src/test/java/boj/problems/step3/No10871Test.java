@@ -1,4 +1,4 @@
-package boj.problems;
+package boj.problems.step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,22 +14,22 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class No10951Test {
+public class No10871Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No10951_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No10951_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No10871_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No10871_output.txt";
 
     @Test
-    @DisplayName("A+B - 4 테스트")
-    void A_더하기_B_빼기_4() throws IOException {
-        System.out.println("A+B - 4 : https://www.acmicpc.net/problem/10951");
+    @DisplayName("X보다 작은 수")
+    void X보다_작은_수_테스트() throws IOException {
+        System.out.println("X보다 작은 수 : https://www.acmicpc.net/problem/10871");
 
         BufferedReader br_given = new BufferedReader(new FileReader(input));
         BufferedReader br_want = new BufferedReader(new FileReader(output));
         StringWriter sw = new StringWriter();
         BufferedWriter bw_got = new BufferedWriter(sw);
 
-        No10951.solve(br_given, bw_got);
+        No10871.solve(br_given, bw_got);
 
         bw_got.close();
 
@@ -38,6 +38,6 @@ public class No10951Test {
         String got = br_got.lines().collect(Collectors.joining());
         String want = br_want.lines().collect(Collectors.joining());
 
-        assertEquals(want, got);
+        assertEquals(want + " ", got);
     }
 }

@@ -1,5 +1,6 @@
-package boj.problems;
+package boj.problems.step3;
 
+import boj.problems.step3.No8393;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

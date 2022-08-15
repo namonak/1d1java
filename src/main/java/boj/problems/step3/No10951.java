@@ -1,4 +1,4 @@
-package boj.problems;
+package boj.problems.step3;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,7 +7,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class No10952 {
+public class No10951 {
+
+    public static final int CONVERT_ASCII_TO_INT = 48;
+
     public static void main(String[] args) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -19,17 +22,13 @@ public class No10952 {
     }
 
     static void solve(BufferedReader input, BufferedWriter output) throws IOException {
-        while (true) {
-            StringTokenizer st = new StringTokenizer(input.readLine(), " ");
+        String str;
 
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
+        while ((str = input.readLine()) != null) {
+            int a = str.charAt(0) - CONVERT_ASCII_TO_INT;
+            int b = str.charAt(2) - CONVERT_ASCII_TO_INT;
 
-            if (a == 0 && b == 0) {
-                break;
-            }
-
-            output.write((a + b) + "\n");
+            output.write((a+b) + "\n");
         }
     }
 }

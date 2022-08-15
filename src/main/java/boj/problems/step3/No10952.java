@@ -1,12 +1,13 @@
-package boj.problems;
+package boj.problems.step3;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
 
-public class No1110 {
+public class No10952 {
     public static void main(String[] args) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -18,17 +19,17 @@ public class No1110 {
     }
 
     static void solve(BufferedReader input, BufferedWriter output) throws IOException {
-        int number = Integer.parseInt(input.readLine());
-        int result = 0;
-        int newNumber = number;
+        while (true) {
+            StringTokenizer st = new StringTokenizer(input.readLine(), " ");
 
-        do {
-            int leftNumber = newNumber / 10;
-            int rightNumber = newNumber % 10;
-            newNumber = (rightNumber * 10) + ((leftNumber + rightNumber) % 10);
-            result++;
-        } while(number != newNumber);
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
 
-        output.write(result + "\n");
+            if (a == 0 && b == 0) {
+                break;
+            }
+
+            output.write((a + b) + "\n");
+        }
     }
 }

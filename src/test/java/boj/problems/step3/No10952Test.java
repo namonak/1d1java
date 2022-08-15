@@ -1,4 +1,4 @@
-package boj.problems;
+package boj.problems.step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,22 +14,22 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class No2438Test {
+public class No10952Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No2438_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No2438_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No10952_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No10952_output.txt";
 
     @Test
-    @DisplayName("별 찍기 - 1 테스트")
-    void 별_찍기_빼기_1_테스트() throws IOException {
-        System.out.println("별 찍기 - 1 : https://www.acmicpc.net/problem/2438");
+    @DisplayName("A+B - 5 테스트")
+    void A_더하기_B_빼기_5() throws IOException {
+        System.out.println("A+B - 5 : https://www.acmicpc.net/problem/10952");
 
         BufferedReader br_given = new BufferedReader(new FileReader(input));
         BufferedReader br_want = new BufferedReader(new FileReader(output));
         StringWriter sw = new StringWriter();
         BufferedWriter bw_got = new BufferedWriter(sw);
 
-        No2438.solve(br_given, bw_got);
+        No10952.solve(br_given, bw_got);
 
         bw_got.close();
 
@@ -38,6 +38,6 @@ public class No2438Test {
         String got = br_got.lines().collect(Collectors.joining());
         String want = br_want.lines().collect(Collectors.joining());
 
-        assertEquals(got, want);
+        assertEquals(want, got);
     }
 }

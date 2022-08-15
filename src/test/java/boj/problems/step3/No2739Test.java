@@ -1,4 +1,4 @@
-package boj.problems;
+package boj.problems.step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,22 +14,22 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class No10950Test {
+public class No2739Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No10950_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No10950_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No2739_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No2739_output.txt";
 
     @Test
-    @DisplayName("A+B - 3")
-    void A_더하기_B_다시_3_테스트() throws IOException {
-        System.out.println("A+B - 3 : https://www.acmicpc.net/problem/10950");
+    @DisplayName("구구단")
+    void 구구단_테스트() throws IOException {
+        System.out.println("곱셈 : https://www.acmicpc.net/problem/2739");
 
         BufferedReader br_given = new BufferedReader(new FileReader(input));
         BufferedReader br_want = new BufferedReader(new FileReader(output));
         StringWriter sw = new StringWriter();
         BufferedWriter bw_got = new BufferedWriter(sw);
 
-        No10950.solve(br_given, bw_got);
+        No2739.solve(br_given, bw_got);
 
         bw_got.close();
 
@@ -38,6 +38,6 @@ public class No10950Test {
         String got = br_got.lines().collect(Collectors.joining());
         String want = br_want.lines().collect(Collectors.joining());
 
-        assertEquals(want, got);
+        assertEquals(got, want);
     }
 }

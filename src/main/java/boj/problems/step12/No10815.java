@@ -25,6 +25,7 @@ public class No10815 {
         int N = Integer.parseInt(input.readLine());
         StringTokenizer st = new StringTokenizer(input.readLine());
         ArrayList<Integer> cardList = new ArrayList();
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < N; ++i) {
             cardList.add(Integer.parseInt(st.nextToken()));
@@ -34,22 +35,15 @@ public class No10815 {
 
         int M = Integer.parseInt(input.readLine());
         st = new StringTokenizer(input.readLine());
-        ArrayList<Integer> list = new ArrayList();
 
         for (int i = 0; i < M; ++i) {
-            list.add(Integer.parseInt(st.nextToken()));
-        }
-
-        for (int i = 0; i < list.size(); ++i) {
-            if (Collections.binarySearch(cardList, list.get(i)) < 0) {
-                list.set(i, 0);
+            if (Collections.binarySearch(cardList, Integer.parseInt(st.nextToken())) < 0) {
+                sb.append("0 ");
             } else {
-                list.set(i, 1);
+                sb.append("1 ");
             }
         }
 
-        for (int i = 0; i < list.size(); ++i) {
-            output.write(list.get(i) + " ");
-        }
+        output.write(sb.toString());
     }
 }

@@ -1,4 +1,4 @@
-package boj.problems.step12;
+package boj.problems.step22;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,8 +16,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class No10816Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step12/No10816_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step12/No10816_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step22/No10816_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step22/No10816_output.txt";
 
     @Test
     @DisplayName("숫자 카드 2 테스트")

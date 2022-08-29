@@ -1,4 +1,4 @@
-package boj.problems;
+package boj.problems.step9;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,7 +22,6 @@ public class No10870Test {
             this.want = want;
         }
     }
-
 
     @Test
     @DisplayName("피보나치 수 5 테스트")

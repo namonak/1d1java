@@ -1,13 +1,12 @@
-package boj.problems;
+package boj.problems.step6;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.StringTokenizer;
 
-public class No2908 {
+public class No11720 {
     public static void main(String[] args) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -19,17 +18,14 @@ public class No2908 {
     }
 
     static void solve(BufferedReader input, BufferedWriter output) throws IOException {
-        StringTokenizer st = new StringTokenizer(input.readLine());
+        int strLen = Integer.parseInt(input.readLine());
+        String inputStr = input.readLine();
+        int result = 0;
 
-        int a = reverseNumber(st.nextToken());
-        int b = reverseNumber(st.nextToken());
+        for (int i = 0; i < strLen; i++) {
+            result += Integer.parseInt(String.valueOf(inputStr.charAt(i)));
+        }
 
-        output.write((a > b ? a : b) + "\n");
-    }
-
-    private static int reverseNumber(String str) {
-        StringBuffer sb = new StringBuffer(str);
-
-        return Integer.parseInt(sb.reverse().toString());
+        output.write(result + "\n");
     }
 }

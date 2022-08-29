@@ -1,4 +1,4 @@
-package boj.problems;
+package boj.problems.step6;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,27 +12,26 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class No11720Test {
-    static class 숫자의_합_테스트케이스{
+public class No2908Test {
+    static class 상수_테스트케이스{
         String given;
         String want;
 
-        public 숫자의_합_테스트케이스(String given, String want) {
+        public 상수_테스트케이스(String given, String want) {
             this.given = given;
             this.want = want;
         }
     }
 
     @Test
-    @DisplayName("숫자의 합 테스트")
-    void 숫자의_합_테스트() throws IOException {
-        System.out.println("숫자의 합 : https://www.acmicpc.net/problem/11720");
+    @DisplayName("상수 테스트")
+    void 상수_테스트() throws IOException {
+        System.out.println("상수 : https://www.acmicpc.net/problem/2908");
 
-        숫자의_합_테스트케이스[] testCase = {
-                new 숫자의_합_테스트케이스("1" + System.lineSeparator() + "1" + System.lineSeparator(), "1"),
-                new 숫자의_합_테스트케이스("5" + System.lineSeparator() + "54321" + System.lineSeparator(), "15"),
-                new 숫자의_합_테스트케이스("25" + System.lineSeparator() + "7000000000000000000000000" + System.lineSeparator(), "7"),
-                new 숫자의_합_테스트케이스("11" + System.lineSeparator() + "10987654321" + System.lineSeparator(), "46")
+        상수_테스트케이스[] testCase = {
+                new 상수_테스트케이스("734 893", "437"),
+                new 상수_테스트케이스("221 231", "132"),
+                new 상수_테스트케이스("839 237", "938")
         };
 
         for (int i = 0; i < testCase.length; i++) {
@@ -41,7 +40,7 @@ public class No11720Test {
             StringWriter sw = new StringWriter();
             BufferedWriter bw_got = new BufferedWriter(sw);
 
-            No11720.solve(br_given, bw_got);
+            No2908.solve(br_given, bw_got);
 
             bw_got.close();
 

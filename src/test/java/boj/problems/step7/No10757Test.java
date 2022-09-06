@@ -45,7 +45,7 @@ public class No10757Test {
 
             String got = br_got.lines().collect(Collectors.joining());
 
-            assertEquals(tc.want, Integer.parseInt(got));
+            assertEquals(tc.want, got);
         }
     }
 }

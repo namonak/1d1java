@@ -19,10 +19,12 @@ public class No2231 {
     }
 
     static void solve(BufferedReader input, BufferedWriter output) throws IOException {
-        int number = Integer.parseInt(input.readLine());
+        String strNumber = input.readLine();
+        int number = Integer.parseInt(strNumber);
+        int numberLength = strNumber.length();
         int result = 0;
 
-        for (int i = 0; i < number; ++i) {
+        for (int i = (number - (numberLength * 9)); i < number; ++i) {
             int tmp = i;
             int sum = 0;
 

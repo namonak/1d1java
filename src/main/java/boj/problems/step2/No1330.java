@@ -12,28 +12,26 @@ public class No1330 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input) + "\n");
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
         int a = Integer.parseInt(st.nextToken());
         int b = Integer.parseInt(st.nextToken());
 
         if (a < b) {
-            output.write("<\n");
-            return;
+            return "<";
         }
 
         if (a > b) {
-            output.write(">\n");
-            return;
+            return ">";
         }
 
-        output.write("==\n");
-        return;
+        return "==";
     }
 }

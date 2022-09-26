@@ -12,19 +12,20 @@ public class No2480 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input) + "\n");
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static int solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
         int a = Integer.parseInt(st.nextToken());
         int b = Integer.parseInt(st.nextToken());
         int c = Integer.parseInt(st.nextToken());
 
-        output.write(getPrizeMoney(a, b, c) + "\n");
+        return getPrizeMoney(a, b, c);
     }
 
     private static int getPrizeMoney(int a, int b, int c) {

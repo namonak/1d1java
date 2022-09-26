@@ -18,8 +18,9 @@ public class No1000Test {
         System.out.println("A+B : https://www.acmicpc.net/problem/1000");
 
         BufferedReader br_given = new BufferedReader(new StringReader(input));
-        br_given.close();
 
         assertEquals(expected, String.valueOf(No1000.solve(br_given)));
+
+        br_given.close();
     }
 }

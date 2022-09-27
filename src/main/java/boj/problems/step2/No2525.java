@@ -15,13 +15,14 @@ public class No2525 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input) + "\n");
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
 
         int hour = Integer.parseInt(st.nextToken());
@@ -39,6 +40,6 @@ public class No2525 {
             hour %= ONE_DAY;
         }
 
-        output.write(hour + " " + minute + "\n");
+        return hour + " " + minute;
     }
 }

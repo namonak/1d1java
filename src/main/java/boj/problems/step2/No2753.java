@@ -11,19 +11,19 @@ public class No2753 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input) + "\n");
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static int solve(BufferedReader input) throws IOException {
         int year = Integer.parseInt(input.readLine());
 
         if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
-            output.write(1 + "\n");
-            return;
+            return 1;
         }
-        output.write(0 + "\n");
+        return 0;
     }
 }

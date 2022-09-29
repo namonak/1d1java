@@ -1,4 +1,4 @@
-package boj.problems.step11;
+package boj.problems.step9;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,14 +13,14 @@ public class No1427 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input) + "\n");
 
         input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         String number = input.readLine();
         Integer[] arr = new Integer[number.length()];
 
@@ -30,8 +30,15 @@ public class No1427 {
 
         Arrays.sort(arr, Collections.reverseOrder());
 
-        for (int i = 0; i < arr.length; ++i) {
-            output.write(String.valueOf(arr[i]));
+        return computeResult(arr);
+    }
+
+    private static String computeResult(Integer[] arr) {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < arr.length; i++) {
+            sb.append(arr[i]);
         }
+        return sb.toString();
     }
 }

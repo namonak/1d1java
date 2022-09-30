@@ -8,7 +8,6 @@ import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 public class No2884 {
-
     public static final int PRESET_TIME = 45;
     public static final int MIDNIGHT = 0;
 
@@ -16,13 +15,14 @@ public class No2884 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input) + "\n");
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
         
         int hour = Integer.parseInt(st.nextToken());
@@ -36,11 +36,9 @@ public class No2884 {
             }
             minute = minute + 60 - PRESET_TIME;
 
-            output.write(hour + " " + minute + "\n");
-
-            return;
+            return hour + " " + minute;
         }
 
-        output.write(hour + " " + (minute - PRESET_TIME) + "\n");
+        return hour + " " + (minute - PRESET_TIME);
     }
 }

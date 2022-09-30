@@ -11,25 +11,26 @@ public class No9498 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input) + "\n");
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         int score = Integer.parseInt(input.readLine());
 
         if (score >= 90) {
-            output.write("A\n");
+            return "A";
         } else if (score >= 80) {
-            output.write("B\n");
+            return "B";
         } else if (score >= 70) {
-            output.write("C\n");
+            return "C";
         } else if (score >= 60) {
-            output.write("D\n");
+            return "D";
         } else {
-            output.write("F\n");
+            return "F";
         }
     }
 }

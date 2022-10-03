@@ -11,13 +11,14 @@ public class No1110 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write((solve(input)) + "\n");
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static int solve(BufferedReader input) throws IOException {
         int number = Integer.parseInt(input.readLine());
         int result = 0;
         int newNumber = number;
@@ -29,6 +30,6 @@ public class No1110 {
             result++;
         } while(number != newNumber);
 
-        output.write(result + "\n");
+        return result;
     }
 }

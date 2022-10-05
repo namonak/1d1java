@@ -7,31 +7,31 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class No1157 {
-
     public static final int NUMBER_OF_LETTERS = 26;
 
     public static void main(String[] args) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input) + "\n");
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static char solve(BufferedReader input) throws IOException {
         String str = input.readLine();
         int[] alphabet = new int[NUMBER_OF_LETTERS];
 
         for (int i = 0; i < str.length(); i++) {
-            if ('a' <= str.charAt(i) && str.charAt(i) <= 'z') {
-                alphabet[str.charAt(i) - 'a']++;
-            } else {
-                alphabet[str.charAt(i) - 'A']++;
-            }
+            getAlphabetCount(str, alphabet, i);
         }
 
+        return getResult(alphabet);
+    }
+
+    private static char getResult(int[] alphabet) {
         int maxIdx = -1;
         char result = '?';
 
@@ -40,12 +40,18 @@ public class No1157 {
                 maxIdx = alphabet[i];
                 result = (char) (i + 'A');
             }
-
             else if (alphabet[i] == maxIdx) {
                 result = '?';
             }
         }
+        return result;
+    }
 
-        output.write(String.valueOf(result));
+    private static void getAlphabetCount(String str, int[] alphabet, int i) {
+        if ('a' <= str.charAt(i) && str.charAt(i) <= 'z') {
+            alphabet[str.charAt(i) - 'a']++;
+        } else {
+            alphabet[str.charAt(i) - 'A']++;
+        }
     }
 }

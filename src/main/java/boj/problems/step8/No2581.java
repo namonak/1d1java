@@ -12,13 +12,14 @@ public class No2581 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input) + "\n");
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         int M = Integer.parseInt(input.readLine());
         int N = Integer.parseInt(input.readLine());
         ArrayList primeList = new ArrayList();
@@ -32,8 +33,10 @@ public class No2581 {
             sum += (int) o;
         }
 
-        if (primeList.size() == 0) output.write(-1 + "\n");
-        else output.write(sum + System.lineSeparator() + primeList.get(0));
+        if (primeList.size() == 0) {
+            return String.valueOf(-1);
+        }
+        return sum + System.lineSeparator() + primeList.get(0);
     }
 
     private static boolean isPrime(int number) {

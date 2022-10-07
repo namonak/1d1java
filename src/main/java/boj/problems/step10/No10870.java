@@ -1,4 +1,4 @@
-package boj.problems.step9;
+package boj.problems.step10;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,16 +11,17 @@ public class No10870 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input) + "\n");
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static int solve(BufferedReader input) throws IOException {
         int n = Integer.parseInt(input.readLine());
 
-        output.write(getNthFibonacci(n) + "\n");
+        return getNthFibonacci(n);
     }
 
     private static int getNthFibonacci(int n) {

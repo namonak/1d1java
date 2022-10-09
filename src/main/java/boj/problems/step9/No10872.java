@@ -11,16 +11,17 @@ public class No10872 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input) + "\n");
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static int solve(BufferedReader input) throws IOException {
         int number = Integer.parseInt(input.readLine());
 
-        output.write(factorial(number) + "\n");
+        return factorial(number);
     }
 
     private static int factorial(int number) {

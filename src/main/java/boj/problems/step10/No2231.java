@@ -11,14 +11,14 @@ public class No2231 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input) + "\n");
 
         input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static int solve(BufferedReader input) throws IOException {
         String strNumber = input.readLine();
         int number = Integer.parseInt(strNumber);
         int numberLength = strNumber.length();
@@ -38,6 +38,6 @@ public class No2231 {
             }
         }
 
-        output.write(result + "\n");
+        return result;
     }
 }

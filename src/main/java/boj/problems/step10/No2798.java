@@ -12,13 +12,14 @@ public class No2798 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input) + "\n");
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static int solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
 
         int n = Integer.parseInt(st.nextToken());
@@ -32,7 +33,7 @@ public class No2798 {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
-        output.write(getResult(arr, n, givenNumber) + "\n");
+        return getResult(arr, n, givenNumber);
     }
 
     private static int getResult(int[] arr, int n, int givenNumber) {
@@ -59,7 +60,6 @@ public class No2798 {
                 }
             }
         }
-
         return result;
     }
 }

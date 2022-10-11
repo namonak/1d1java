@@ -13,14 +13,15 @@ public class No11650 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input) + "\n");
 
         input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
+        StringBuilder sb = new StringBuilder();
         int N = Integer.parseInt(input.readLine());
 
         int[][] arr = new int[N][2];
@@ -40,7 +41,9 @@ public class No11650 {
         });
 
         for(int i = 0; i < N; i++) {
-            output.write(arr[i][0] + " " + arr[i][1] + "\n");
+            sb.append(arr[i][0] + " " + arr[i][1] + "\n");
         }
+
+        return sb.toString();
     }
 }

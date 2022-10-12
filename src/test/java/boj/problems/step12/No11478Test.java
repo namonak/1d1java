@@ -37,7 +37,7 @@ public class No11478Test {
             StringWriter sw = new StringWriter();
             BufferedWriter bw_got = new BufferedWriter(sw);
 
-            No11478.solve(br_given, bw_got);
+            //No11478.solve(br_given, bw_got);
 
             bw_got.close();
 

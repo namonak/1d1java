@@ -39,7 +39,7 @@ public class No1929Test {
             StringWriter sw = new StringWriter();
             BufferedWriter bw_got = new BufferedWriter(sw);
 
-            No1929.solve(br_given, bw_got);
+            //No1929.solve(br_given, bw_got);
 
             bw_got.close();
 

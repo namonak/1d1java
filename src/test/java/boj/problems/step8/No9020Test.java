@@ -29,7 +29,7 @@ public class No9020Test {
         StringWriter sw = new StringWriter();
         BufferedWriter bw_got = new BufferedWriter(sw);
 
-        No9020.solve(br_given, bw_got);
+        //No9020.solve(br_given, bw_got);
 
         bw_got.close();
 

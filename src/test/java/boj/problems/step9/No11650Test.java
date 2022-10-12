@@ -2,12 +2,12 @@ package boj.problems.step9;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.testng.reporters.Files;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -22,9 +22,9 @@ public class No11650Test {
         System.out.println("좌표 정렬하기 : https://www.acmicpc.net/problem/11650");
 
         BufferedReader given = new BufferedReader(new FileReader(input));
-        File expected = new File(output);
+        String expected = new String(Files.readAllBytes(new File(output).toPath()));
 
-        assertEquals(Files.readFile(expected), No11650.solve(given));
+        assertEquals(expected, No11650.solve(given));
 
         given.close();
     }

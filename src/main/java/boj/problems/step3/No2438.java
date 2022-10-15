@@ -11,20 +11,22 @@ public class No2438 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input));
 
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         int n = Integer.parseInt(input.readLine());
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j <= i; j++) {
-                output.write("*");
+                sb.append("*");
             }
-            output.write("\n");
+            sb.append("\n");
         }
+        return sb.toString();
     }
 }

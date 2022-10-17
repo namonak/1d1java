@@ -9,7 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class No11650Test {
     File path = new File(".");
@@ -24,7 +24,7 @@ public class No11650Test {
         BufferedReader given = new BufferedReader(new FileReader(input));
         String expected = new String(Files.readAllBytes(new File(output).toPath()));
 
-        assertEquals(expected, No11650.solve(given));
+        assertThat(No11650.solve(given)).isEqualTo(expected);
 
         given.close();
     }

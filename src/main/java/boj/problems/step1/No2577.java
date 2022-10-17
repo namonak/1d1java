@@ -13,22 +13,29 @@ public class No2577 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input) + "\n");
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         int a = Integer.parseInt(input.readLine());
         int b = Integer.parseInt(input.readLine());
         int c = Integer.parseInt(input.readLine());
 
         int[] resultArr = makeResultArray(Integer.toString(a * b * c));
 
+        return makeOutput(resultArr);
+    }
+
+    private static String makeOutput(int[] resultArr) {
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < resultArr.length; i++) {
-            output.write(resultArr[i] + "\n");
+            sb.append(resultArr[i] + "\n");
         }
+        return sb.toString();
     }
 
     private static int[] makeResultArray(String strNumber) {

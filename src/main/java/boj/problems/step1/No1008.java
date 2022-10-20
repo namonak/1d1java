@@ -12,17 +12,18 @@ public class No1008 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(String.valueOf(solve(input)));
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static double solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
         int a = Integer.parseInt(st.nextToken());
         int b = Integer.parseInt(st.nextToken());
 
-        output.write((double)a / b + "\n");
+        return (double)a / b;
     }
 }

@@ -12,14 +12,14 @@ public class No1654 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(String.valueOf(solve(input)));
 
         input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static long solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
 
         int numOfLanCable = Integer.parseInt(st.nextToken());
@@ -52,6 +52,6 @@ public class No1654 {
             }
         }
 
-        output.write((min - 1) + "\n");
+        return min - 1;
     }
 }

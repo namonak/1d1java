@@ -5,34 +5,35 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 public class No2588 {
     public static void main(String[] args) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input));
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         int a = Integer.parseInt(input.readLine());
         int b = Integer.parseInt(input.readLine());
+        return getResult(a, b);
+    }
 
-        List<Integer> list = new ArrayList<>();
+    private static String getResult(int a, int b) {
+        StringBuilder sb = new StringBuilder();
 
-        while (b != 0) {
-            list.add(a * (b % 10));
-            b /= 10;
-        }
-
-        output.write(list.get(0) + "\n");
-        output.write(list.get(1) + "\n");
-        output.write(list.get(2) + "\n");
-        output.write(list.get(0) + list.get(1) * 10 + list.get(2) * 100 +"\n");
+        sb.append(a * (b % 10));
+        sb.append('\n');
+        sb.append(a * ((b % 100) / 10));
+        sb.append('\n');
+        sb.append(a * (b / 100));
+        sb.append('\n');
+        sb.append(a * b);
+        return sb.toString();
     }
 }

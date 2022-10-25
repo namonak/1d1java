@@ -12,21 +12,28 @@ public class No10869 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input));
 
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
         int a = Integer.parseInt(st.nextToken());
         int b = Integer.parseInt(st.nextToken());
+        return getResult(a, b);
+    }
 
-        output.write(a + b + "\n");
-        output.write(a - b + "\n");
-        output.write(a * b + "\n");
-        output.write(a / b + "\n");
-        output.write(a % b + "\n");
+    private static String getResult(int a, int b) {
+        String result = "";
+
+        result += a + b + "\n";
+        result += a - b + "\n";
+        result += a * b + "\n";
+        result += a / b + "\n";
+        result += a % b;
+
+        return result;
     }
 }

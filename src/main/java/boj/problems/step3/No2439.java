@@ -11,24 +11,27 @@ public class No2439 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input));
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         int n = Integer.parseInt(input.readLine());
+        StringBuilder sb = new StringBuilder();
 
         for (int i = n - 1; i >= 0; i--) {
             for (int j = 0; j < n; j++) {
                 if (i <= j) {
-                    output.write("*");
+                    sb.append("*");
                 } else {
-                    output.write(" ");
+                    sb.append(" ");
                 }
             }
-            output.write("\n");
+            sb.append("\n");
         }
+        return sb.toString();
     }
 }

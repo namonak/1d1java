@@ -13,18 +13,19 @@ public class No2562 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input));
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         int[] arr = makeArray(input);
 
         int maxIdx = getMaxIndex(arr);
 
-        output.write(arr[maxIdx] + "\n" + (maxIdx + 1));
+        return arr[maxIdx] + "\n" + (maxIdx + 1);
     }
 
     private static int getMaxIndex(int[] arr) {
@@ -39,7 +40,7 @@ public class No2562 {
 
     private static int[] makeArray(BufferedReader input) throws IOException {
         List<Integer> List = new ArrayList<>();
-        String tmp = null;
+        String tmp;
 
         while ((tmp = input.readLine()) != null) {
             List.add(Integer.parseInt(tmp));

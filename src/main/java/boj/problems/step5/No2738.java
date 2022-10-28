@@ -26,22 +26,37 @@ public class No2738 {
         int[][] matrixA = new int[N][M];
         StringBuilder sb = new StringBuilder();
 
+        makeMatrix(input, N, M, matrixA);
 
+        return getResult(input, N, M, matrixA, sb);
+    }
+
+    private static String getResult(BufferedReader input, int N, int M, int[][] matrixA, StringBuilder sb) throws IOException {
         for (int i = 0; i < N; i++) {
             String[] tmp = input.readLine().split(" ");
-            for (int j = 0; j < M; j++) {
-                matrixA[i][j] = Integer.parseInt(tmp[j]);
-            }
-        }
-
-        for (int i = 0; i < N; i++) {
-            String[] tmp = input.readLine().split(" ");
-            for (int j = 0; j < M; j++) {
-                sb.append((matrixA[i][j] += Integer.parseInt(tmp[j])) + " ");
-            }
-            sb.append("\n");
+            getRowsOfResult(M, sb, tmp, matrixA[i]);
         }
 
         return sb.toString();
+    }
+
+    private static void getRowsOfResult(int M, StringBuilder sb, String[] tmp, int[] matrixA) {
+        for (int j = 0; j < M; j++) {
+            sb.append((matrixA[j] += Integer.parseInt(tmp[j])) + " ");
+        }
+        sb.append("\n");
+    }
+
+    private static void makeMatrix(BufferedReader input, int N, int M, int[][] matrixA) throws IOException {
+        for (int i = 0; i < N; i++) {
+            String[] tmp = input.readLine().split(" ");
+            getRowsOfMatrix(M, tmp, matrixA[i]);
+        }
+    }
+
+    private static void getRowsOfMatrix(int M, String[] tmp, int[] matrixA) {
+        for (int j = 0; j < M; j++) {
+            matrixA[j] = Integer.parseInt(tmp[j]);
+        }
     }
 }

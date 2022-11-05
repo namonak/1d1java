@@ -12,23 +12,24 @@ public class No2908 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(String.valueOf(solve(input)));
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static int solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
 
         int a = reverseNumber(st.nextToken());
         int b = reverseNumber(st.nextToken());
 
-        output.write((a > b ? a : b) + "\n");
+        return Math.max(a, b);
     }
 
     private static int reverseNumber(String str) {
-        StringBuffer sb = new StringBuffer(str);
+        StringBuilder sb = new StringBuilder(str);
 
         return Integer.parseInt(sb.reverse().toString());
     }

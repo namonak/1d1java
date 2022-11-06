@@ -11,17 +11,21 @@ public class No2742 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input));
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         int n = Integer.parseInt(input.readLine());
+        StringBuilder sb = new StringBuilder();
 
         for (int i = n; i > 0; i--) {
-            output.write(i + "\n");
+            sb.append(i).append("\n");
         }
+        sb.setLength(sb.length() - 1);
+        return sb.toString();
     }
 }

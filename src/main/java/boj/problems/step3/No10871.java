@@ -12,28 +12,30 @@ public class No10871 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input));
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         StringBuilder sb = new StringBuilder();
         StringTokenizer st = new StringTokenizer(input.readLine());
         int testCase = Integer.parseInt(st.nextToken());
         int number = Integer.parseInt(st.nextToken());
-
         st = new StringTokenizer(input.readLine());
-
         for (int i = 0; i < testCase; i++) {
             int n = Integer.parseInt(st.nextToken());
-
-            if (n < number) {
-                sb.append(n + " ");
-            }
+            makeResult(sb, number, n);
         }
+        sb.setLength(sb.length() - 1);
+        return sb.toString();
+    }
 
-        output.write(String.valueOf(sb));
+    private static void makeResult(StringBuilder sb, int number, int n) {
+        if (n < number) {
+            sb.append(n).append(" ");
+        }
     }
 }

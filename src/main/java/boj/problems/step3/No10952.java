@@ -12,24 +12,28 @@ public class No10952 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input));
 
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        return getResult(input, sb);
+    }
+
+    private static String getResult(BufferedReader input, StringBuilder sb) throws IOException {
         while (true) {
-            StringTokenizer st = new StringTokenizer(input.readLine(), " ");
-
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
-
+            StringTokenizer tokens = new StringTokenizer(input.readLine(), " ");
+            int a = Integer.parseInt(tokens.nextToken());
+            int b = Integer.parseInt(tokens.nextToken());
             if (a == 0 && b == 0) {
                 break;
             }
-
-            output.write((a + b) + "\n");
+            sb.append(a + b).append("\n");
         }
+        sb.setLength(sb.length() - 1);
+        return sb.toString();
     }
 }

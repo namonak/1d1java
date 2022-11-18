@@ -11,25 +11,24 @@ public class No2292 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(String.valueOf(solve(input)));
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static int solve(BufferedReader input) throws IOException {
         int number = Integer.parseInt(input.readLine());
         int count = 1;
         int range = 2;
-
         if (number == 1) {
-            output.write(1 + "\n");
-            return;
+            return 1;
         }
         while (range <= number) {
             range = range + (count * 6);
             count++;
         }
-        output.write(count + "\n");
+        return count;
     }
 }

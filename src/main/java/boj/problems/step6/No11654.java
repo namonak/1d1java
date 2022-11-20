@@ -11,17 +11,14 @@ public class No11654 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(String.valueOf(solve(input)));
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
-        String str = input.readLine();
-
-        int n = str.charAt(0);
-
-        output.write( n + "\n");
+    static int solve(BufferedReader input) throws IOException {
+        return input.readLine().charAt(0);
     }
 }

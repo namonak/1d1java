@@ -13,18 +13,18 @@ public class No10757 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(String.valueOf(solve(input)));
 
         input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static BigInteger solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
         BigInteger a = new BigInteger(st.nextToken());
         BigInteger b = new BigInteger(st.nextToken());
 
-        output.write(a.add(b) + "\n");
+        return a.add(b);
     }
 }

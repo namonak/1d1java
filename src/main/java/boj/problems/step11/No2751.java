@@ -13,24 +13,28 @@ public class No2751 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input));
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
-        int n = Integer.parseInt(input.readLine());
-        ArrayList<Integer> list = new ArrayList<>();
+    static String solve(BufferedReader input) throws IOException {
+        int number = Integer.parseInt(input.readLine());
+        ArrayList<Integer> sortedList = new ArrayList<>();
+        StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < n; i++) {
-            list.add(Integer.parseInt(input.readLine()));
+        for (int i = 0; i < number; i++) {
+            sortedList.add(Integer.parseInt(input.readLine()));
         }
 
-        Collections.sort(list);
+        Collections.sort(sortedList);
 
-        for (int i = 0; i < list.size(); i++) {
-            output.write(list.get(i) + "\n");
+        for (Integer integer : sortedList) {
+            result.append(integer).append("\n");
         }
+        result.deleteCharAt(result.length() - 1);
+        return result.toString();
     }
 }

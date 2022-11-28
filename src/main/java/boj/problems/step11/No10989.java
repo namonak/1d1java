@@ -14,15 +14,17 @@ public class No10989 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input));
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         int n = Integer.parseInt(input.readLine());
         int[] arr = new int[n];
+        StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < n; i++) {
             arr[i] = Integer.parseInt(input.readLine());
@@ -31,8 +33,10 @@ public class No10989 {
         int[] sorted = countingSort(arr);
 
         for (int i = 0; i < n; i++) {
-            output.write(sorted[i] + "\n");
+            result.append(sorted[i]).append("\n");
         }
+        result.deleteCharAt(result.length() - 1);
+        return result.toString();
     }
 
     private static int[] countingSort(int[] arr) {
@@ -40,9 +44,9 @@ public class No10989 {
         int[] result = new int[arr.length];
         int maxNum = 0;
 
-        for (int i = 0; i < arr.length; ++i) {
-            countingArr[arr[i]]++;
-            if (arr[i] >= maxNum) maxNum = arr[i];
+        for (int j : arr) {
+            countingArr[j]++;
+            if (j >= maxNum) maxNum = j;
         }
 
         for (int i = 0; i <= maxNum - 1; ++i) {
@@ -50,8 +54,8 @@ public class No10989 {
         }
 
         for (int i = arr.length - 1; i >= 0; i--) {
-           countingArr[arr[i]]--;
-           result[countingArr[arr[i]]] = arr[i];
+            countingArr[arr[i]]--;
+            result[countingArr[arr[i]]] = arr[i];
         }
 
         return result;

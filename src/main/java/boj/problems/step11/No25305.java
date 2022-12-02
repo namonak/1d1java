@@ -14,13 +14,14 @@ public class No25305 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(String.valueOf(solve(input)));
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static int solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
         ArrayList<Integer> list = new ArrayList<>();
         int testCase = Integer.parseInt(st.nextToken());
@@ -31,8 +32,8 @@ public class No25305 {
             list.add(Integer.parseInt(st.nextToken()));
         }
 
-        Collections.sort(list, Collections.reverseOrder());
+        list.sort(Collections.reverseOrder());
 
-        output.write(list.get(cutLine - 1) + "\n");
+        return list.get(cutLine - 1);
     }
 }

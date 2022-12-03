@@ -14,35 +14,35 @@ public class No1920 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input));
 
         input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         int N = Integer.parseInt(input.readLine());
-        StringTokenizer st = new StringTokenizer(input.readLine());
-        ArrayList<Integer> mList= new ArrayList();
-        StringBuilder sb = new StringBuilder();
+        StringTokenizer tokens = new StringTokenizer(input.readLine());
+        ArrayList<Integer> mList= new ArrayList<>();
+        StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < N; ++i) {
-            mList.add(Integer.parseInt(st.nextToken()));
+            mList.add(Integer.parseInt(tokens.nextToken()));
         }
 
         Collections.sort(mList);
 
         int M = Integer.parseInt(input.readLine());
-        st = new StringTokenizer(input.readLine());
+        tokens = new StringTokenizer(input.readLine());
         for (int i = 0; i < M; ++i) {
-            if (Collections.binarySearch(mList, Integer.parseInt(st.nextToken())) < 0) {
-                sb.append("0\n");
+            if (Collections.binarySearch(mList, Integer.parseInt(tokens.nextToken())) < 0) {
+                result.append("0\n");
             } else {
-                sb.append("1\n");
+                result.append("1\n");
             }
         }
 
-        output.write(sb.toString());
+        return result.toString();
     }
 }

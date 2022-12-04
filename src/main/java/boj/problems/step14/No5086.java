@@ -12,23 +12,26 @@ public class No5086 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input));
 
         input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
+        StringBuilder result = new StringBuilder();
         while (true) {
             StringTokenizer st = new StringTokenizer(input.readLine());
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
             if (a == 0 && b == 0) break;
 
-            if (b % a == 0) output.write("factor\n");
-            else if (a % b == 0) output.write("multiple\n");
-            else output.write("neither\n");
+            if (b % a == 0) result.append("factor\n");
+            else if (a % b == 0) result.append("multiple\n");
+            else result.append("neither\n");
         }
+        result.deleteCharAt(result.length() - 1);
+        return result.toString();
     }
 }

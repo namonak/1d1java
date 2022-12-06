@@ -10,7 +10,7 @@ import java.io.StringReader;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class No1152Test {
+class No1152Test {
     @DisplayName("단어의 개수 테스트")
     @ParameterizedTest
     @CsvSource(value = {
@@ -23,8 +23,13 @@ public class No1152Test {
     void test(String given, String expected) throws IOException {
         System.out.println("단어의 개수 : https://www.acmicpc.net/problem/1152");
 
+        // given
         BufferedReader br_given = new BufferedReader(new StringReader(String.valueOf(given)));
 
-        assertEquals(expected, String.valueOf(No1152.solve(br_given)));
+        // when
+        String actual = String.valueOf(No1152.solve(br_given));
+
+        // then
+        assertEquals(expected, actual);
     }
 }

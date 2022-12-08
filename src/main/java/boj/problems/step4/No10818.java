@@ -13,13 +13,14 @@ public class No10818 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input));
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         int testCase = Integer.parseInt(input.readLine());
         StringTokenizer st = new StringTokenizer(input.readLine());
         int[] intArray = new int[testCase];
@@ -28,6 +29,6 @@ public class No10818 {
             intArray[i] = Integer.parseInt(st.nextToken());
         }
 
-        output.write(Arrays.stream(intArray).min().getAsInt() + " " +Arrays.stream(intArray).max().getAsInt() + "\n");
+        return Arrays.stream(intArray).min().getAsInt() + " " +Arrays.stream(intArray).max().getAsInt();
     }
 }

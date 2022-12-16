@@ -16,21 +16,22 @@ public class No3052 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(String.valueOf(solve(input)));
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static int solve(BufferedReader input) throws IOException {
         int[] arr = makeArray(input);
-        HashSet<Integer> resultHash = new HashSet<Integer>();
+        HashSet<Integer> resultHash = new HashSet<>();
 
-        for (int i = 0; i < arr.length; i++) {
-            resultHash.add(arr[i] % DIVISOR);
+        for (int j : arr) {
+            resultHash.add(j % DIVISOR);
         }
 
-        output.write(resultHash.size() + "\n");
+        return resultHash.size();
     }
 
     private static int[] makeArray(BufferedReader input) throws IOException{

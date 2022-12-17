@@ -12,8 +12,9 @@ class No4344 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input));
 
+        input.close();
         output.flush();
         output.close();
     }
@@ -28,7 +29,7 @@ class No4344 {
 
     private static int[] getScores(StringTokenizer st) {
         int numberOfScores = Integer.parseInt(st.nextToken());
-        int scores[] = new int[numberOfScores];
+        int[] scores = new int[numberOfScores];
 
         for (int i = 0; i < numberOfScores; i++) {
             scores[i] = Integer.parseInt(st.nextToken());
@@ -39,8 +40,8 @@ class No4344 {
     private static int getRate(int[] scores, double average) {
         int rate = 0;
 
-        for (int i = 0; i < scores.length; i++) {
-            if (scores[i] > average) {
+        for (int score : scores) {
+            if (score > average) {
                 rate++;
             }
         }
@@ -49,18 +50,19 @@ class No4344 {
 
     private static String getResult(int rate, int total) {
         double result = ((double)rate/total) * 100;
-        String formattedResult = String.format("%.3f", result);
 
-        return formattedResult;
+        return String.format("%.3f", result);
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         int testCase = Integer.parseInt(input.readLine());
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < testCase; i++) {
             StringTokenizer st = new StringTokenizer(input.readLine());
             int[] scores = getScores(st);
             String formattedResult = getResult(getRate(scores, getAverage(scores)), scores.length);
-            output.write(formattedResult + "%\n");
+            result.append(formattedResult).append("%\n");
         }
+        return result.toString();
     }
 }

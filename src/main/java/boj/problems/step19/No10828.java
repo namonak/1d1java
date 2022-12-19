@@ -54,14 +54,16 @@ public class No10828 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input));
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         int n = Integer.parseInt(input.readLine());
+        StringBuilder result = new StringBuilder();
 
         Stack stack = new Stack(n);
 
@@ -73,18 +75,19 @@ public class No10828 {
                     stack.push(Integer.parseInt(st.nextToken()));
                     break;
                 case "pop":
-                    output.write(stack.pop() + "\n");
+                    result.append(stack.pop()).append("\n");
                     break;
                 case "size":
-                    output.write(stack.size() + "\n");
+                    result.append(stack.size()).append("\n");
                     break;
                 case "empty":
-                    output.write(stack.empty() + "\n");
+                    result.append(stack.empty()).append("\n");
                     break;
                 case "top":
-                    output.write(stack.top() + "\n");
+                    result.append(stack.top()).append("\n");
                     break;
             }
         }
+        return result.toString();
     }
 }

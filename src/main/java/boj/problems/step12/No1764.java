@@ -15,20 +15,21 @@ public class No1764 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input));
 
         input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
-        HashSet<String> list = new HashSet();
+        HashSet<String> list = new HashSet<>();
         ArrayList<String> result = new ArrayList<>();
         int count = 0;
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < N + M; i++) {
             String name = input.readLine();
@@ -43,10 +44,12 @@ public class No1764 {
 
         Collections.sort(result);
 
-        output.write(count + "\n");
+        sb.append(count).append("\n");
 
-        for (int i = 0; i < result.size(); ++i) {
-            output.write(result.get(i) + "\n");
+        for (String s : result) {
+            sb.append(s).append("\n");
         }
+        sb.deleteCharAt(sb.length() - 1);
+        return sb.toString();
     }
 }

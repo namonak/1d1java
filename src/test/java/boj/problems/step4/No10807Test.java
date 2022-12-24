@@ -17,9 +17,14 @@ public class No10807Test {
     void test(String given, String expected) throws IOException  {
         System.out.println("개수 세기 : https://www.acmicpc.net/problem/10807");
 
+        // given
         BufferedReader br_given = new BufferedReader(new StringReader(given));
 
-        assertThat(String.valueOf(No10807.solve(br_given))).isEqualTo(expected);
+        // when
+        String actual = String.valueOf(No10807.solve(br_given));
+
+        // then
+        assertThat(actual).isEqualTo(expected);
 
         br_given.close();
     }

@@ -12,13 +12,15 @@ public class No25304 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        solve(input);
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
+        StringBuilder result = new StringBuilder();
         int totalPrice = Integer.parseInt(input.readLine());
         int inputNum = Integer.parseInt(input.readLine());
         int sum = 0;
@@ -31,7 +33,9 @@ public class No25304 {
             sum += price * number;
         }
 
-        if (sum == totalPrice) output.write("Yes" +"\n");
-        else output.write("No" +"\n");
+        if (sum == totalPrice) {
+            return result.append("Yes").toString();
+        }
+        return result.append("No").toString();
     }
 }

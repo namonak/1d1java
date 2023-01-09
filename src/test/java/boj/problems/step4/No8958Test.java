@@ -1,15 +1,13 @@
 package boj.problems.step4;
 
-import java.nio.file.Files;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.nio.file.Files;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class No8958Test {
     File path = new File(".");
@@ -18,7 +16,7 @@ public class No8958Test {
 
     @Test
     @DisplayName("OX퀴즈")
-    void OX퀴즈_테스트() throws IOException {
+    void test() throws IOException {
         System.out.println("OX퀴즈 : https://www.acmicpc.net/problem/8958");
 
         // given
@@ -29,7 +27,7 @@ public class No8958Test {
         String actual = No8958.solve(given);
 
         // then
-        assertEquals(expected, actual);
+        assertThat(actual).isEqualTo(expected);
 
         given.close();
     }

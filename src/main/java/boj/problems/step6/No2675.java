@@ -12,14 +12,16 @@ public class No2675 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        solve(input, output);
+        output.write(solve(input));
 
+        input.close();
         output.flush();
         output.close();
     }
 
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    static String solve(BufferedReader input) throws IOException {
         int testCase = Integer.parseInt(input.readLine());
+        StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < testCase; i++) {
             StringTokenizer st = new StringTokenizer(input.readLine());
@@ -27,8 +29,10 @@ public class No2675 {
             int n = Integer.parseInt(st.nextToken());
             String str = st.nextToken();
 
-            output.write(getResult(n, str) + "\n");
+            result.append(getResult(n, str)).append("\n");
         }
+        result.deleteCharAt(result.length() - 1);
+        return result.toString();
     }
 
     private static String getResult(int n, String str) {

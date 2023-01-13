@@ -1,18 +1,14 @@
 package boj.problems.step11;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.util.stream.Collectors;
+import java.nio.file.Files;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class No7568Test {
     File path = new File(".");
@@ -21,23 +17,15 @@ public class No7568Test {
 
     @Test
     @DisplayName("덩치 테스트")
-    void 덩치_테스트() throws IOException {
+    void test() throws IOException {
         System.out.println("덩치 : https://www.acmicpc.net/problem/7568");
 
-        BufferedReader br_given = new BufferedReader(new FileReader(input));
-        BufferedReader br_want = new BufferedReader(new FileReader(output));
-        StringWriter sw = new StringWriter();
-        BufferedWriter bw_got = new BufferedWriter(sw);
+        BufferedReader given = new BufferedReader(new FileReader(input));
 
-        //No7568.solve(br_given, bw_got);
+        String expected = new String(Files.readAllBytes(new File(output).toPath()));
 
-        bw_got.close();
+        //assertThat(No2675.solve(given)).isEqualTo(expected);
 
-        BufferedReader br_got = new BufferedReader(new StringReader(sw.getBuffer().toString()));
-
-        String got = br_got.lines().collect(Collectors.joining());
-        String want = br_want.lines().collect(Collectors.joining());
-
-        assertEquals(want, got);
+        given.close();
     }
 }

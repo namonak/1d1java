@@ -1,14 +1,14 @@
 package boj.problems.step14;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class No5086Test {
     File path = new File(".");
@@ -28,7 +28,7 @@ class No5086Test {
         String actual = No5086.solve(given);
 
         // then
-        assertEquals(expected, actual);
+        assertThat(actual).isEqualTo(expected);
 
         given.close();
     }

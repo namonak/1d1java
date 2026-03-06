@@ -38,6 +38,11 @@ jobs:
           java-version: 8
           distribution: temurin
           cache: gradle
+      - name: Setup JDK 17 (for Sonar)
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: temurin
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:

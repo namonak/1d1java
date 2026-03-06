@@ -11,20 +11,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class No1003Test {
-  File path = new File(".");
-  String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No1003_input.txt";
-  String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No1003_output.txt";
+    File path = new File(".");
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No1003_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No1003_output.txt";
 
-  @Test
-  @DisplayName("피보나치 함수 테스트")
-  void test() throws IOException {
-    System.out.println("피보나치 함수 : https://www.acmicpc.net/problem/1003");
+    @Test
+    @DisplayName("피보나치 함수 테스트")
+    void test() throws IOException {
+        System.out.println("피보나치 함수 : https://www.acmicpc.net/problem/1003");
 
-    BufferedReader given = new BufferedReader(new FileReader(input));
-    String expected = new String(Files.readAllBytes(new File(output).toPath()));
+        BufferedReader given = new BufferedReader(new FileReader(input));
+        String expected = new String(Files.readAllBytes(new File(output).toPath()));
 
-    assertThat(No1003.solve(given)).isEqualTo(expected);
+        assertThat(No1003.solve(given)).isEqualTo(expected);
 
-    given.close();
-  }
+        given.close();
+    }
 }

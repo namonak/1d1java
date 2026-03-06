@@ -14,29 +14,29 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class No9184Test {
-  File path = new File(".");
-  String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step16/No9184_input.txt";
-  String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step16/No9184_output.txt";
+    File path = new File(".");
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step16/No9184_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step16/No9184_output.txt";
 
-  @Test
-  @DisplayName("신나는 함수 실행 테스트")
-  void 신나는_함수_실행_테스트() throws IOException {
-    System.out.println("신나는 함수 실행 : https://www.acmicpc.net/problem/9184");
+    @Test
+    @DisplayName("신나는 함수 실행 테스트")
+    void 신나는_함수_실행_테스트() throws IOException {
+        System.out.println("신나는 함수 실행 : https://www.acmicpc.net/problem/9184");
 
-    BufferedReader br_given = new BufferedReader(new FileReader(input));
-    BufferedReader br_want = new BufferedReader(new FileReader(output));
-    StringWriter sw = new StringWriter();
-    BufferedWriter bw_got = new BufferedWriter(sw);
+        BufferedReader br_given = new BufferedReader(new FileReader(input));
+        BufferedReader br_want = new BufferedReader(new FileReader(output));
+        StringWriter sw = new StringWriter();
+        BufferedWriter bw_got = new BufferedWriter(sw);
 
-    // No9184.solve(br_given, bw_got);
+        // No9184.solve(br_given, bw_got);
 
-    bw_got.close();
+        bw_got.close();
 
-    BufferedReader br_got = new BufferedReader(new StringReader(sw.getBuffer().toString()));
+        BufferedReader br_got = new BufferedReader(new StringReader(sw.getBuffer().toString()));
 
-    String got = br_got.lines().collect(Collectors.joining());
-    String want = br_want.lines().collect(Collectors.joining());
+        String got = br_got.lines().collect(Collectors.joining());
+        String want = br_want.lines().collect(Collectors.joining());
 
-    assertEquals(want, got);
-  }
+        assertEquals(want, got);
+    }
 }

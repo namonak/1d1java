@@ -8,32 +8,32 @@ import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 public class No10869 {
-  public static void main(String[] args) throws IOException {
-    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static void main(String[] args) throws IOException {
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    output.write(solve(input));
+        output.write(solve(input));
 
-    output.flush();
-    output.close();
-  }
+        output.flush();
+        output.close();
+    }
 
-  static String solve(BufferedReader input) throws IOException {
-    StringTokenizer st = new StringTokenizer(input.readLine());
-    int a = Integer.parseInt(st.nextToken());
-    int b = Integer.parseInt(st.nextToken());
-    return getResult(a, b);
-  }
+    static String solve(BufferedReader input) throws IOException {
+        StringTokenizer st = new StringTokenizer(input.readLine());
+        int a = Integer.parseInt(st.nextToken());
+        int b = Integer.parseInt(st.nextToken());
+        return getResult(a, b);
+    }
 
-  private static String getResult(int a, int b) {
-    String result = "";
+    private static String getResult(int a, int b) {
+        String result = "";
 
-    result += a + b + "\n";
-    result += a - b + "\n";
-    result += a * b + "\n";
-    result += a / b + "\n";
-    result += a % b;
+        result += a + b + "\n";
+        result += a - b + "\n";
+        result += a * b + "\n";
+        result += a / b + "\n";
+        result += a % b;
 
-    return result;
-  }
+        return result;
+    }
 }

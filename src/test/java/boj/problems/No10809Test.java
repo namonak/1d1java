@@ -10,18 +10,20 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class No10809Test {
-  @DisplayName("알파벳 찾기")
-  @ParameterizedTest
-  @CsvSource(
-      value = {"baekjoon:1 0 -1 -1 2 -1 -1 -1 -1 4 3 -1 -1 7 5 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1"},
-      delimiter = ':')
-  void test(String given, String expected) throws IOException {
-    System.out.println("알파벳 찾기 : https://www.acmicpc.net/problem/10809");
+    @DisplayName("알파벳 찾기")
+    @ParameterizedTest
+    @CsvSource(
+            value = {
+                "baekjoon:1 0 -1 -1 2 -1 -1 -1 -1 4 3 -1 -1 7 5 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1"
+            },
+            delimiter = ':')
+    void test(String given, String expected) throws IOException {
+        System.out.println("알파벳 찾기 : https://www.acmicpc.net/problem/10809");
 
-    BufferedReader br_given = new BufferedReader(new StringReader(given));
+        BufferedReader br_given = new BufferedReader(new StringReader(given));
 
-    assertThat(No10809.solve(br_given)).isEqualTo(expected);
+        assertThat(No10809.solve(br_given)).isEqualTo(expected);
 
-    br_given.close();
-  }
+        br_given.close();
+    }
 }

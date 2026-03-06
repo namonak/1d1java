@@ -10,38 +10,38 @@ import java.util.HashSet;
 import java.util.List;
 
 public class No3052 {
-  public static final int DIVISOR = 42;
+    public static final int DIVISOR = 42;
 
-  public static void main(String[] args) throws IOException {
-    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static void main(String[] args) throws IOException {
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    output.write(String.valueOf(solve(input)));
+        output.write(String.valueOf(solve(input)));
 
-    input.close();
-    output.flush();
-    output.close();
-  }
-
-  static int solve(BufferedReader input) throws IOException {
-    int[] arr = makeArray(input);
-    HashSet<Integer> resultHash = new HashSet<>();
-
-    for (int j : arr) {
-      resultHash.add(j % DIVISOR);
+        input.close();
+        output.flush();
+        output.close();
     }
 
-    return resultHash.size();
-  }
+    static int solve(BufferedReader input) throws IOException {
+        int[] arr = makeArray(input);
+        HashSet<Integer> resultHash = new HashSet<>();
 
-  private static int[] makeArray(BufferedReader input) throws IOException {
-    List<Integer> List = new ArrayList<>();
-    String tmp;
+        for (int j : arr) {
+            resultHash.add(j % DIVISOR);
+        }
 
-    while ((tmp = input.readLine()) != null) {
-      List.add(Integer.parseInt(tmp));
+        return resultHash.size();
     }
 
-    return List.stream().mapToInt(i -> i).toArray();
-  }
+    private static int[] makeArray(BufferedReader input) throws IOException {
+        List<Integer> List = new ArrayList<>();
+        String tmp;
+
+        while ((tmp = input.readLine()) != null) {
+            List.add(Integer.parseInt(tmp));
+        }
+
+        return List.stream().mapToInt(i -> i).toArray();
+    }
 }

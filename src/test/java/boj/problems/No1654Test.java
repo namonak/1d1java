@@ -11,20 +11,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class No1654Test {
-  File path = new File(".");
-  String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step22/No1654_input.txt";
-  String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step22/No1654_output.txt";
+    File path = new File(".");
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step22/No1654_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step22/No1654_output.txt";
 
-  @Test
-  @DisplayName("랜선 자르기")
-  void test() throws IOException {
-    System.out.println("랜선 자르기 : https://www.acmicpc.net/problem/1654");
+    @Test
+    @DisplayName("랜선 자르기")
+    void test() throws IOException {
+        System.out.println("랜선 자르기 : https://www.acmicpc.net/problem/1654");
 
-    BufferedReader given = new BufferedReader(new FileReader(input));
-    String expected = new String(Files.readAllBytes(new File(output).toPath()));
+        BufferedReader given = new BufferedReader(new FileReader(input));
+        String expected = new String(Files.readAllBytes(new File(output).toPath()));
 
-    assertThat(String.valueOf(No1654.solve(given))).isEqualTo(expected);
+        assertThat(String.valueOf(No1654.solve(given))).isEqualTo(expected);
 
-    given.close();
-  }
+        given.close();
+    }
 }

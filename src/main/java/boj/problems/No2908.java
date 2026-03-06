@@ -8,29 +8,29 @@ import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 public class No2908 {
-  public static void main(String[] args) throws IOException {
-    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static void main(String[] args) throws IOException {
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    output.write(String.valueOf(solve(input)));
+        output.write(String.valueOf(solve(input)));
 
-    input.close();
-    output.flush();
-    output.close();
-  }
+        input.close();
+        output.flush();
+        output.close();
+    }
 
-  static int solve(BufferedReader input) throws IOException {
-    StringTokenizer st = new StringTokenizer(input.readLine());
+    static int solve(BufferedReader input) throws IOException {
+        StringTokenizer st = new StringTokenizer(input.readLine());
 
-    int a = reverseNumber(st.nextToken());
-    int b = reverseNumber(st.nextToken());
+        int a = reverseNumber(st.nextToken());
+        int b = reverseNumber(st.nextToken());
 
-    return Math.max(a, b);
-  }
+        return Math.max(a, b);
+    }
 
-  private static int reverseNumber(String str) {
-    StringBuilder sb = new StringBuilder(str);
+    private static int reverseNumber(String str) {
+        StringBuilder sb = new StringBuilder(str);
 
-    return Integer.parseInt(sb.reverse().toString());
-  }
+        return Integer.parseInt(sb.reverse().toString());
+    }
 }

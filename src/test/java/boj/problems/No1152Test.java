@@ -10,27 +10,27 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class No1152Test {
-  @DisplayName("단어의 개수 테스트")
-  @ParameterizedTest
-  @CsvSource(
-      value = {
-        "The Curious Case of Benjamin Button:6",
-        "The first character is a blank:6",
-        "The last character is a blank:6",
-        "Mazatneunde Wae Teullyeoyo:3",
-        "Teullinika Teullyeotzi:2",
-      },
-      delimiter = ':')
-  void test(String given, String expected) throws IOException {
-    System.out.println("단어의 개수 : https://www.acmicpc.net/problem/1152");
+    @DisplayName("단어의 개수 테스트")
+    @ParameterizedTest
+    @CsvSource(
+            value = {
+                "The Curious Case of Benjamin Button:6",
+                "The first character is a blank:6",
+                "The last character is a blank:6",
+                "Mazatneunde Wae Teullyeoyo:3",
+                "Teullinika Teullyeotzi:2",
+            },
+            delimiter = ':')
+    void test(String given, String expected) throws IOException {
+        System.out.println("단어의 개수 : https://www.acmicpc.net/problem/1152");
 
-    // given
-    BufferedReader br_given = new BufferedReader(new StringReader(String.valueOf(given)));
+        // given
+        BufferedReader br_given = new BufferedReader(new StringReader(String.valueOf(given)));
 
-    // when
-    String actual = String.valueOf(No1152.solve(br_given));
+        // when
+        String actual = String.valueOf(No1152.solve(br_given));
 
-    // then
-    assertEquals(expected, actual);
-  }
+        // then
+        assertEquals(expected, actual);
+    }
 }

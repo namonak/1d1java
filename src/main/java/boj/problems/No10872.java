@@ -7,26 +7,26 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class No10872 {
-  public static void main(String[] args) throws IOException {
-    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static void main(String[] args) throws IOException {
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    output.write(solve(input) + "\n");
+        output.write(solve(input) + "\n");
 
-    input.close();
-    output.flush();
-    output.close();
-  }
+        input.close();
+        output.flush();
+        output.close();
+    }
 
-  static int solve(BufferedReader input) throws IOException {
-    int number = Integer.parseInt(input.readLine());
+    static int solve(BufferedReader input) throws IOException {
+        int number = Integer.parseInt(input.readLine());
 
-    return factorial(number);
-  }
+        return factorial(number);
+    }
 
-  private static int factorial(int number) {
-    if (number <= 1) return 1;
+    private static int factorial(int number) {
+        if (number <= 1) return 1;
 
-    return number * factorial(number - 1);
-  }
+        return number * factorial(number - 1);
+    }
 }

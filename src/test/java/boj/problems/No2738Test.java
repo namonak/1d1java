@@ -11,20 +11,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class No2738Test {
-  File path = new File(".");
-  String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step5/No2738_input.txt";
-  String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step5/No2738_output.txt";
+    File path = new File(".");
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step5/No2738_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step5/No2738_output.txt";
 
-  @Test
-  @DisplayName("행렬 덧셈")
-  void test() throws IOException {
-    System.out.println("행렬 덧셈 : https://www.acmicpc.net/problem/2738");
+    @Test
+    @DisplayName("행렬 덧셈")
+    void test() throws IOException {
+        System.out.println("행렬 덧셈 : https://www.acmicpc.net/problem/2738");
 
-    BufferedReader given = new BufferedReader(new FileReader(input));
-    String expected = new String(Files.readAllBytes(new File(output).toPath()));
+        BufferedReader given = new BufferedReader(new FileReader(input));
+        String expected = new String(Files.readAllBytes(new File(output).toPath()));
 
-    assertEquals(expected, No2738.solve(given));
+        assertEquals(expected, No2738.solve(given));
 
-    given.close();
-  }
+        given.close();
+    }
 }

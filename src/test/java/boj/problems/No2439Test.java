@@ -11,20 +11,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class No2439Test {
-  File path = new File(".");
-  String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No2439_input.txt";
-  String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No2439_output.txt";
+    File path = new File(".");
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No2439_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No2439_output.txt";
 
-  @Test
-  @DisplayName("별 찍기 - 2 테스트")
-  void test() throws IOException {
-    System.out.println("별 찍기 - 2 : https://www.acmicpc.net/problem/2439");
+    @Test
+    @DisplayName("별 찍기 - 2 테스트")
+    void test() throws IOException {
+        System.out.println("별 찍기 - 2 : https://www.acmicpc.net/problem/2439");
 
-    BufferedReader given = new BufferedReader(new FileReader(input));
-    String expected = new String(Files.readAllBytes(new File(output).toPath()));
+        BufferedReader given = new BufferedReader(new FileReader(input));
+        String expected = new String(Files.readAllBytes(new File(output).toPath()));
 
-    assertThat(No2439.solve(given)).isEqualTo(expected);
+        assertThat(No2439.solve(given)).isEqualTo(expected);
 
-    given.close();
-  }
+        given.close();
+    }
 }

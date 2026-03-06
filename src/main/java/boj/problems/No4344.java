@@ -8,61 +8,61 @@ import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 class No4344 {
-  public static void main(String[] args) throws IOException {
-    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static void main(String[] args) throws IOException {
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    output.write(solve(input));
+        output.write(solve(input));
 
-    input.close();
-    output.flush();
-    output.close();
-  }
-
-  public static double getAverage(int[] scores) {
-    int sum = 0;
-    for (int score : scores) {
-      sum += score;
+        input.close();
+        output.flush();
+        output.close();
     }
-    return (double) sum / scores.length;
-  }
 
-  private static int[] getScores(StringTokenizer st) {
-    int numberOfScores = Integer.parseInt(st.nextToken());
-    int[] scores = new int[numberOfScores];
-
-    for (int i = 0; i < numberOfScores; i++) {
-      scores[i] = Integer.parseInt(st.nextToken());
+    public static double getAverage(int[] scores) {
+        int sum = 0;
+        for (int score : scores) {
+            sum += score;
+        }
+        return (double) sum / scores.length;
     }
-    return scores;
-  }
 
-  private static int getRate(int[] scores, double average) {
-    int rate = 0;
+    private static int[] getScores(StringTokenizer st) {
+        int numberOfScores = Integer.parseInt(st.nextToken());
+        int[] scores = new int[numberOfScores];
 
-    for (int score : scores) {
-      if (score > average) {
-        rate++;
-      }
+        for (int i = 0; i < numberOfScores; i++) {
+            scores[i] = Integer.parseInt(st.nextToken());
+        }
+        return scores;
     }
-    return rate;
-  }
 
-  private static String getResult(int rate, int total) {
-    double result = ((double) rate / total) * 100;
+    private static int getRate(int[] scores, double average) {
+        int rate = 0;
 
-    return String.format("%.3f", result);
-  }
-
-  static String solve(BufferedReader input) throws IOException {
-    int testCase = Integer.parseInt(input.readLine());
-    StringBuilder result = new StringBuilder();
-    for (int i = 0; i < testCase; i++) {
-      StringTokenizer st = new StringTokenizer(input.readLine());
-      int[] scores = getScores(st);
-      String formattedResult = getResult(getRate(scores, getAverage(scores)), scores.length);
-      result.append(formattedResult).append("%\n");
+        for (int score : scores) {
+            if (score > average) {
+                rate++;
+            }
+        }
+        return rate;
     }
-    return result.toString();
-  }
+
+    private static String getResult(int rate, int total) {
+        double result = ((double) rate / total) * 100;
+
+        return String.format("%.3f", result);
+    }
+
+    static String solve(BufferedReader input) throws IOException {
+        int testCase = Integer.parseInt(input.readLine());
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < testCase; i++) {
+            StringTokenizer st = new StringTokenizer(input.readLine());
+            int[] scores = getScores(st);
+            String formattedResult = getResult(getRate(scores, getAverage(scores)), scores.length);
+            result.append(formattedResult).append("%\n");
+        }
+        return result.toString();
+    }
 }

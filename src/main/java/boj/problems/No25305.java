@@ -10,30 +10,30 @@ import java.util.Collections;
 import java.util.StringTokenizer;
 
 public class No25305 {
-  public static void main(String[] args) throws IOException {
-    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static void main(String[] args) throws IOException {
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    output.write(String.valueOf(solve(input)));
+        output.write(String.valueOf(solve(input)));
 
-    input.close();
-    output.flush();
-    output.close();
-  }
-
-  static int solve(BufferedReader input) throws IOException {
-    StringTokenizer st = new StringTokenizer(input.readLine());
-    ArrayList<Integer> list = new ArrayList<>();
-    int testCase = Integer.parseInt(st.nextToken());
-    int cutLine = Integer.parseInt(st.nextToken());
-
-    st = new StringTokenizer(input.readLine());
-    for (int i = 0; i < testCase; i++) {
-      list.add(Integer.parseInt(st.nextToken()));
+        input.close();
+        output.flush();
+        output.close();
     }
 
-    list.sort(Collections.reverseOrder());
+    static int solve(BufferedReader input) throws IOException {
+        StringTokenizer st = new StringTokenizer(input.readLine());
+        ArrayList<Integer> list = new ArrayList<>();
+        int testCase = Integer.parseInt(st.nextToken());
+        int cutLine = Integer.parseInt(st.nextToken());
 
-    return list.get(cutLine - 1);
-  }
+        st = new StringTokenizer(input.readLine());
+        for (int i = 0; i < testCase; i++) {
+            list.add(Integer.parseInt(st.nextToken()));
+        }
+
+        list.sort(Collections.reverseOrder());
+
+        return list.get(cutLine - 1);
+    }
 }

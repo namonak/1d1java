@@ -10,29 +10,31 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class No9012Test {
-  public static final int TESTCASE_NUM = 2;
+    public static final int TESTCASE_NUM = 2;
 
-  File path = new File(".");
-  String[] input = new String[TESTCASE_NUM];
-  String[] output = new String[TESTCASE_NUM];
+    File path = new File(".");
+    String[] input = new String[TESTCASE_NUM];
+    String[] output = new String[TESTCASE_NUM];
 
-  @DisplayName("괄호")
-  @Test
-  void test() throws IOException {
-    System.out.println("괄호 : https://www.acmicpc.net/problem/9012");
-    setInput();
-    for (int i = 0; i < TESTCASE_NUM; ++i) {
-      BufferedReader given = new BufferedReader(new java.io.FileReader(input[i]));
-      String expected = new String(Files.readAllBytes(new File(output[i]).toPath()));
-      assertThat(No9012.solve(given)).isEqualTo(expected);
-      given.close();
+    @DisplayName("괄호")
+    @Test
+    void test() throws IOException {
+        System.out.println("괄호 : https://www.acmicpc.net/problem/9012");
+        setInput();
+        for (int i = 0; i < TESTCASE_NUM; ++i) {
+            BufferedReader given = new BufferedReader(new java.io.FileReader(input[i]));
+            String expected = new String(Files.readAllBytes(new File(output[i]).toPath()));
+            assertThat(No9012.solve(given)).isEqualTo(expected);
+            given.close();
+        }
     }
-  }
 
-  private void setInput() {
-    input[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/step19/No9012_input_1.txt";
-    output[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/step19/No9012_output_1.txt";
-    input[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/step19/No9012_input_2.txt";
-    output[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/step19/No9012_output_2.txt";
-  }
+    private void setInput() {
+        input[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/step19/No9012_input_1.txt";
+        output[0] =
+                path.getAbsolutePath() + "/src/test/java/boj/problems/step19/No9012_output_1.txt";
+        input[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/step19/No9012_input_2.txt";
+        output[1] =
+                path.getAbsolutePath() + "/src/test/java/boj/problems/step19/No9012_output_2.txt";
+    }
 }

@@ -8,40 +8,40 @@ import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 public class No1978 {
-  public static void main(String[] args) throws IOException {
-    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static void main(String[] args) throws IOException {
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    output.write(String.valueOf(solve(input)));
+        output.write(String.valueOf(solve(input)));
 
-    input.close();
-    output.flush();
-    output.close();
-  }
-
-  static int solve(BufferedReader input) throws IOException {
-    int result = 0;
-    // N은 사용하지 않음
-    input.readLine();
-    StringTokenizer st = new StringTokenizer(input.readLine(), " ");
-
-    while (st.hasMoreTokens()) {
-      if (isPrime(Integer.parseInt(st.nextToken()))) {
-        result++;
-      }
+        input.close();
+        output.flush();
+        output.close();
     }
 
-    return result;
-  }
+    static int solve(BufferedReader input) throws IOException {
+        int result = 0;
+        // N은 사용하지 않음
+        input.readLine();
+        StringTokenizer st = new StringTokenizer(input.readLine(), " ");
 
-  private static boolean isPrime(int number) {
-    if (number <= 1) return false;
-    if (number == 2) return true;
-    if (number % 2 == 0) return false;
+        while (st.hasMoreTokens()) {
+            if (isPrime(Integer.parseInt(st.nextToken()))) {
+                result++;
+            }
+        }
 
-    for (int div = 3; div <= (int) Math.sqrt(number); div += 2) {
-      if (number % div == 0) return false;
+        return result;
     }
-    return true;
-  }
+
+    private static boolean isPrime(int number) {
+        if (number <= 1) return false;
+        if (number == 2) return true;
+        if (number % 2 == 0) return false;
+
+        for (int div = 3; div <= (int) Math.sqrt(number); div += 2) {
+            if (number % div == 0) return false;
+        }
+        return true;
+    }
 }

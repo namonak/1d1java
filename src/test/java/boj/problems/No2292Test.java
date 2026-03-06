@@ -10,18 +10,18 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class No2292Test {
-  @DisplayName("벌집 테스트")
-  @ParameterizedTest
-  @CsvSource(
-      value = {"13:3", "1:1", "2:2", "7:2", "5:2", "37:4", "38:5", "64:6"},
-      delimiter = ':')
-  void test(String given, String expected) throws IOException {
-    System.out.println("벌집 : https://www.acmicpc.net/problem/2292");
+    @DisplayName("벌집 테스트")
+    @ParameterizedTest
+    @CsvSource(
+            value = {"13:3", "1:1", "2:2", "7:2", "5:2", "37:4", "38:5", "64:6"},
+            delimiter = ':')
+    void test(String given, String expected) throws IOException {
+        System.out.println("벌집 : https://www.acmicpc.net/problem/2292");
 
-    BufferedReader br_given = new BufferedReader(new StringReader(given));
+        BufferedReader br_given = new BufferedReader(new StringReader(given));
 
-    assertEquals(expected, String.valueOf(No2292.solve(br_given)));
+        assertEquals(expected, String.valueOf(No2292.solve(br_given)));
 
-    br_given.close();
-  }
+        br_given.close();
+    }
 }

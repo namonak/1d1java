@@ -8,27 +8,26 @@ import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 class No15552 {
-  public static void main(String[] args) throws IOException {
-    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static void main(String[] args) throws IOException {
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    output.write(solve(input));
+        output.write(solve(input));
 
-    input.close();
-    output.flush();
-    output.close();
-  }
-
-  static String solve(BufferedReader input) throws IOException {
-    int testCase = Integer.parseInt(input.readLine());
-    StringBuilder result = new StringBuilder();
-    for (int i = 0; i < testCase; i++) {
-      StringTokenizer st = new StringTokenizer(input.readLine());
-      result
-          .append(Integer.parseInt(st.nextToken()) + Integer.parseInt(st.nextToken()))
-          .append("\n");
+        input.close();
+        output.flush();
+        output.close();
     }
-    result.setLength(result.length() - 1);
-    return result.toString();
-  }
+
+    static String solve(BufferedReader input) throws IOException {
+        int testCase = Integer.parseInt(input.readLine());
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < testCase; i++) {
+            StringTokenizer st = new StringTokenizer(input.readLine());
+            result.append(Integer.parseInt(st.nextToken()) + Integer.parseInt(st.nextToken()))
+                    .append("\n");
+        }
+        result.setLength(result.length() - 1);
+        return result.toString();
+    }
 }

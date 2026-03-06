@@ -8,50 +8,50 @@ import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 public class No1654 {
-  public static void main(String[] args) throws Exception {
-    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static void main(String[] args) throws Exception {
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    output.write(String.valueOf(solve(input)));
+        output.write(String.valueOf(solve(input)));
 
-    input.close();
-    output.flush();
-    output.close();
-  }
-
-  static long solve(BufferedReader input) throws IOException {
-    StringTokenizer st = new StringTokenizer(input.readLine());
-
-    int numOfLanCable = Integer.parseInt(st.nextToken());
-    int numOfReq = Integer.parseInt(st.nextToken());
-    int[] arrCables = new int[numOfLanCable];
-    long max = 0;
-    long min = 0;
-    long mid = 0;
-
-    for (int i = 0; i < numOfLanCable; ++i) {
-      arrCables[i] = Integer.parseInt(input.readLine());
-      if (max <= arrCables[i]) {
-        max = arrCables[i];
-      }
+        input.close();
+        output.flush();
+        output.close();
     }
 
-    max++;
+    static long solve(BufferedReader input) throws IOException {
+        StringTokenizer st = new StringTokenizer(input.readLine());
 
-    while (min < max) {
-      long result = 0;
-      mid = (min + max) / 2;
-      for (int i = 0; i < numOfLanCable; ++i) {
-        result += arrCables[i] / mid;
-      }
+        int numOfLanCable = Integer.parseInt(st.nextToken());
+        int numOfReq = Integer.parseInt(st.nextToken());
+        int[] arrCables = new int[numOfLanCable];
+        long max = 0;
+        long min = 0;
+        long mid = 0;
 
-      if (result < numOfReq) {
-        max = mid;
-      } else {
-        min = mid + 1;
-      }
+        for (int i = 0; i < numOfLanCable; ++i) {
+            arrCables[i] = Integer.parseInt(input.readLine());
+            if (max <= arrCables[i]) {
+                max = arrCables[i];
+            }
+        }
+
+        max++;
+
+        while (min < max) {
+            long result = 0;
+            mid = (min + max) / 2;
+            for (int i = 0; i < numOfLanCable; ++i) {
+                result += arrCables[i] / mid;
+            }
+
+            if (result < numOfReq) {
+                max = mid;
+            } else {
+                min = mid + 1;
+            }
+        }
+
+        return min - 1;
     }
-
-    return min - 1;
-  }
 }

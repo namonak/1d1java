@@ -11,20 +11,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class No2739Test {
-  File path = new File(".");
-  String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No2739_input.txt";
-  String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No2739_output.txt";
+    File path = new File(".");
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No2739_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No2739_output.txt";
 
-  @Test
-  @DisplayName("구구단")
-  void test() throws IOException {
-    System.out.println("곱셈 : https://www.acmicpc.net/problem/2739");
+    @Test
+    @DisplayName("구구단")
+    void test() throws IOException {
+        System.out.println("곱셈 : https://www.acmicpc.net/problem/2739");
 
-    BufferedReader given = new BufferedReader(new FileReader(input));
-    String expected = new String(Files.readAllBytes(new File(output).toPath()));
+        BufferedReader given = new BufferedReader(new FileReader(input));
+        String expected = new String(Files.readAllBytes(new File(output).toPath()));
 
-    assertThat(No2739.solve(given)).isEqualTo(expected);
+        assertThat(No2739.solve(given)).isEqualTo(expected);
 
-    given.close();
-  }
+        given.close();
+    }
 }

@@ -7,34 +7,34 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class No14681 {
-  public static void main(String[] args) throws IOException {
-    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static void main(String[] args) throws IOException {
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    output.write(solve(input) + "\n");
+        output.write(solve(input) + "\n");
 
-    input.close();
-    output.flush();
-    output.close();
-  }
-
-  static int solve(BufferedReader input) throws IOException {
-    int x = Integer.parseInt(input.readLine());
-    int y = Integer.parseInt(input.readLine());
-
-    return getQuadrant(x, y);
-  }
-
-  private static int getQuadrant(int x, int y) {
-    if (x > 0 && y > 0) {
-      return 1;
+        input.close();
+        output.flush();
+        output.close();
     }
-    if (x < 0 && y > 0) {
-      return 2;
+
+    static int solve(BufferedReader input) throws IOException {
+        int x = Integer.parseInt(input.readLine());
+        int y = Integer.parseInt(input.readLine());
+
+        return getQuadrant(x, y);
     }
-    if (x < 0 && y < 0) {
-      return 3;
+
+    private static int getQuadrant(int x, int y) {
+        if (x > 0 && y > 0) {
+            return 1;
+        }
+        if (x < 0 && y > 0) {
+            return 2;
+        }
+        if (x < 0 && y < 0) {
+            return 3;
+        }
+        return 4;
     }
-    return 4;
-  }
 }

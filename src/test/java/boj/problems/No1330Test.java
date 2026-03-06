@@ -10,18 +10,18 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class No1330Test {
-  @DisplayName("두 수 비교하기 테스트")
-  @ParameterizedTest
-  @CsvSource(
-      value = {"1 2:<", "10 2:>", "5 5:=="},
-      delimiter = ':')
-  void test(String input, String expected) throws IOException {
-    System.out.println("두 수 비교하기 : https://www.acmicpc.net/problem/1330");
+    @DisplayName("두 수 비교하기 테스트")
+    @ParameterizedTest
+    @CsvSource(
+            value = {"1 2:<", "10 2:>", "5 5:=="},
+            delimiter = ':')
+    void test(String input, String expected) throws IOException {
+        System.out.println("두 수 비교하기 : https://www.acmicpc.net/problem/1330");
 
-    BufferedReader br_given = new BufferedReader(new StringReader(input));
+        BufferedReader br_given = new BufferedReader(new StringReader(input));
 
-    assertEquals(expected, No1330.solve(br_given));
+        assertEquals(expected, No1330.solve(br_given));
 
-    br_given.close();
-  }
+        br_given.close();
+    }
 }

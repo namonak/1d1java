@@ -8,22 +8,22 @@ import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 public class No1001 {
-  public static void main(String[] args) throws IOException {
-    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static void main(String[] args) throws IOException {
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    output.write(solve(input) + "\n");
+        output.write(solve(input) + "\n");
 
-    input.close();
-    output.flush();
-    output.close();
-  }
+        input.close();
+        output.flush();
+        output.close();
+    }
 
-  static int solve(BufferedReader input) throws IOException {
-    StringTokenizer st = new StringTokenizer(input.readLine());
-    int a = Integer.parseInt(st.nextToken());
-    int b = Integer.parseInt(st.nextToken());
+    static int solve(BufferedReader input) throws IOException {
+        StringTokenizer st = new StringTokenizer(input.readLine());
+        int a = Integer.parseInt(st.nextToken());
+        int b = Integer.parseInt(st.nextToken());
 
-    return a - b;
-  }
+        return a - b;
+    }
 }

@@ -9,36 +9,36 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class No1427 {
-  public static void main(String[] args) throws Exception {
-    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static void main(String[] args) throws Exception {
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    output.write(solve(input) + "\n");
+        output.write(solve(input) + "\n");
 
-    input.close();
-    output.flush();
-    output.close();
-  }
-
-  static String solve(BufferedReader input) throws IOException {
-    String number = input.readLine();
-    Integer[] arr = new Integer[number.length()];
-
-    for (int i = 0; i < number.length(); ++i) {
-      arr[i] = Integer.parseInt(String.valueOf(number.charAt(i)));
+        input.close();
+        output.flush();
+        output.close();
     }
 
-    Arrays.sort(arr, Collections.reverseOrder());
+    static String solve(BufferedReader input) throws IOException {
+        String number = input.readLine();
+        Integer[] arr = new Integer[number.length()];
 
-    return computeResult(arr);
-  }
+        for (int i = 0; i < number.length(); ++i) {
+            arr[i] = Integer.parseInt(String.valueOf(number.charAt(i)));
+        }
 
-  private static String computeResult(Integer[] arr) {
-    StringBuilder sb = new StringBuilder();
+        Arrays.sort(arr, Collections.reverseOrder());
 
-    for (int i = 0; i < arr.length; i++) {
-      sb.append(arr[i]);
+        return computeResult(arr);
     }
-    return sb.toString();
-  }
+
+    private static String computeResult(Integer[] arr) {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < arr.length; i++) {
+            sb.append(arr[i]);
+        }
+        return sb.toString();
+    }
 }

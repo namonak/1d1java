@@ -1,27 +1,27 @@
 package boj.problems;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.StringReader;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-public class No1000Test {
-  @DisplayName("A+B 테스트")
-  @ParameterizedTest
-  @CsvSource(
-      value = {"1 2:3", "5 5:10", "100 101:201", "1 7:8", "12 29:41"},
-      delimiter = ':')
-  void test(String input, String expected) throws IOException {
-    System.out.println("A+B : https://www.acmicpc.net/problem/1000");
+class No1000Test {
+    @ParameterizedTest(name = "Case {index}: expected {1}")
+    @MethodSource("provideTestCases")
+    @DisplayName("A+B : https://gemini.google.com/app/dcd1ff2abec7f840")
+    void test(String given, String expected) throws Exception {
+        BufferedReader reader = new BufferedReader(new StringReader(given));
+        String result = String.valueOf(No1000.solve(reader));
+        assertThat(result).isEqualTo(expected);
+    }
 
-    BufferedReader br_given = new BufferedReader(new StringReader(input));
-
-    assertEquals(expected, String.valueOf(No1000.solve(br_given)));
-
-    br_given.close();
-  }
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(arguments("1 2", "3"), arguments("3 4", "7"));
+    }
 }

@@ -10,39 +10,39 @@ import java.util.Collections;
 import java.util.StringTokenizer;
 
 public class No1920 {
-  public static void main(String[] args) throws IOException {
-    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static void main(String[] args) throws IOException {
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    output.write(solve(input));
+        output.write(solve(input));
 
-    input.close();
-    output.flush();
-    output.close();
-  }
-
-  static String solve(BufferedReader input) throws IOException {
-    int N = Integer.parseInt(input.readLine());
-    StringTokenizer tokens = new StringTokenizer(input.readLine());
-    ArrayList<Integer> mList = new ArrayList<>();
-    StringBuilder result = new StringBuilder();
-
-    for (int i = 0; i < N; ++i) {
-      mList.add(Integer.parseInt(tokens.nextToken()));
+        input.close();
+        output.flush();
+        output.close();
     }
 
-    Collections.sort(mList);
+    static String solve(BufferedReader input) throws IOException {
+        int N = Integer.parseInt(input.readLine());
+        StringTokenizer tokens = new StringTokenizer(input.readLine());
+        ArrayList<Integer> mList = new ArrayList<>();
+        StringBuilder result = new StringBuilder();
 
-    int M = Integer.parseInt(input.readLine());
-    tokens = new StringTokenizer(input.readLine());
-    for (int i = 0; i < M; ++i) {
-      if (Collections.binarySearch(mList, Integer.parseInt(tokens.nextToken())) < 0) {
-        result.append("0\n");
-      } else {
-        result.append("1\n");
-      }
+        for (int i = 0; i < N; ++i) {
+            mList.add(Integer.parseInt(tokens.nextToken()));
+        }
+
+        Collections.sort(mList);
+
+        int M = Integer.parseInt(input.readLine());
+        tokens = new StringTokenizer(input.readLine());
+        for (int i = 0; i < M; ++i) {
+            if (Collections.binarySearch(mList, Integer.parseInt(tokens.nextToken())) < 0) {
+                result.append("0\n");
+            } else {
+                result.append("1\n");
+            }
+        }
+
+        return result.toString();
     }
-
-    return result.toString();
-  }
 }

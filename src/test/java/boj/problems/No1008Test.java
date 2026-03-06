@@ -9,15 +9,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class No1008Test {
-  @Test
-  @DisplayName("A/B 테스트")
-  void test() throws IOException {
-    System.out.println("A/B : https://www.acmicpc.net/problem/1008");
+    @Test
+    @DisplayName("A/B 테스트")
+    void test() throws IOException {
+        System.out.println("A/B : https://www.acmicpc.net/problem/1008");
 
-    BufferedReader given = new BufferedReader(new StringReader("1 3"));
+        BufferedReader given = new BufferedReader(new StringReader("1 3"));
 
-    assertThat(No1008.solve(given)).isEqualTo((double) 1 / 3);
+        assertThat(No1008.solve(given)).isEqualTo((double) 1 / 3);
 
-    given.close();
-  }
+        given.close();
+    }
 }

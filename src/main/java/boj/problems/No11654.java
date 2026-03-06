@@ -7,18 +7,18 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class No11654 {
-  public static void main(String[] args) throws IOException {
-    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static void main(String[] args) throws IOException {
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    output.write(String.valueOf(solve(input)));
+        output.write(String.valueOf(solve(input)));
 
-    input.close();
-    output.flush();
-    output.close();
-  }
+        input.close();
+        output.flush();
+        output.close();
+    }
 
-  static int solve(BufferedReader input) throws IOException {
-    return input.readLine().charAt(0);
-  }
+    static int solve(BufferedReader input) throws IOException {
+        return input.readLine().charAt(0);
+    }
 }

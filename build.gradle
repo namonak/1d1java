@@ -44,7 +44,7 @@ def javaLintTargets = providers.provider {
 
 tasks.register('lintFormat', JavaExec) {
     group = 'verification'
-    description = 'Formats Java source files with google-java-format (Java 8 baseline).'
+    description = 'Formats Java source files with google-java-format AOSP style.'
     classpath = configurations.googleJavaFormat
     main = 'com.google.googlejavaformat.java.Main'
     doFirst {
@@ -53,13 +53,13 @@ tasks.register('lintFormat', JavaExec) {
             enabled = false
             return
         }
-        setArgs(['--replace'] + targets)
+        setArgs(['--aosp', '--replace'] + targets)
     }
 }
 
 tasks.register('lintCheck', JavaExec) {
     group = 'verification'
-    description = 'Checks Java formatting with google-java-format (Java 8 baseline).'
+    description = 'Checks Java formatting with google-java-format AOSP style.'
     classpath = configurations.googleJavaFormat
     main = 'com.google.googlejavaformat.java.Main'
     doFirst {
@@ -68,7 +68,7 @@ tasks.register('lintCheck', JavaExec) {
             enabled = false
             return
         }
-        setArgs(['--dry-run', '--set-exit-if-changed'] + targets)
+        setArgs(['--aosp', '--dry-run', '--set-exit-if-changed'] + targets)
     }
 }
 

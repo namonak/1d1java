@@ -15,11 +15,56 @@ java {
     }
 }
 
+configurations {
+    googleJavaFormat
+}
+
 test {
     useJUnitPlatform()
 }
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
-    testCompile("org.assertj:assertj-core:3.11.1")
+    testImplementation("org.assertj:assertj-core:3.11.1")
+    googleJavaFormat 'com.google.googlejavaformat:google-java-format:1.7'
+}
+
+def javaLintTargets = providers.provider {
+    fileTree('src') {
+        include '**/*.java'
+    }.files.collect { it.path }.sort()
+}
+
+tasks.register('lintFormat', JavaExec) {
+    group = 'verification'
+    description = 'Formats Java source files with google-java-format (Java 8 baseline).'
+    classpath = configurations.googleJavaFormat
+    main = 'com.google.googlejavaformat.java.Main'
+    doFirst {
+        def targets = javaLintTargets.get()
+        if (targets.isEmpty()) {
+            enabled = false
+            return
+        }
+        setArgs(['--replace'] + targets)
+    }
+}
+
+tasks.register('lintCheck', JavaExec) {
+    group = 'verification'
+    description = 'Checks Java formatting with google-java-format (Java 8 baseline).'
+    classpath = configurations.googleJavaFormat
+    main = 'com.google.googlejavaformat.java.Main'
+    doFirst {
+        def targets = javaLintTargets.get()
+        if (targets.isEmpty()) {
+            enabled = false
+            return
+        }
+        setArgs(['--dry-run', '--set-exit-if-changed'] + targets)
+    }
+}
+
+tasks.named('check') {
+    dependsOn 'lintCheck'
 }

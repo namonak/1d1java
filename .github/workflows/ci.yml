@@ -28,7 +28,6 @@ jobs:
   report:
     name: action report
     runs-on: ubuntu-latest
-    if: ${{ secrets.SONAR_TOKEN != '' }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -55,10 +54,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          if ./gradlew -q tasks --all | grep -q "^sonar "; then
-            ./gradlew build sonar --info
-          else
-            echo "sonar task not found. Running build only."
-            ./gradlew build --info
-          fi
+        run: ./gradlew build sonar --info

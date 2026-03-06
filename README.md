@@ -1,3 +1,34 @@
-# 1일 1자바 코딩을 위한 리포지토리입니다.
+# 1d1java
 
-현재는 주로 백준 온라인 저지(https://www.acmicpc.net) 문제를 풀고 있습니다.
+---
+
+1 day 1 coding with Java
+
+## Requirement
+
+* [Java](https://www.java.com) (v8)
+* [Gradle](https://gradle.org) (v6.8)
+
+## Build all
+
+```bash
+$ ./gradlew build
+```
+
+## Test
+
+```bash
+$ ./gradlew test
+```
+
+## Lint Check
+
+```bash
+$ ./gradlew lintCheck
+```
+
+## Lint Format
+
+```bash
+$ ./gradlew lintFormat
+```

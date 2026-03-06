@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 
 public class No10869Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step1/No10869_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step1/No10869_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No10869_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No10869_output.txt";
 
     @Test
     @DisplayName("사칙연산 테스트")

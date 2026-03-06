@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 
 class No4344Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step4/No4344_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step4/No4344_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No4344_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No4344_output.txt";
 
     @Test
     @DisplayName("평균은 넘겠지 테스트")

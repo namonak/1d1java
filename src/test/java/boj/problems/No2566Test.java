@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 
 public class No2566Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step5/No2566_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step5/No2566_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No2566_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No2566_output.txt";
 
     @Test
     @DisplayName("최댓값")

@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 
 class No4948Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step8/No4948_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step8/No4948_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No4948_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No4948_output.txt";
 
     @Test
     @DisplayName("베르트랑 공준 테스트")

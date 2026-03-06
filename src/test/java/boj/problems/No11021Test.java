@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
 
 class No11021Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No11021_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No11021_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No11021_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No11021_output.txt";
 
     @Test
     @DisplayName("A+B - 7 테스트")

@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 
 public class No8958Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step4/No8958_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step4/No8958_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No8958_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No8958_output.txt";
 
     @Test
     @DisplayName("OX퀴즈")

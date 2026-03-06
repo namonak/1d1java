@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 
 class No10871Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No10871_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No10871_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No10871_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No10871_output.txt";
 
     @Test
     @DisplayName("X보다 작은 수")

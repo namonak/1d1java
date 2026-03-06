@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 
 public class No2738Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step5/No2738_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step5/No2738_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No2738_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No2738_output.txt";
 
     @Test
     @DisplayName("행렬 덧셈")

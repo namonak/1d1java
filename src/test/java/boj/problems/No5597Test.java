@@ -30,11 +30,11 @@ public class No5597Test {
     }
 
     private void setInput() {
-        input[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/step4/No5597_input_1.txt";
+        input[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/No5597_input_1.txt";
         output[0] =
-                path.getAbsolutePath() + "/src/test/java/boj/problems/step4/No5597_output_1.txt";
-        input[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/step4/No5597_input_2.txt";
+                path.getAbsolutePath() + "/src/test/java/boj/problems/No5597_output_1.txt";
+        input[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/No5597_input_2.txt";
         output[1] =
-                path.getAbsolutePath() + "/src/test/java/boj/problems/step4/No5597_output_2.txt";
+                path.getAbsolutePath() + "/src/test/java/boj/problems/No5597_output_2.txt";
     }
 }

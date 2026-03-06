@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 
 public class No3052Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step4/No3052_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step4/No3052_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No3052_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No3052_output.txt";
 
     @Test
     @DisplayName("나머지 테스트")

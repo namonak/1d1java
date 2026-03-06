@@ -15,9 +15,8 @@ import org.junit.jupiter.api.Test;
 
 public class No14425Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step12/No14425_input.txt";
-    String output =
-            path.getAbsolutePath() + "/src/test/java/boj/problems/step12/No14425_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No14425_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No14425_output.txt";
 
     @Test
     @DisplayName("문자열 집합 테스트")

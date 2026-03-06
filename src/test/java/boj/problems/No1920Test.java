@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 
 class No1920Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step22/No1920_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step22/No1920_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No1920_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No1920_output.txt";
 
     @Test
     @DisplayName("수 찾기")

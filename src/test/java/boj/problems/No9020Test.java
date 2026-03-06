@@ -15,8 +15,8 @@ import org.junit.jupiter.api.Test;
 
 public class No9020Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step8/No9020_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step8/No9020_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No9020_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No9020_output.txt";
 
     @Test
     @DisplayName("골드바흐의 추측 테스트")

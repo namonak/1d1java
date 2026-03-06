@@ -12,9 +12,9 @@ import org.junit.jupiter.api.Test;
 
 class No25305Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step11/No25305_input.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No25305_input.txt";
     String output =
-            path.getAbsolutePath() + "/src/test/java/boj/problems/step11/No25305_output.txt";
+            path.getAbsolutePath() + "/src/test/java/boj/problems/No25305_output.txt";
 
     @Test
     @DisplayName("커트라인 테스트")

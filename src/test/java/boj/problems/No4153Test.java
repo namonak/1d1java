@@ -15,8 +15,8 @@ import org.junit.jupiter.api.Test;
 
 public class No4153Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step13/No4153_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step13/No4153_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No4153_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No4153_output.txt";
 
     @Test
     @DisplayName("직각삼각형 테스트")

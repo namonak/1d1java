@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 
 public class No2675Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step6/No2675_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step6/No2675_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No2675_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No2675_output.txt";
 
     @Test
     @DisplayName("문자열 반복 테스트")

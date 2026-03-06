@@ -15,8 +15,8 @@ import org.junit.jupiter.api.Test;
 
 public class No9184Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step16/No9184_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step16/No9184_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No9184_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No9184_output.txt";
 
     @Test
     @DisplayName("신나는 함수 실행 테스트")

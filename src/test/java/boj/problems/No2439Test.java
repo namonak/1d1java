@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 
 public class No2439Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No2439_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step3/No2439_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No2439_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No2439_output.txt";
 
     @Test
     @DisplayName("별 찍기 - 2 테스트")

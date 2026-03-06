@@ -15,8 +15,8 @@ import org.junit.jupiter.api.Test;
 
 public class No2110Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step22/No2110_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step22/No2110_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No2110_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No2110_output.txt";
 
     @Test
     @DisplayName("공유기 설치 테스트")

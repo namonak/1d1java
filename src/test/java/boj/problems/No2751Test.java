@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 
 public class No2751Test {
     File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/step11/No2751_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/step11/No2751_output.txt";
+    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No2751_input.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No2751_output.txt";
 
     @Test
     @DisplayName("수 정렬하기 2 테스트")

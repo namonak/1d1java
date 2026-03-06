@@ -13,8 +13,7 @@ import org.junit.jupiter.api.Test;
 public class No18258Test {
     File path = new File(".");
     String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No18258_input.txt";
-    String output =
-            path.getAbsolutePath() + "/src/test/java/boj/problems/No18258_output.txt";
+    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No18258_output.txt";
 
     @Test
     @DisplayName("큐 2 테스트")

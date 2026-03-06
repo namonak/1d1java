@@ -22,14 +22,10 @@ class No10828Test {
     void test() throws IOException {
         System.out.println("스택 : https://www.acmicpc.net/problem/10828");
 
-        input[0] =
-                path.getAbsolutePath() + "/src/test/java/boj/problems/No10828_input_1.txt";
-        output[0] =
-                path.getAbsolutePath() + "/src/test/java/boj/problems/No10828_output_1.txt";
-        input[1] =
-                path.getAbsolutePath() + "/src/test/java/boj/problems/No10828_input_2.txt";
-        output[1] =
-                path.getAbsolutePath() + "/src/test/java/boj/problems/No10828_output_2.txt";
+        input[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/No10828_input_1.txt";
+        output[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/No10828_output_1.txt";
+        input[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/No10828_input_2.txt";
+        output[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/No10828_output_2.txt";
 
         for (int i = 0; i < TESTCASE_NUM; i++) {
             // given

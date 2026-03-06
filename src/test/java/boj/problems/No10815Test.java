@@ -21,7 +21,7 @@ public class No10815Test {
     @Test
     @DisplayName("숫자 카드 테스트")
     void 숫자_카드_테스트() throws IOException {
-        System.out.println("숫자 카드 : https://www.acmicpc.net/problem/10815");
+        System.out.println("숫자 카드 : https://www.aNo10815_outputcmicpc.net/problem/10815");
 
         BufferedReader br_given = new BufferedReader(new FileReader(input));
         BufferedReader br_want = new BufferedReader(new FileReader(output));

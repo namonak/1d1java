@@ -1,24 +1,10 @@
 package boj.problems;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 public class No2738 {
-    public static void main(String[] args) throws IOException {
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        output.write(solve(input));
-
-        input.close();
-        output.flush();
-        output.close();
-    }
-
     static String solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
         int N = Integer.parseInt(st.nextToken());
@@ -28,7 +14,7 @@ public class No2738 {
 
         makeMatrix(input, N, M, matrixA);
 
-        return getResult(input, N, M, matrixA, sb);
+        return getResult(input, N, M, matrixA, sb).trim();
     }
 
     private static String getResult(
@@ -45,6 +31,9 @@ public class No2738 {
     private static void getRowsOfResult(int M, StringBuilder sb, String[] tmp, int[] matrixA) {
         for (int j = 0; j < M; j++) {
             sb.append((matrixA[j] += Integer.parseInt(tmp[j])) + " ");
+            if (j == M - 1) {
+                sb.deleteCharAt(sb.length() - 1);
+            }
         }
         sb.append("\n");
     }

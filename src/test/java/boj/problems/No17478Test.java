@@ -32,10 +32,8 @@ public class No17478Test {
 
     private void setTestCase() {
         input[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/No17478_input_1.txt";
-        output[0] =
-                path.getAbsolutePath() + "/src/test/java/boj/problems/No17478_output_1.txt";
+        output[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/No17478_output_1.txt";
         input[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/No17478_input_2.txt";
-        output[1] =
-                path.getAbsolutePath() + "/src/test/java/boj/problems/No17478_output_2.txt";
+        output[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/No17478_output_2.txt";
     }
 }

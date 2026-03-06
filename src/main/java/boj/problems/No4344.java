@@ -1,24 +1,10 @@
 package boj.problems;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 class No4344 {
-    public static void main(String[] args) throws IOException {
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        output.write(solve(input));
-
-        input.close();
-        output.flush();
-        output.close();
-    }
-
     public static double getAverage(int[] scores) {
         int sum = 0;
         for (int score : scores) {
@@ -63,6 +49,6 @@ class No4344 {
             String formattedResult = getResult(getRate(scores, getAverage(scores)), scores.length);
             result.append(formattedResult).append("%\n");
         }
-        return result.toString();
+        return result.toString().trim();
     }
 }

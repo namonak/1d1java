@@ -30,6 +30,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     testImplementation("org.assertj:assertj-core:3.11.1")
     googleJavaFormat 'com.google.googlejavaformat:google-java-format:1.7'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 jacoco {
@@ -46,12 +47,16 @@ tasks.register('lintFormat', JavaExec) {
     group = 'verification'
     description = 'Formats Java source files with google-java-format AOSP style.'
     classpath = configurations.googleJavaFormat
-    main = 'com.google.googlejavaformat.java.Main'
+
+    // 수정 1: main 속성 대신 mainClass.set() 사용 (Gradle 최신 DSL)
+    mainClass.set('com.google.googlejavaformat.java.Main')
+
     doFirst {
         def targets = javaLintTargets.get()
         if (targets.isEmpty()) {
-            enabled = false
-            return
+            // 수정 2: 실행 단계에서 상태를 변경(enabled=false)하는 대신,
+            // 예외를 던져 태스크를 우아하게(gracefully) 중단시킵니다.
+            throw new StopExecutionException("포맷팅할 대상 Java 파일이 없습니다.")
         }
         setArgs(['--aosp', '--replace'] + targets)
     }
@@ -61,12 +66,15 @@ tasks.register('lintCheck', JavaExec) {
     group = 'verification'
     description = 'Checks Java formatting with google-java-format AOSP style.'
     classpath = configurations.googleJavaFormat
-    main = 'com.google.googlejavaformat.java.Main'
+
+    // 수정 1: main 속성 대신 mainClass.set() 사용
+    mainClass.set('com.google.googlejavaformat.java.Main')
+
     doFirst {
         def targets = javaLintTargets.get()
         if (targets.isEmpty()) {
-            enabled = false
-            return
+            // 수정 2: 실행 중지 표준 예외 사용
+            throw new StopExecutionException("검사할 대상 Java 파일이 없습니다.")
         }
         setArgs(['--aosp', '--dry-run', '--set-exit-if-changed'] + targets)
     }
@@ -76,10 +84,10 @@ tasks.named('check') {
     dependsOn 'lintCheck'
 }
 
-tasks.named('jacocoTestReport') {
+tasks.named('jacocoTestReport', JacocoReport) {
     dependsOn test
     reports {
-        xml.enabled true
+        xml.required.set(true) // Gradle 최신 문법으로 변경
     }
 }
 

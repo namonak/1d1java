@@ -11,7 +11,7 @@
 ## Requirement
 
 * [Java](https://www.java.com) (v8)
-* [Gradle](https://gradle.org) (v6.8)
+* [Gradle](https://gradle.org) (v9.0.0)
 
 ## Build all
 

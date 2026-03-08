@@ -1,6 +1,7 @@
 package boj.problems;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.HashMap;
@@ -12,7 +13,7 @@ public class No3190 {
     private static final int[] DR = {0, 1, 0, -1};
     private static final int[] DC = {1, 0, -1, 0};
 
-    public static String solve(BufferedReader input) throws Exception {
+    public static String solve(BufferedReader input) throws IOException {
         int n = Integer.parseInt(input.readLine()); // 보드 크기
         boolean[][] apple = new boolean[n + 1][n + 1];
         boolean[][] occupied = new boolean[n + 1][n + 1];

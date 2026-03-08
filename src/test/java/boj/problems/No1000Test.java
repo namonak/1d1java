@@ -14,14 +14,19 @@ import org.junit.jupiter.params.provider.MethodSource;
 class No1000Test {
     @ParameterizedTest(name = "Case {index}: expected {1}")
     @MethodSource("provideTestCases")
-    @DisplayName("A+B : https://gemini.google.com/app/dcd1ff2abec7f840")
+    @DisplayName("A+B : https://www.acmicpc.net/problem/1000")
     void test(String given, String expected) throws Exception {
         BufferedReader reader = new BufferedReader(new StringReader(given));
-        String result = String.valueOf(No1000.solve(reader));
+        String result = No1000.solve(reader);
         assertThat(result).isEqualTo(expected);
     }
 
+    // spotless:off
     private static Stream<Arguments> provideTestCases() {
-        return Stream.of(arguments("1 2", "3"), arguments("3 4", "7"));
+        return Stream.of(
+                arguments("1 2", "3"),
+                arguments("3 4", "7")
+        );
     }
+    // spotless:on
 }

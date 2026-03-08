@@ -1,6 +1,7 @@
 package boj.problems;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.StringTokenizer;
@@ -10,7 +11,7 @@ public class No16236 {
     private static final int[] DR = {-1, 0, 0, 1}; // 상, 좌, 우, 하 (우선순위: 상→좌→우→하)
     private static final int[] DC = {0, -1, 1, 0};
 
-    public static String solve(BufferedReader input) throws Exception {
+    public static String solve(BufferedReader input) throws IOException {
         int N = Integer.parseInt(input.readLine());
         int[][] map = new int[N][N];
 

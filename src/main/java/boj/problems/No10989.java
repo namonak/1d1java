@@ -1,27 +1,13 @@
 package boj.problems;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 
 public class No10989 {
     // 0을 포함해야 하므로 1을 더한다.
     public static final int INPUT_LIMIT = 10000 + 1;
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        output.write(solve(input));
-
-        input.close();
-        output.flush();
-        output.close();
-    }
-
-    static String solve(BufferedReader input) throws IOException {
+    public static String solve(BufferedReader input) throws IOException {
         int n = Integer.parseInt(input.readLine());
         int[] arr = new int[n];
         StringBuilder result = new StringBuilder();

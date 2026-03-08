@@ -1,38 +1,54 @@
 package boj.problems;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
+import java.io.StringReader;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-public class No9012Test {
-    public static final int TESTCASE_NUM = 2;
-
-    File path = new File(".");
-    String[] input = new String[TESTCASE_NUM];
-    String[] output = new String[TESTCASE_NUM];
-
-    @DisplayName("괄호")
-    @Test
-    void test() throws IOException {
-        System.out.println("괄호 : https://www.acmicpc.net/problem/9012");
-        setInput();
-        for (int i = 0; i < TESTCASE_NUM; ++i) {
-            BufferedReader given = new BufferedReader(new java.io.FileReader(input[i]));
-            String expected = new String(Files.readAllBytes(new File(output[i]).toPath()));
-            assertThat(No9012.solve(given)).isEqualTo(expected);
-            given.close();
-        }
+class No9012Test {
+    @ParameterizedTest(name = "Case {index}: expected {1}")
+    @MethodSource("provideTestCases")
+    @DisplayName("괄호 : https://www.acmicpc.net/problem/9012")
+    void test(String given, String expected) throws Exception {
+        BufferedReader reader = new BufferedReader(new StringReader(given));
+        String result = No9012.solve(reader);
+        assertThat(result).isEqualTo(expected);
     }
 
-    private void setInput() {
-        input[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/No9012_input_1.txt";
-        output[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/No9012_output_1.txt";
-        input[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/No9012_input_2.txt";
-        output[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/No9012_output_2.txt";
+    // spotless:off
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(
+                arguments(
+                        "6\n" +
+                        "(())())\n" +
+                        "(((()())()\n" +
+                        "(()())((()))\n" +
+                        "((()()(()))(((())))()\n" +
+                        "()()()()(()()())()\n" +
+                        "(()((())()(",
+                        "NO\n" +
+                        "NO\n" +
+                        "YES\n" +
+                        "NO\n" +
+                        "YES\n" +
+                        "NO"
+                ),
+                arguments(
+                        "3\n" +
+                        "((\n" +
+                        "))\n" +
+                        "())(()",
+                        "NO\n" +
+                        "NO\n" +
+                        "NO"
+                )
+        );
     }
+    // spotless:on
 }

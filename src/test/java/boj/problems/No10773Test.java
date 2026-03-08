@@ -1,27 +1,52 @@
 package boj.problems;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.StringReader;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-public class No10773Test {
-    @DisplayName("제로")
-    @ParameterizedTest
-    @CsvSource(
-            value = {"'4\n3\n0\n4\n0':0", "'10\n1\n3\n5\n4\n0\n0\n7\n0\n0\n6':7", "'0\n0\n0\n':0"},
-            delimiter = ':')
-    void test(String given, String expected) throws IOException {
-        System.out.println("제로 : https://www.acmicpc.net/problem/10773");
-
-        BufferedReader br_given = new BufferedReader(new StringReader(given));
-
-        assertThat(String.valueOf(No10773.solve(br_given))).isEqualTo(expected);
-
-        br_given.close();
+class No10773Test {
+    @ParameterizedTest(name = "Case {index}: expected {1}")
+    @MethodSource("provideTestCases")
+    @DisplayName("제로 : https://www.acmicpc.net/problem/10773")
+    void test(String given, String expected) throws Exception {
+        BufferedReader reader = new BufferedReader(new StringReader(given));
+        String result = No10773.solve(reader);
+        assertThat(result).isEqualTo(expected);
     }
+
+    // spotless:off
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(
+                arguments(
+                        "4\n" +
+                        "3\n" +
+                        "0\n" +
+                        "4\n" +
+                        "0",
+                        "0"
+                ),
+                arguments(
+                        "10\n" +
+                        "1\n" +
+                        "3\n" +
+                        "5\n" +
+                        "4\n" +
+                        "0\n" +
+                        "0\n" +
+                        "7\n" +
+                        "0\n" +
+                        "0\n" +
+                        "6",
+                        "7"
+                )
+        );
+    }
+    // spotless:on
 }

@@ -1,44 +1,74 @@
 package boj.problems;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Files;
+import java.io.StringReader;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class No10828Test {
-    public static final int TESTCASE_NUM = 2;
-
-    File path = new File(".");
-    String[] input = new String[TESTCASE_NUM];
-    String[] output = new String[TESTCASE_NUM];
-
-    @Test
-    @DisplayName("스택")
-    void test() throws IOException {
-        System.out.println("스택 : https://www.acmicpc.net/problem/10828");
-
-        input[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/No10828_input_1.txt";
-        output[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/No10828_output_1.txt";
-        input[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/No10828_input_2.txt";
-        output[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/No10828_output_2.txt";
-
-        for (int i = 0; i < TESTCASE_NUM; i++) {
-            // given
-            BufferedReader given = new BufferedReader(new FileReader(input[i]));
-            String expected = new String(Files.readAllBytes(new File(output[i]).toPath()));
-
-            // when
-            String actual = No10828.solve(given);
-
-            // then
-            assertEquals(expected, actual);
-
-            given.close();
-        }
+    @ParameterizedTest(name = "Case {index}: expected {1}")
+    @MethodSource("provideTestCases")
+    @DisplayName("스택 : https://www.acmicpc.net/problem/10828")
+    void test(String given, String expected) throws Exception {
+        BufferedReader reader = new BufferedReader(new StringReader(given));
+        String result = No10828.solve(reader);
+        assertThat(result).isEqualTo(expected);
     }
+
+    // spotless:off
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(
+                arguments(
+                        "14\n" +
+                        "push 1\n" +
+                        "push 2\n" +
+                        "top\n" +
+                        "size\n" +
+                        "empty\n" +
+                        "pop\n" +
+                        "pop\n" +
+                        "pop\n" +
+                        "size\n" +
+                        "empty\n" +
+                        "pop\n" +
+                        "push 3\n" +
+                        "empty\n" +
+                        "top",
+                        "2\n" +
+                        "2\n" +
+                        "0\n" +
+                        "2\n" +
+                        "1\n" +
+                        "-1\n" +
+                        "0\n" +
+                        "1\n" +
+                        "-1\n" +
+                        "0\n" +
+                        "3"
+                ),
+                arguments(
+                        "7\n" +
+                        "pop\n" +
+                        "top\n" +
+                        "push 123\n" +
+                        "top\n" +
+                        "pop\n" +
+                        "top\n" +
+                        "pop",
+                        "-1\n" +
+                        "-1\n" +
+                        "123\n" +
+                        "123\n" +
+                        "-1\n" +
+                        "-1"
+                )
+        );
+    }
+    // spotless:on
 }

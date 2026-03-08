@@ -1,38 +1,94 @@
 package boj.problems;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
+import java.io.StringReader;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-public class No5597Test {
-    public static final int TESTCASE_NUM = 2;
-
-    File path = new File(".");
-    String[] input = new String[TESTCASE_NUM];
-    String[] output = new String[TESTCASE_NUM];
-
-    @DisplayName("과제 안 내신 분..?")
-    @Test
-    void test() throws IOException {
-        System.out.println("과제 안 내신 분..? : https://www.acmicpc.net/problem/5597");
-        setInput();
-        for (int i = 0; i < TESTCASE_NUM; ++i) {
-            BufferedReader given = new BufferedReader(new java.io.FileReader(input[i]));
-            String expected = new String(Files.readAllBytes(new File(output[i]).toPath()));
-            assertThat(No5597.solve(given)).isEqualTo(expected);
-            given.close();
-        }
+class No5597Test {
+    @ParameterizedTest(name = "Case {index}: expected {1}")
+    @MethodSource("provideTestCases")
+    @DisplayName("곱셈 : https://www.acmicpc.net/problem/5597")
+    void test(String given, String expected) throws Exception {
+        BufferedReader reader = new BufferedReader(new StringReader(given));
+        String result = No5597.solve(reader);
+        assertThat(result).isEqualTo(expected);
     }
 
-    private void setInput() {
-        input[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/No5597_input_1.txt";
-        output[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/No5597_output_1.txt";
-        input[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/No5597_input_2.txt";
-        output[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/No5597_output_2.txt";
+    // spotless:off
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(
+                arguments(
+                        "3\n" +
+                        "1\n" +
+                        "4\n" +
+                        "5\n" +
+                        "7\n" +
+                        "9\n" +
+                        "6\n" +
+                        "10\n" +
+                        "11\n" +
+                        "12\n" +
+                        "13\n" +
+                        "14\n" +
+                        "15\n" +
+                        "16\n" +
+                        "17\n" +
+                        "18\n" +
+                        "19\n" +
+                        "20\n" +
+                        "21\n" +
+                        "22\n" +
+                        "23\n" +
+                        "24\n" +
+                        "25\n" +
+                        "26\n" +
+                        "27\n" +
+                        "28\n" +
+                        "29\n" +
+                        "30",
+                        "2\n" +
+                        "8"
+                ),
+                arguments(
+                        "9\n" +
+                        "30\n" +
+                        "6\n" +
+                        "12\n" +
+                        "10\n" +
+                        "20\n" +
+                        "21\n" +
+                        "11\n" +
+                        "7\n" +
+                        "5\n" +
+                        "28\n" +
+                        "4\n" +
+                        "18\n" +
+                        "29\n" +
+                        "17\n" +
+                        "19\n" +
+                        "27\n" +
+                        "13\n" +
+                        "16\n" +
+                        "26\n" +
+                        "14\n" +
+                        "23\n" +
+                        "22\n" +
+                        "15\n" +
+                        "3\n" +
+                        "1\n" +
+                        "24\n" +
+                        "25",
+                        "2\n" +
+                        "8"
+                )
+        );
     }
+    // spotless:on
 }

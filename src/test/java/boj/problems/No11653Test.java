@@ -1,33 +1,56 @@
 package boj.problems;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.StringReader;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-public class No11653Test {
-    @DisplayName("소인수분해 테스트")
-    @ParameterizedTest
-    @CsvSource(
-            value = {
-                "72:'2\n2\n2\n3\n3\n'",
-                "3:'3\n'",
-                "6:'2\n3\n'",
-                "2:'2\n'",
-                "9991:'97\n103\n'"
-            },
-            delimiter = ':')
-    void test(String given, String expected) throws IOException {
-        System.out.println("소인수분해 : https://www.acmicpc.net/problem/11653");
-
-        BufferedReader br_given = new BufferedReader(new StringReader(String.valueOf(given)));
-
-        assertEquals(expected, No11653.solve(br_given));
-
-        br_given.close();
+class No11653Test {
+    @ParameterizedTest(name = "Case {index}: expected {1}")
+    @MethodSource("provideTestCases")
+    @DisplayName("소인수분해 : https://www.acmicpc.net/problem/11653")
+    void test(String given, String expected) throws Exception {
+        BufferedReader reader = new BufferedReader(new StringReader(given));
+        String result = No11653.solve(reader);
+        assertThat(result).isEqualTo(expected);
     }
+
+    // spotless:off
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(
+                arguments(
+                        "72",
+                        "2\n" +
+                        "2\n" +
+                        "2\n" +
+                        "3\n" +
+                        "3"
+                ),
+                arguments(
+                        "30",
+                        "3"
+                ),
+                arguments(
+                        "6",
+                        "2\n" +
+                        "3"
+                ),
+                arguments(
+                        "2",
+                        "2"
+                ),
+                arguments(
+                        "9991",
+                        "97\n" +
+                        "103"
+                )
+        );
+    }
+    // spotless:on
 }

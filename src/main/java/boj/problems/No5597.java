@@ -1,25 +1,13 @@
 package boj.problems;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 
 public class No5597 {
     public static final int NUMBER_OF_STUDENTS = 30;
     public static final int CLASS_BOOK_NUMBER = 28;
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader input = new BufferedReader(new java.io.InputStreamReader(System.in));
-        BufferedWriter output = new BufferedWriter(new java.io.OutputStreamWriter(System.out));
-
-        output.write(solve(input));
-
-        input.close();
-        output.flush();
-        output.close();
-    }
-
-    static String solve(BufferedReader input) throws IOException {
+    public static String solve(BufferedReader input) throws IOException {
         boolean[] classBook = makeClassBook(input);
 
         return getResult(classBook);

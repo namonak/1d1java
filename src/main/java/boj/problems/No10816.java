@@ -1,13 +1,12 @@
 package boj.problems;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
 public class No10816 {
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    public static String solve(BufferedReader input) throws IOException {
         int N = Integer.parseInt(input.readLine());
         StringTokenizer st = new StringTokenizer(input.readLine());
         HashMap<String, Integer> cards = new HashMap<>();
@@ -32,6 +31,6 @@ public class No10816 {
             sb.append(result).append(" ");
         }
 
-        output.write(sb.toString().trim());
+        return sb.toString().trim();
     }
 }

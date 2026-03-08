@@ -1,17 +1,16 @@
 package boj.problems;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
 public class No10815 {
-    static void solve(BufferedReader input, BufferedWriter output) throws IOException {
+    public static String solve(BufferedReader input) throws IOException {
         int N = Integer.parseInt(input.readLine());
         StringTokenizer st = new StringTokenizer(input.readLine());
-        ArrayList<Integer> cardList = new ArrayList();
+        ArrayList<Integer> cardList = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < N; ++i) {
@@ -31,6 +30,6 @@ public class No10815 {
             }
         }
 
-        output.write(sb.toString().trim());
+        return sb.toString().trim();
     }
 }

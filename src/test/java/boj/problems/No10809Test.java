@@ -1,29 +1,31 @@
 package boj.problems;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.StringReader;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-public class No10809Test {
-    @DisplayName("알파벳 찾기")
-    @ParameterizedTest
-    @CsvSource(
-            value = {
-                "baekjoon:1 0 -1 -1 2 -1 -1 -1 -1 4 3 -1 -1 7 5 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1"
-            },
-            delimiter = ':')
-    void test(String given, String expected) throws IOException {
-        System.out.println("알파벳 찾기 : https://www.acmicpc.net/problem/10809");
-
-        BufferedReader br_given = new BufferedReader(new StringReader(given));
-
-        assertThat(No10809.solve(br_given)).isEqualTo(expected);
-
-        br_given.close();
+class No10809Test {
+    @ParameterizedTest(name = "Case {index}: expected {1}")
+    @MethodSource("provideTestCases")
+    @DisplayName("알파벳 찾기 : https://www.acmicpc.net/problem/10809")
+    void test(String given, String expected) throws Exception {
+        BufferedReader reader = new BufferedReader(new StringReader(given));
+        String result = No10809.solve(reader);
+        assertThat(result).isEqualTo(expected);
     }
+
+    // spotless:off
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(
+                arguments("baekjoon", "1 0 -1 -1 2 -1 -1 -1 -1 4 3 -1 -1 7 5 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1")
+        );
+    }
+    // spotless:on
 }

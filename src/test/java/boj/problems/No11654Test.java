@@ -1,27 +1,36 @@
 package boj.problems;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.StringReader;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class No11654Test {
-    @DisplayName("아스키 코드 테스트")
-    @ParameterizedTest
-    @CsvSource(
-            value = {"A:65", "C:67", "0:48", "9:57", "a:97", "z:122"},
-            delimiter = ':')
-    void test(String given, String expected) throws IOException {
-        System.out.println("아스키 코드 : https://www.acmicpc.net/problem/11654");
-
-        BufferedReader br_given = new BufferedReader(new StringReader(given));
-
-        assertThat(String.valueOf(No11654.solve(br_given))).isEqualTo(expected);
-
-        br_given.close();
+    @ParameterizedTest(name = "Case {index}: expected {1}")
+    @MethodSource("provideTestCases")
+    @DisplayName("아스키 코드 : https://www.acmicpc.net/problem/11654")
+    void test(String given, String expected) throws Exception {
+        BufferedReader reader = new BufferedReader(new StringReader(given));
+        String result = No11654.solve(reader);
+        assertThat(result).isEqualTo(expected);
     }
+
+    // spotless:off
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(
+                arguments("A", "65"),
+                arguments("C", "67"),
+                arguments("0", "48"),
+                arguments("9", "57"),
+                arguments("a", "97"),
+                arguments("z", "122")
+        );
+    }
+    // spotless:on
 }

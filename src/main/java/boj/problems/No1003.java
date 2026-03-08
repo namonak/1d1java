@@ -2,32 +2,38 @@ package boj.problems;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.StringTokenizer;
 
 class No1003 {
-    static String solve(BufferedReader input) throws IOException {
+    private static final int[][] dp = new int[41][2];
+    private static boolean isPrecomputed = false;
+
+    public static String solve(BufferedReader input) throws IOException {
+        if (!isPrecomputed) {
+            precompute();
+        }
+
         StringBuilder sb = new StringBuilder();
-        int testCase = Integer.parseInt(input.readLine());
+        int testCase = Integer.parseInt(input.readLine().trim());
 
         for (int i = 0; i < testCase; i++) {
-            StringTokenizer st = new StringTokenizer(input.readLine());
-            Integer[] result = fibonacci(Integer.parseInt(st.nextToken()));
-            sb.append(result[0] + " " + result[1] + "\n");
+            int n = Integer.parseInt(input.readLine().trim());
+            sb.append(dp[n][0]).append(" ").append(dp[n][1]).append("\n");
         }
-        return sb.toString();
+
+        return sb.toString().trim();
     }
 
-    private static Integer[] fibonacci(int number) {
-        int[] fib0 = new int[number + 1];
-        int[] fib1 = new int[number + 1];
-        fib0[0] = 1;
-        fib0[1] = 0;
-        fib1[0] = 0;
-        fib1[1] = 1;
-        for (int i = 2; i <= number; i++) {
-            fib0[i] = fib0[i - 1] + fib0[i - 2];
-            fib1[i] = fib1[i - 1] + fib1[i - 2];
+    private static void precompute() {
+        dp[0][0] = 1;
+        dp[0][1] = 0;
+
+        dp[1][0] = 0;
+        dp[1][1] = 1;
+
+        for (int i = 2; i <= 40; i++) {
+            dp[i][0] = dp[i - 1][0] + dp[i - 2][0];
+            dp[i][1] = dp[i - 1][1] + dp[i - 2][1];
         }
-        return new Integer[] {fib0[number], fib1[number]};
+        isPrecomputed = true;
     }
 }

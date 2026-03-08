@@ -1,32 +1,34 @@
 package boj.problems;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.StringReader;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-public class No1157Test {
-    @DisplayName("단어 공부 테스트")
-    @ParameterizedTest
-    @CsvSource(
-            value = {"Mississipi:?", "zZa:Z", "z:Z", "baaa:A"},
-            delimiter = ':')
-    void test(String given, String expected) throws IOException {
-        System.out.println("단어 공부 : https://www.acmicpc.net/problem/1157");
-
-        // given
-        BufferedReader br_given = new BufferedReader(new StringReader(given));
-
-        // when
-        char actual = No1157.solve(br_given);
-
-        // then
-        assertEquals(expected, String.valueOf(actual));
-
-        br_given.close();
+class No1157Test {
+    @ParameterizedTest(name = "Case {index}: expected {1}")
+    @MethodSource("provideTestCases")
+    @DisplayName("단어 공부 : https://www.acmicpc.net/problem/1157")
+    void test(String given, String expected) throws Exception {
+        BufferedReader reader = new BufferedReader(new StringReader(given));
+        String result = No1157.solve(reader);
+        assertThat(result).isEqualTo(expected);
     }
+
+    // spotless:off
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(
+                arguments("Mississipi", "?"),
+                arguments("zZa", "Z"),
+                arguments("z", "Z"),
+                arguments("baaa", "A")
+        );
+    }
+    // spotless:on
 }

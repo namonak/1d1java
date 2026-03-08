@@ -1,23 +1,33 @@
 package boj.problems;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.within;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.StringReader;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-public class No1008Test {
-    @Test
-    @DisplayName("A/B 테스트")
-    void test() throws IOException {
-        System.out.println("A/B : https://www.acmicpc.net/problem/1008");
-
-        BufferedReader given = new BufferedReader(new StringReader("1 3"));
-
-        assertThat(No1008.solve(given)).isEqualTo((double) 1 / 3);
-
-        given.close();
+class No1008Test {
+    @ParameterizedTest(name = "Case {index}: expected {1}")
+    @MethodSource("provideTestCases")
+    @DisplayName("A/B : https://www.acmicpc.net/problem/1008")
+    void test(String given, String expected) throws Exception {
+        BufferedReader reader = new BufferedReader(new StringReader(given));
+        String result = No1008.solve(reader);
+        assertThat(Double.parseDouble(result)).isCloseTo(Double.parseDouble(expected), within(1e-9));
     }
+
+    // spotless:off
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(
+                arguments("1 3", "0.33333333333333333333333333333333"),
+                arguments("4 5", "0.8")
+        );
+    }
+    // spotless:on
 }

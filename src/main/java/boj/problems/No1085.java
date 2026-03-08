@@ -4,14 +4,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 public class No1085 {
-    static int solve(BufferedReader input) throws IOException {
+    public static String solve(BufferedReader input) throws IOException {
         String[] inputString = input.readLine().split(" ");
         int x = Integer.parseInt(inputString[0]);
         int y = Integer.parseInt(inputString[1]);
         int w = Integer.parseInt(inputString[2]);
         int h = Integer.parseInt(inputString[3]);
 
-        return getResult(x, y, w, h);
+        return String.valueOf(getResult(x, y, w, h));
     }
 
     private static int getResult(int x, int y, int w, int h) {

@@ -1,36 +1,33 @@
 package boj.problems;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.StringReader;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class No1152Test {
-    @DisplayName("단어의 개수 테스트")
-    @ParameterizedTest
-    @CsvSource(
-            value = {
-                "The Curious Case of Benjamin Button:6",
-                "The first character is a blank:6",
-                "The last character is a blank:6",
-                "Mazatneunde Wae Teullyeoyo:3",
-                "Teullinika Teullyeotzi:2",
-            },
-            delimiter = ':')
-    void test(String given, String expected) throws IOException {
-        System.out.println("단어의 개수 : https://www.acmicpc.net/problem/1152");
-
-        // given
-        BufferedReader br_given = new BufferedReader(new StringReader(String.valueOf(given)));
-
-        // when
-        String actual = String.valueOf(No1152.solve(br_given));
-
-        // then
-        assertEquals(expected, actual);
+    @ParameterizedTest(name = "Case {index}: expected {1}")
+    @MethodSource("provideTestCases")
+    @DisplayName("단어의 개수 : https://www.acmicpc.net/problem/1152")
+    void test(String given, String expected) throws Exception {
+        BufferedReader reader = new BufferedReader(new StringReader(given));
+        String result = No1152.solve(reader);
+        assertThat(result).isEqualTo(expected);
     }
+
+    // spotless:off
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(
+                arguments("The Curious Case of Benjamin Button", "6"),
+                arguments(" The first character is a blank", "6"),
+                arguments("The last character is a blank", "6")
+        );
+    }
+    // spotless:on
 }

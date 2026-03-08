@@ -1,35 +1,35 @@
 package boj.problems;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Files;
+import java.io.StringReader;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class No1978Test {
-    File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No1978_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No1978_output.txt";
-
-    @Test
-    @DisplayName("소수 찾기 테스트")
-    void test() throws IOException {
-        System.out.println("소수 찾기 : https://www.acmicpc.net/problem/1978");
-
-        // given
-        BufferedReader given = new BufferedReader(new FileReader(input));
-        String expected = new String(Files.readAllBytes(new File(output).toPath()));
-
-        // when
-        int actual = No1978.solve(given);
-
-        // then
-        assertEquals(expected, String.valueOf(actual));
-
-        given.close();
+    @ParameterizedTest(name = "Case {index}: expected {1}")
+    @MethodSource("provideTestCases")
+    @DisplayName("소수 찾기 : https://www.acmicpc.net/problem/1978")
+    void test(String given, String expected) throws Exception {
+        BufferedReader reader = new BufferedReader(new StringReader(given));
+        String result = No1978.solve(reader);
+        assertThat(result).isEqualTo(expected);
     }
+
+    // spotless:off
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(
+                arguments(
+                        "4\n" +
+                        "1 3 5 7",
+                        "3"
+                )
+        );
+    }
+    // spotless:on
 }

@@ -19,7 +19,8 @@ class No1008Test {
     void test(String given, String expected) throws Exception {
         BufferedReader reader = new BufferedReader(new StringReader(given));
         String result = No1008.solve(reader);
-        assertThat(Double.parseDouble(result)).isCloseTo(Double.parseDouble(expected), within(1e-9));
+        assertThat(Double.parseDouble(result))
+                .isCloseTo(Double.parseDouble(expected), within(1e-9));
     }
 
     // spotless:off

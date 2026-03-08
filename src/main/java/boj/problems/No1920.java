@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.StringTokenizer;
 
 public class No1920 {
-    static String solve(BufferedReader input) throws IOException {
+    public static String solve(BufferedReader input) throws IOException {
         int N = Integer.parseInt(input.readLine());
         StringTokenizer tokens = new StringTokenizer(input.readLine());
         ArrayList<Integer> mList = new ArrayList<>();

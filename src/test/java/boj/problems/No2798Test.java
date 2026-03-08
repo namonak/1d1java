@@ -1,27 +1,40 @@
 package boj.problems;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.StringReader;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-public class No2798Test {
-    @DisplayName("블랙잭 테스트")
-    @ParameterizedTest
-    @CsvSource(
-            value = {"'5 21\n5 6 7 8 9':21", "'10 500\n93 181 245 214 315 36 185 138 216 295':497"},
-            delimiter = ':')
-    void 블랙잭_테스트(String given, String expected) throws IOException {
-        System.out.println("블랙잭 : https://www.acmicpc.net/problem/2798");
-
-        BufferedReader br_given = new BufferedReader(new StringReader(given));
-
-        assertEquals(expected, String.valueOf(No2798.solve(br_given)));
-
-        br_given.close();
+class No2798Test {
+    @ParameterizedTest(name = "Case {index}: expected {1}")
+    @MethodSource("provideTestCases")
+    @DisplayName("블랙잭 : https://www.acmicpc.net/problem/2798")
+    void test(String given, String expected) throws Exception {
+        BufferedReader reader = new BufferedReader(new StringReader(given));
+        String result = No2798.solve(reader);
+        assertThat(result).isEqualTo(expected);
     }
+
+    // spotless:off
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(
+                arguments(
+                        "5 21\n" +
+                        "5 6 7 8 9",
+                        "21"
+                ),
+                arguments(
+                        "10 500\n" +
+                        "93 181 245 214 315 36 185 138 216 295",
+                        "497"
+                )
+        );
+    }
+    // spotless:on
 }

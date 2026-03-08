@@ -5,7 +5,19 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 class No4344 {
-    public static double getAverage(int[] scores) {
+    public static String solve(BufferedReader input) throws IOException {
+        int testCase = Integer.parseInt(input.readLine());
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < testCase; i++) {
+            StringTokenizer st = new StringTokenizer(input.readLine());
+            int[] scores = getScores(st);
+            String formattedResult = getResult(getRate(scores, getAverage(scores)), scores.length);
+            result.append(formattedResult).append("%\n");
+        }
+        return result.toString().trim();
+    }
+
+    private static double getAverage(int[] scores) {
         int sum = 0;
         for (int score : scores) {
             sum += score;
@@ -38,17 +50,5 @@ class No4344 {
         double result = ((double) rate / total) * 100;
 
         return String.format("%.3f", result);
-    }
-
-    static String solve(BufferedReader input) throws IOException {
-        int testCase = Integer.parseInt(input.readLine());
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < testCase; i++) {
-            StringTokenizer st = new StringTokenizer(input.readLine());
-            int[] scores = getScores(st);
-            String formattedResult = getResult(getRate(scores, getAverage(scores)), scores.length);
-            result.append(formattedResult).append("%\n");
-        }
-        return result.toString().trim();
     }
 }

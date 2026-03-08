@@ -1,28 +1,15 @@
 package boj.problems;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class No2581 {
-    public static void main(String[] args) throws IOException {
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        output.write(solve(input) + "\n");
-
-        input.close();
-        output.flush();
-        output.close();
-    }
-
-    static String solve(BufferedReader input) throws IOException {
+    public static String solve(BufferedReader input) throws IOException {
         int M = Integer.parseInt(input.readLine());
         int N = Integer.parseInt(input.readLine());
-        ArrayList primeList = new ArrayList();
+        List<Integer> primeList = new ArrayList<>();
         int sum = 0;
 
         for (int i = M; i <= N; i++) {
@@ -33,10 +20,10 @@ public class No2581 {
             sum += (int) o;
         }
 
-        if (primeList.size() == 0) {
+        if (primeList.isEmpty()) {
             return String.valueOf(-1);
         }
-        return sum + System.lineSeparator() + primeList.get(0);
+        return String.format("%d\n%d", sum, primeList.get(0));
     }
 
     private static boolean isPrime(int number) {

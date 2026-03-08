@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class No2738 {
-    static String solve(BufferedReader input) throws IOException {
+    public static String solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
@@ -30,7 +30,7 @@ public class No2738 {
 
     private static void getRowsOfResult(int M, StringBuilder sb, String[] tmp, int[] matrixA) {
         for (int j = 0; j < M; j++) {
-            sb.append((matrixA[j] += Integer.parseInt(tmp[j])) + " ");
+            sb.append((matrixA[j] += Integer.parseInt(tmp[j]))).append(" ");
             if (j == M - 1) {
                 sb.deleteCharAt(sb.length() - 1);
             }

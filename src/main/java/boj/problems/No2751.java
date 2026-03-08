@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class No2751 {
-    static String solve(BufferedReader input) throws IOException {
+    public static String solve(BufferedReader input) throws IOException {
         int number = Integer.parseInt(input.readLine());
         ArrayList<Integer> sortedList = new ArrayList<>();
         StringBuilder result = new StringBuilder();

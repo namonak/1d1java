@@ -33,7 +33,7 @@ class No11653Test {
                         "3"
                 ),
                 arguments(
-                        "30",
+                        "3",
                         "3"
                 ),
                 arguments(

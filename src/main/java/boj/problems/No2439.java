@@ -18,6 +18,6 @@ public class No2439 {
             }
             sb.append("\n");
         }
-        return sb.toString().trim();
+        return sb.toString();
     }
 }

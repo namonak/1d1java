@@ -1,42 +1,50 @@
 package boj.problems;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.StringReader;
-import java.io.StringWriter;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-public class No14425Test {
-    File path = new File(".");
-    String input = path.getAbsolutePath() + "/src/test/java/boj/problems/No14425_input.txt";
-    String output = path.getAbsolutePath() + "/src/test/java/boj/problems/No14425_output.txt";
-
-    @Test
-    @DisplayName("문자열 집합 테스트")
-    void 문자열_집합_테스트() throws IOException {
-        System.out.println("문자열 집합 : https://www.acmicpc.net/problem/14425");
-
-        BufferedReader br_given = new BufferedReader(new FileReader(input));
-        BufferedReader br_want = new BufferedReader(new FileReader(output));
-        StringWriter sw = new StringWriter();
-        BufferedWriter bw_got = new BufferedWriter(sw);
-
-        No14425.solve(br_given, bw_got);
-
-        bw_got.close();
-
-        BufferedReader br_got = new BufferedReader(new StringReader(sw.getBuffer().toString()));
-
-        String got = br_got.lines().collect(Collectors.joining());
-        String want = br_want.lines().collect(Collectors.joining());
-
-        assertEquals(want, got);
+class No14425Test {
+    @ParameterizedTest(name = "Case {index}: expected {1}")
+    @MethodSource("provideTestCases")
+    @DisplayName("곱셈 : https://www.acmicpc.net/problem/14425")
+    void test(String given, String expected) throws Exception {
+        BufferedReader reader = new BufferedReader(new StringReader(given));
+        String result = No14425.solve(reader);
+        assertThat(result).isEqualTo(expected);
     }
+
+    // spotless:off
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(
+                arguments(
+                        "5 11\n" +
+                        "baekjoononlinejudge\n" +
+                        "startlink\n" +
+                        "codeplus\n" +
+                        "sundaycoding\n" +
+                        "codingsh\n" +
+                        "baekjoon\n" +
+                        "codeplus\n" +
+                        "codeminus\n" +
+                        "startlink\n" +
+                        "starlink\n" +
+                        "sundaycoding\n" +
+                        "codingsh\n" +
+                        "codinghs\n" +
+                        "sondaycoding\n" +
+                        "startrink\n" +
+                        "icerink",
+                        "4"
+                )
+        );
+    }
+    // spotless:on
 }

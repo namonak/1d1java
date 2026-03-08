@@ -11,18 +11,7 @@ public class No2525 {
     public static final int ONE_HOUR = 60;
     public static final int ONE_DAY = 24;
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        output.write(solve(input) + "\n");
-
-        input.close();
-        output.flush();
-        output.close();
-    }
-
-    static String solve(BufferedReader input) throws IOException {
+    public static String solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
 
         int hour = Integer.parseInt(st.nextToken());

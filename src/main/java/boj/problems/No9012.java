@@ -14,7 +14,7 @@ public class No9012 {
             String[] line = input.readLine().split("");
             getResult(sb, stack, line);
         }
-        return sb.toString();
+        return sb.toString().trim();
     }
 
     private static void getResult(StringBuilder sb, Stack<String> stack, String[] line) {

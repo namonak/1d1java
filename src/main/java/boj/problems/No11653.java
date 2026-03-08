@@ -20,7 +20,7 @@ public class No11653 {
         if (number > 1) {
             sb.append(number).append("\n");
         }
-        return sb.toString();
+        return sb.toString().trim();
     }
 
     private static int getNumber(int number, StringBuilder sb, int div) {

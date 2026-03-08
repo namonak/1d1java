@@ -1,39 +1,48 @@
 package boj.problems;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Files;
+import java.io.StringReader;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-public class No25304Test {
-    public static final int TESTCASE_NUM = 2;
-
-    File path = new File(".");
-    String[] input = new String[TESTCASE_NUM];
-    String[] output = new String[TESTCASE_NUM];
-
-    @Test
-    @DisplayName("영수증")
-    void test() throws IOException {
-        System.out.println("영수증 : https://www.acmicpc.net/problem/25304");
-        setInput();
-        for (int i = 0; i < TESTCASE_NUM; i++) {
-            BufferedReader given = new BufferedReader(new FileReader(input[i]));
-            String expected = new String(Files.readAllBytes(new File(output[i]).toPath()));
-            assertThat(No25304.solve(given)).isEqualTo(expected);
-            given.close();
-        }
+class No25304Test {
+    @ParameterizedTest(name = "Case {index}: expected {1}")
+    @MethodSource("provideTestCases")
+    @DisplayName("영수증 : https://www.acmicpc.net/problem/25304")
+    void test(String given, String expected) throws Exception {
+        BufferedReader reader = new BufferedReader(new StringReader(given));
+        String result = No25304.solve(reader);
+        assertThat(result).isEqualTo(expected);
     }
 
-    private void setInput() {
-        input[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/No25304_input_1.txt";
-        output[0] = path.getAbsolutePath() + "/src/test/java/boj/problems/No25304_output_1.txt";
-        input[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/No25304_input_2.txt";
-        output[1] = path.getAbsolutePath() + "/src/test/java/boj/problems/No25304_output_2.txt";
+    // spotless:off
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(
+                arguments(
+                        "260000\n" +
+                        "4\n" +
+                        "20000 5\n" +
+                        "30000 2\n" +
+                        "10000 6\n" +
+                        "5000 8",
+                        "Yes"
+                ),
+                arguments(
+                        "250000\n" +
+                        "4\n" +
+                        "20000 5\n" +
+                        "30000 2\n" +
+                        "10000 6\n" +
+                        "5000 8",
+                        "No"
+                )
+        );
     }
+    // spotless:on
 }

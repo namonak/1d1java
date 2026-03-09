@@ -25,9 +25,13 @@ public class No16236 {
 
     public static String solve(BufferedReader input) throws IOException {
         int N = Integer.parseInt(input.readLine());
+        if (N <= 0) {
+            throw new IllegalArgumentException("N must be positive.");
+        }
         int[][] map = new int[N][N];
 
         int sr = 0, sc = 0; // 상어 위치
+        boolean sharkFound = false;
         for (int r = 0; r < N; r++) {
             StringTokenizer st = new StringTokenizer(input.readLine());
             for (int c = 0; c < N; c++) {
@@ -35,9 +39,13 @@ public class No16236 {
                 if (map[r][c] == 9) {
                     sr = r;
                     sc = c;
+                    sharkFound = true;
                     map[r][c] = 0; // 상어 위치 초기화
                 }
             }
+        }
+        if (!sharkFound || !isInRange(N, sr, sc)) {
+            throw new IllegalArgumentException("Shark start position is invalid.");
         }
 
         int size = 2; // 초기 크기
@@ -68,6 +76,10 @@ public class No16236 {
 
     // BFS로 가장 가까운 먹을 수 있는 물고기 찾기
     private static FishTarget bfsFindFish(int[][] map, int N, int sr, int sc, int size) {
+        if (N <= 0 || !isInRange(N, sr, sc)) {
+            return null;
+        }
+
         boolean[][] visited = new boolean[N][N];
         Queue<int[]> q = new ArrayDeque<>();
 

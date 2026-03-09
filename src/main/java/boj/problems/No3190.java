@@ -25,6 +25,9 @@ public class No3190 {
 
     public static String solve(BufferedReader input) throws IOException {
         int n = Integer.parseInt(input.readLine()); // 보드 크기
+        if (n <= 0) {
+            throw new IllegalArgumentException("Board size must be positive.");
+        }
         boolean[][] apple = new boolean[n + 1][n + 1];
         boolean[][] occupied = new boolean[n + 1][n + 1];
 
@@ -53,6 +56,7 @@ public class No3190 {
 
     private static int simulate(
             int n, boolean[][] apple, boolean[][] occupied, Map<Integer, Character> turnInfo) {
+        validateBoardState(n, apple, occupied);
 
         Deque<Cell> snake = new ArrayDeque<>();
         snake.addLast(new Cell(1, 1)); // initial position
@@ -69,7 +73,9 @@ public class No3190 {
             int nc = head.col + DC[dir];
 
             // --- 1. 벽 충돌 체크 ---
-            if (!isInsideBoard(n, nr, nc)) {
+            if (!isInsideBoard(n, nr, nc)
+                    || !isValidIndex(apple, nr, nc)
+                    || !isValidIndex(occupied, nr, nc)) {
                 return time;
             }
 
@@ -89,6 +95,9 @@ public class No3190 {
             } else {
                 // 사과 없으면 꼬리 줄이기
                 Cell tail = snake.removeFirst();
+                if (!isValidIndex(occupied, tail.row, tail.col)) {
+                    throw new IllegalStateException("Snake tail is outside of board.");
+                }
                 occupied[tail.row][tail.col] = false;
             }
 
@@ -106,5 +115,18 @@ public class No3190 {
 
     private static boolean isInsideBoard(int boardSize, int row, int col) {
         return row >= 1 && row <= boardSize && col >= 1 && col <= boardSize;
+    }
+
+    private static boolean isValidIndex(boolean[][] board, int row, int col) {
+        return row >= 0 && row < board.length && col >= 0 && col < board[row].length;
+    }
+
+    private static void validateBoardState(int n, boolean[][] apple, boolean[][] occupied) {
+        if (!isInsideBoard(n, 1, 1)) {
+            throw new IllegalArgumentException("Invalid board size: " + n);
+        }
+        if (!isValidIndex(apple, 1, 1) || !isValidIndex(occupied, 1, 1)) {
+            throw new IllegalArgumentException("Board arrays do not match the given size.");
+        }
     }
 }

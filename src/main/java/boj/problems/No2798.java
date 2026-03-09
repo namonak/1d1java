@@ -23,29 +23,55 @@ public class No2798 {
     }
 
     private static int getResult(int[] arr, int n, int givenNumber) {
-        int result = 0;
+        int best = 0;
 
         for (int i = 0; i < n - 2; i++) {
             if (arr[i] > givenNumber) {
                 continue;
             }
-            for (int j = i + 1; j < n - 1; j++) {
-                if (arr[i] + arr[j] > givenNumber) {
-                    continue;
-                }
-                for (int k = j + 1; k < n; k++) {
-                    int temp = arr[i] + arr[j] + arr[k];
-
-                    if (temp == givenNumber) {
-                        return temp;
-                    }
-
-                    if (temp > result && temp < givenNumber) {
-                        result = temp;
-                    }
-                }
+            best = findBestWithFirstCard(arr, n, givenNumber, i, best);
+            if (best == givenNumber) {
+                return best;
             }
         }
-        return result;
+        return best;
+    }
+
+    private static int findBestWithFirstCard(
+            int[] arr, int n, int givenNumber, int firstIndex, int currentBest) {
+        int best = currentBest;
+
+        for (int j = firstIndex + 1; j < n - 1; j++) {
+            int firstTwoSum = arr[firstIndex] + arr[j];
+            if (firstTwoSum > givenNumber) {
+                continue;
+            }
+
+            best = findBestWithThirdCard(arr, n, givenNumber, j, firstTwoSum, best);
+            if (best == givenNumber) {
+                return best;
+            }
+        }
+
+        return best;
+    }
+
+    private static int findBestWithThirdCard(
+            int[] arr, int n, int givenNumber, int secondIndex, int firstTwoSum, int currentBest) {
+        int best = currentBest;
+
+        for (int k = secondIndex + 1; k < n; k++) {
+            int sum = firstTwoSum + arr[k];
+
+            if (sum == givenNumber) {
+                return sum;
+            }
+
+            if (sum > best && sum < givenNumber) {
+                best = sum;
+            }
+        }
+
+        return best;
     }
 }

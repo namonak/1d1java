@@ -11,6 +11,18 @@ public class No16236 {
     private static final int[] DR = {-1, 0, 0, 1}; // 상, 좌, 우, 하 (우선순위: 상→좌→우→하)
     private static final int[] DC = {0, -1, 1, 0};
 
+    private static final class FishTarget {
+        private final int row;
+        private final int col;
+        private final int distance;
+
+        private FishTarget(int row, int col, int distance) {
+            this.row = row;
+            this.col = col;
+            this.distance = distance;
+        }
+    }
+
     public static String solve(BufferedReader input) throws IOException {
         int N = Integer.parseInt(input.readLine());
         int[][] map = new int[N][N];
@@ -33,20 +45,16 @@ public class No16236 {
         int time = 0; // 이동 시간 누적
 
         while (true) {
-            int[] target = bfsFindFish(map, N, sr, sc, size);
+            FishTarget target = bfsFindFish(map, N, sr, sc, size);
             if (target == null) break; // 더 이상 먹을 수 없음
 
-            int tr = target[0];
-            int tc = target[1];
-            int dist = target[2];
-
-            time += dist;
+            time += target.distance;
             eaten++;
 
             // 물고기 먹기
-            map[tr][tc] = 0;
-            sr = tr;
-            sc = tc;
+            map[target.row][target.col] = 0;
+            sr = target.row;
+            sc = target.col;
 
             // 크기 증가 조건
             if (eaten == size) {
@@ -59,7 +67,7 @@ public class No16236 {
     }
 
     // BFS로 가장 가까운 먹을 수 있는 물고기 찾기
-    private static int[] bfsFindFish(int[][] map, int N, int sr, int sc, int size) {
+    private static FishTarget bfsFindFish(int[][] map, int N, int sr, int sc, int size) {
         boolean[][] visited = new boolean[N][N];
         Queue<int[]> q = new ArrayDeque<>();
 
@@ -67,10 +75,10 @@ public class No16236 {
         q.offer(new int[] {sr, sc, 0});
 
         int foundDist = -1;
-        int fishR = -1, fishC = -1;
+        FishTarget bestTarget = null;
 
         while (!q.isEmpty()) {
-            int[] cur = q.poll();
+            int[] cur = q.remove();
             int r = cur[0];
             int c = cur[1];
             int dist = cur[2];
@@ -79,17 +87,10 @@ public class No16236 {
             if (foundDist != -1 && dist > foundDist) break;
 
             // 먹을 수 있는 물고기
-            if (map[r][c] != 0 && map[r][c] < size) {
-                if (foundDist == -1) {
+            if (isEdibleFish(map[r][c], size)) {
+                if (bestTarget == null || isHigherPriority(r, c, bestTarget.row, bestTarget.col)) {
+                    bestTarget = new FishTarget(r, c, dist);
                     foundDist = dist;
-                    fishR = r;
-                    fishC = c;
-                } else {
-                    // 규칙: 가장 위 → 가장 왼쪽
-                    if (r < fishR || (r == fishR && c < fishC)) {
-                        fishR = r;
-                        fishC = c;
-                    }
                 }
             }
 
@@ -98,16 +99,36 @@ public class No16236 {
                 int nr = r + DR[d];
                 int nc = c + DC[d];
 
-                if (nr < 0 || nr >= N || nc < 0 || nc >= N) continue; // 인덱스 안전
-                if (visited[nr][nc]) continue;
-                if (map[nr][nc] > size) continue; // 지나갈 수 없음
+                if (!canMove(map, visited, N, size, nr, nc)) continue;
 
                 visited[nr][nc] = true;
                 q.offer(new int[] {nr, nc, dist + 1});
             }
         }
 
-        if (foundDist == -1) return null; // 먹을 물고기 없음
-        return new int[] {fishR, fishC, foundDist};
+        return bestTarget;
+    }
+
+    private static boolean canMove(
+            int[][] map, boolean[][] visited, int n, int size, int nextRow, int nextCol) {
+        if (!isInRange(n, nextRow, nextCol)) {
+            return false;
+        }
+        if (visited[nextRow][nextCol]) {
+            return false;
+        }
+        return map[nextRow][nextCol] <= size;
+    }
+
+    private static boolean isInRange(int n, int row, int col) {
+        return row >= 0 && row < n && col >= 0 && col < n;
+    }
+
+    private static boolean isEdibleFish(int fishSize, int sharkSize) {
+        return fishSize != 0 && fishSize < sharkSize;
+    }
+
+    private static boolean isHigherPriority(int row, int col, int bestRow, int bestCol) {
+        return row < bestRow || (row == bestRow && col < bestCol);
     }
 }

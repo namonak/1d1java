@@ -45,7 +45,9 @@ public class No18258 {
                         continue;
                     }
                     sb.append(deque.peekLast()).append("\n");
-                    break;
+                    continue;
+                default:
+                    throw new IllegalArgumentException("Unknown command: " + command);
             }
         }
         return sb.toString().trim();

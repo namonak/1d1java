@@ -13,6 +13,16 @@ public class No3190 {
     private static final int[] DR = {0, 1, 0, -1};
     private static final int[] DC = {1, 0, -1, 0};
 
+    private static final class Cell {
+        private final int row;
+        private final int col;
+
+        private Cell(int row, int col) {
+            this.row = row;
+            this.col = col;
+        }
+    }
+
     public static String solve(BufferedReader input) throws IOException {
         int n = Integer.parseInt(input.readLine()); // 보드 크기
         boolean[][] apple = new boolean[n + 1][n + 1];
@@ -23,6 +33,9 @@ public class No3190 {
             StringTokenizer st = new StringTokenizer(input.readLine());
             int r = Integer.parseInt(st.nextToken());
             int c = Integer.parseInt(st.nextToken());
+            if (!isInsideBoard(n, r, c)) {
+                throw new IllegalArgumentException("Apple position out of board: " + r + ", " + c);
+            }
             apple[r][c] = true;
         }
 
@@ -41,8 +54,8 @@ public class No3190 {
     private static int simulate(
             int n, boolean[][] apple, boolean[][] occupied, Map<Integer, Character> turnInfo) {
 
-        Deque<int[]> snake = new ArrayDeque<>();
-        snake.addLast(new int[] {1, 1}); // initial position
+        Deque<Cell> snake = new ArrayDeque<>();
+        snake.addLast(new Cell(1, 1)); // initial position
         occupied[1][1] = true;
 
         int time = 0;
@@ -51,12 +64,12 @@ public class No3190 {
         while (true) {
             time++;
 
-            int[] head = snake.peekLast();
-            int nr = head[0] + DR[dir];
-            int nc = head[1] + DC[dir];
+            Cell head = snake.getLast();
+            int nr = head.row + DR[dir];
+            int nc = head.col + DC[dir];
 
             // --- 1. 벽 충돌 체크 ---
-            if (nr < 1 || nr > n || nc < 1 || nc > n) {
+            if (!isInsideBoard(n, nr, nc)) {
                 return time;
             }
 
@@ -66,7 +79,7 @@ public class No3190 {
             }
 
             // --- 3. 머리 이동 ---
-            snake.addLast(new int[] {nr, nc});
+            snake.addLast(new Cell(nr, nc));
             occupied[nr][nc] = true;
 
             // --- 4. 사과 여부 판단 ---
@@ -75,13 +88,13 @@ public class No3190 {
                 apple[nr][nc] = false;
             } else {
                 // 사과 없으면 꼬리 줄이기
-                int[] tail = snake.pollFirst();
-                occupied[tail[0]][tail[1]] = false;
+                Cell tail = snake.removeFirst();
+                occupied[tail.row][tail.col] = false;
             }
 
             // --- 5. 방향 전환 ---
-            if (turnInfo.containsKey(time)) {
-                char turn = turnInfo.get(time);
+            Character turn = turnInfo.get(time);
+            if (turn != null) {
                 if (turn == 'L') {
                     dir = (dir + 3) % 4;
                 } else {
@@ -89,5 +102,9 @@ public class No3190 {
                 }
             }
         }
+    }
+
+    private static boolean isInsideBoard(int boardSize, int row, int col) {
+        return row >= 1 && row <= boardSize && col >= 1 && col <= boardSize;
     }
 }

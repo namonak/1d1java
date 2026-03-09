@@ -11,33 +11,39 @@ public class No1654 {
         int numOfLanCable = Integer.parseInt(st.nextToken());
         int numOfReq = Integer.parseInt(st.nextToken());
         int[] arrCables = new int[numOfLanCable];
-        long max = 0;
-        long min = 0;
-        long mid;
+        long maxLength = 0;
 
         for (int i = 0; i < numOfLanCable; ++i) {
             arrCables[i] = Integer.parseInt(input.readLine());
-            if (max <= arrCables[i]) {
-                max = arrCables[i];
+            if (maxLength < arrCables[i]) {
+                maxLength = arrCables[i];
             }
         }
 
-        max++;
+        long left = 1;
+        long right = maxLength;
+        long answer = 0;
 
-        while (min < max) {
-            long result = 0;
-            mid = (min + max) / 2;
-            for (int i = 0; i < numOfLanCable; ++i) {
-                result += arrCables[i] / mid;
-            }
+        while (left <= right) {
+            long mid = (left + right) / 2;
+            long result = getLanCableCount(arrCables, mid);
 
-            if (result < numOfReq) {
-                max = mid;
-            } else {
-                min = mid + 1;
+            if (result >= numOfReq) {
+                answer = mid;
+                left = mid + 1;
+                continue;
             }
+            right = mid - 1;
         }
 
-        return String.valueOf(min - 1);
+        return String.valueOf(answer);
+    }
+
+    private static long getLanCableCount(int[] arrCables, long cableLength) {
+        long result = 0;
+        for (int cable : arrCables) {
+            result += cable / cableLength;
+        }
+        return result;
     }
 }

@@ -2,14 +2,19 @@ package boj.problems;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.StringTokenizer;
 
 public class No1085 {
     public static String solve(BufferedReader input) throws IOException {
-        String[] inputString = input.readLine().split(" ");
-        int x = Integer.parseInt(inputString[0]);
-        int y = Integer.parseInt(inputString[1]);
-        int w = Integer.parseInt(inputString[2]);
-        int h = Integer.parseInt(inputString[3]);
+        StringTokenizer st = new StringTokenizer(input.readLine());
+        if (st.countTokens() < 4) {
+            throw new IllegalArgumentException("Expected 4 integers.");
+        }
+
+        int x = Integer.parseInt(st.nextToken());
+        int y = Integer.parseInt(st.nextToken());
+        int w = Integer.parseInt(st.nextToken());
+        int h = Integer.parseInt(st.nextToken());
 
         return String.valueOf(getResult(x, y, w, h));
     }

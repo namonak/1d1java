@@ -33,10 +33,15 @@ public class No1157 {
     }
 
     private static void getAlphabetCount(String str, int[] alphabet, int i) {
-        if ('a' <= str.charAt(i) && str.charAt(i) <= 'z') {
-            alphabet[str.charAt(i) - 'a']++;
-        } else {
-            alphabet[str.charAt(i) - 'A']++;
+        char letter = str.charAt(i);
+
+        if ('a' <= letter && letter <= 'z') {
+            alphabet[letter - 'a']++;
+            return;
+        }
+
+        if ('A' <= letter && letter <= 'Z') {
+            alphabet[letter - 'A']++;
         }
     }
 }

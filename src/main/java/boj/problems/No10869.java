@@ -13,6 +13,10 @@ public class No10869 {
     }
 
     private static String getResult(int a, int b) {
+        if (b == 0) {
+            throw new IllegalArgumentException("b must not be zero.");
+        }
+
         String result = "";
 
         result += a + b + "\n";

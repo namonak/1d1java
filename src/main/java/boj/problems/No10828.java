@@ -55,8 +55,9 @@ public class No10828 {
 
         for (int i = 0; i < n; i++) {
             StringTokenizer st = new StringTokenizer(input.readLine(), " ");
+            String command = st.nextToken();
 
-            switch (st.nextToken()) {
+            switch (command) {
                 case "push":
                     stack.push(Integer.parseInt(st.nextToken()));
                     break;
@@ -72,6 +73,8 @@ public class No10828 {
                 case "top":
                     result.append(stack.top()).append("\n");
                     break;
+                default:
+                    throw new IllegalArgumentException("Unknown command: " + command);
             }
         }
         return result.toString().trim();

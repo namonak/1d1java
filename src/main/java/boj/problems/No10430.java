@@ -15,6 +15,10 @@ public class No10430 {
     }
 
     private static String getResult(int A, int B, int C) {
+        if (C == 0) {
+            throw new IllegalArgumentException("C must not be zero.");
+        }
+
         return (A + B) % C
                 + "\n"
                 + ((A % C) + (B % C)) % C

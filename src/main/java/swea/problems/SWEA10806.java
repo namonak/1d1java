@@ -60,7 +60,7 @@ public class SWEA10806 {
             sb.append("#").append(tc).append(" ").append(answer).append("\n");
         }
 
-        return sb.toString();
+        return sb.toString().trim();
     }
 
     private static class State implements Comparable<State> {

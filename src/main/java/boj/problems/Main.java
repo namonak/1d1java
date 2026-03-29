@@ -6,6 +6,6 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws Exception {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println(No14889.solve(input));
+        System.out.println(No2293.solve(input));
     }
 }

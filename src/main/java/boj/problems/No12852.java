@@ -52,6 +52,6 @@ public class No12852 {
             current = prev[current];
         }
 
-        return sb.toString().trim();
+        return sb.toString();
     }
 }

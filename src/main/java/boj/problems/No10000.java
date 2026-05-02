@@ -7,6 +7,8 @@ import java.util.Comparator;
 
 public class No10000 {
 
+    private No10000() {}
+
     private static final Comparator<Circle> BY_LEFT_ASC_RIGHT_DESC =
             new Comparator<Circle>() {
                 @Override

@@ -9,6 +9,8 @@ import java.util.TreeSet;
 
 public class No2261 {
 
+    private No2261() {}
+
     private static final Comparator<Point> BY_X =
             new Comparator<Point>() {
                 @Override

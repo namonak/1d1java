@@ -9,6 +9,8 @@ import java.util.PriorityQueue;
 
 public class No1162 {
 
+    private No1162() {}
+
     private static final long INF = Long.MAX_VALUE / 4;
 
     private static class Edge {

@@ -12,25 +12,19 @@ public class No2261 {
     private No2261() {}
 
     private static final Comparator<Point> BY_X =
-            new Comparator<Point>() {
-                @Override
-                public int compare(Point a, Point b) {
-                    if (a.x != b.x) {
-                        return Integer.compare(a.x, b.x);
-                    }
-                    return Integer.compare(a.y, b.y);
+            (a, b) -> {
+                if (a.x != b.x) {
+                    return Integer.compare(a.x, b.x);
                 }
+                return Integer.compare(a.y, b.y);
             };
 
     private static final Comparator<Point> BY_Y =
-            new Comparator<Point>() {
-                @Override
-                public int compare(Point a, Point b) {
-                    if (a.y != b.y) {
-                        return Integer.compare(a.y, b.y);
-                    }
-                    return Integer.compare(a.x, b.x);
+            (a, b) -> {
+                if (a.y != b.y) {
+                    return Integer.compare(a.y, b.y);
                 }
+                return Integer.compare(a.x, b.x);
             };
 
     private static class Point {
@@ -97,7 +91,7 @@ public class No2261 {
             Point current = points[right];
 
             while (left < right) {
-                long dx = current.x - points[left].x;
+                long dx = (long) current.x - points[left].x;
                 if (dx * dx < answer) {
                     break;
                 }

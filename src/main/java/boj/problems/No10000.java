@@ -10,14 +10,11 @@ public class No10000 {
     private No10000() {}
 
     private static final Comparator<Circle> BY_LEFT_ASC_RIGHT_DESC =
-            new Comparator<Circle>() {
-                @Override
-                public int compare(Circle a, Circle b) {
-                    if (a.left != b.left) {
-                        return Long.compare(a.left, b.left);
-                    }
-                    return Long.compare(b.right, a.right);
+            (a, b) -> {
+                if (a.left != b.left) {
+                    return Long.compare(a.left, b.left);
                 }
+                return Long.compare(b.right, a.right);
             };
 
     private static class Circle {

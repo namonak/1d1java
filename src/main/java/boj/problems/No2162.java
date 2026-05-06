@@ -5,8 +5,6 @@ import java.io.IOException;
 
 public class No2162 {
 
-    private No2162() {}
-
     private static class Line {
         long x1;
         long y1;

@@ -24,17 +24,17 @@ public class No16236 {
     }
 
     public static String solve(BufferedReader input) throws IOException {
-        int N = Integer.parseInt(input.readLine());
-        if (N <= 0) {
+        int n = Integer.parseInt(input.readLine());
+        if (n <= 0) {
             throw new IllegalArgumentException("N must be positive.");
         }
-        int[][] map = new int[N][N];
+        int[][] map = new int[n][n];
 
         int sr = 0, sc = 0; // 상어 위치
         boolean sharkFound = false;
-        for (int r = 0; r < N; r++) {
+        for (int r = 0; r < n; r++) {
             StringTokenizer st = new StringTokenizer(input.readLine());
-            for (int c = 0; c < N; c++) {
+            for (int c = 0; c < n; c++) {
                 map[r][c] = Integer.parseInt(st.nextToken());
                 if (map[r][c] == 9) {
                     sr = r;
@@ -44,7 +44,7 @@ public class No16236 {
                 }
             }
         }
-        if (!sharkFound || !isInRange(N, sr, sc)) {
+        if (!sharkFound || !isInRange(n, sr, sc)) {
             throw new IllegalArgumentException("Shark start position is invalid.");
         }
 
@@ -53,7 +53,7 @@ public class No16236 {
         int time = 0; // 이동 시간 누적
 
         while (true) {
-            FishTarget target = bfsFindFish(map, N, sr, sc, size);
+            FishTarget target = bfsFindFish(map, n, sr, sc, size);
             if (target == null) break; // 더 이상 먹을 수 없음
 
             time += target.distance;
@@ -75,12 +75,12 @@ public class No16236 {
     }
 
     // BFS로 가장 가까운 먹을 수 있는 물고기 찾기
-    private static FishTarget bfsFindFish(int[][] map, int N, int sr, int sc, int size) {
-        if (N <= 0 || !isInRange(N, sr, sc)) {
+    private static FishTarget bfsFindFish(int[][] map, int n, int sr, int sc, int size) {
+        if (n <= 0 || !isInRange(n, sr, sc)) {
             return null;
         }
 
-        boolean[][] visited = new boolean[N][N];
+        boolean[][] visited = new boolean[n][n];
         Queue<int[]> q = new ArrayDeque<>();
 
         visited[sr][sc] = true;
@@ -111,7 +111,7 @@ public class No16236 {
                 int nr = r + DR[d];
                 int nc = c + DC[d];
 
-                if (!canMove(map, visited, N, size, nr, nc)) continue;
+                if (!canMove(map, visited, n, size, nr, nc)) continue;
 
                 visited[nr][nc] = true;
                 q.offer(new int[] {nr, nc, dist + 1});

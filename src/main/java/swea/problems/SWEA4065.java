@@ -6,9 +6,9 @@ public class SWEA4065 {
     public static String solve(BufferedReader br) throws Exception {
         StringBuilder result = new StringBuilder();
 
-        int T = Integer.parseInt(br.readLine().trim());
+        int testCaseCount = Integer.parseInt(br.readLine().trim());
 
-        for (int t = 1; t <= T; t++) {
+        for (int t = 1; t <= testCaseCount; t++) {
             String strA = br.readLine().trim();
             String strB = br.readLine().trim();
 

@@ -7,47 +7,47 @@ import java.util.StringTokenizer;
 public class No2738 {
     public static String solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
-        int[][] matrixA = new int[N][M];
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
+        int[][] matrixA = new int[n][m];
         StringBuilder sb = new StringBuilder();
 
-        makeMatrix(input, N, M, matrixA);
+        makeMatrix(input, n, m, matrixA);
 
-        return getResult(input, N, M, matrixA, sb).trim();
+        return getResult(input, n, m, matrixA, sb).trim();
     }
 
     private static String getResult(
-            BufferedReader input, int N, int M, int[][] matrixA, StringBuilder sb)
+            BufferedReader input, int n, int m, int[][] matrixA, StringBuilder sb)
             throws IOException {
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             String[] tmp = input.readLine().split(" ");
-            getRowsOfResult(M, sb, tmp, matrixA[i]);
+            getRowsOfResult(m, sb, tmp, matrixA[i]);
         }
 
         return sb.toString();
     }
 
-    private static void getRowsOfResult(int M, StringBuilder sb, String[] tmp, int[] matrixA) {
-        for (int j = 0; j < M; j++) {
+    private static void getRowsOfResult(int m, StringBuilder sb, String[] tmp, int[] matrixA) {
+        for (int j = 0; j < m; j++) {
             sb.append((matrixA[j] += Integer.parseInt(tmp[j]))).append(" ");
-            if (j == M - 1) {
+            if (j == m - 1) {
                 sb.deleteCharAt(sb.length() - 1);
             }
         }
         sb.append("\n");
     }
 
-    private static void makeMatrix(BufferedReader input, int N, int M, int[][] matrixA)
+    private static void makeMatrix(BufferedReader input, int n, int m, int[][] matrixA)
             throws IOException {
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             String[] tmp = input.readLine().split(" ");
-            getRowsOfMatrix(M, tmp, matrixA[i]);
+            getRowsOfMatrix(m, tmp, matrixA[i]);
         }
     }
 
-    private static void getRowsOfMatrix(int M, String[] tmp, int[] matrixA) {
-        for (int j = 0; j < M; j++) {
+    private static void getRowsOfMatrix(int m, String[] tmp, int[] matrixA) {
+        for (int j = 0; j < m; j++) {
             matrixA[j] = Integer.parseInt(tmp[j]);
         }
     }

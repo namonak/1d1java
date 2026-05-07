@@ -45,12 +45,12 @@ public class No14502 {
         }
 
         int maxSafe = 0;
-        int K = emptyList.size();
+        int emptySize = emptyList.size();
 
         // 3중 for 조합 생성
-        for (int i = 0; i < K - 2; i++) {
-            for (int j = i + 1; j < K - 1; j++) {
-                for (int k = j + 1; k < K; k++) {
+        for (int i = 0; i < emptySize - 2; i++) {
+            for (int j = i + 1; j < emptySize - 1; j++) {
+                for (int k = j + 1; k < emptySize; k++) {
 
                     int[][] copy = copyLab();
 

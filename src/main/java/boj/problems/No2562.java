@@ -25,13 +25,13 @@ public class No2562 {
     }
 
     private static int[] makeArray(BufferedReader input) throws IOException {
-        List<Integer> List = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
         String tmp;
 
         while ((tmp = input.readLine()) != null) {
-            List.add(Integer.parseInt(tmp));
+            list.add(Integer.parseInt(tmp));
         }
 
-        return List.stream().mapToInt(i -> i).toArray();
+        return list.stream().mapToInt(i -> i).toArray();
     }
 }

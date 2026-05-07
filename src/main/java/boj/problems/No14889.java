@@ -13,14 +13,14 @@ public class No14889 {
     public static String solve(BufferedReader input) throws IOException {
         N = Integer.parseInt(input.readLine().trim());
 
-        int[][] S = new int[N][N];
+        int[][] s = new int[N][N];
         selected = new boolean[N];
 
         // 입력
         for (int i = 0; i < N; i++) {
             StringTokenizer st = new StringTokenizer(input.readLine());
             for (int j = 0; j < N; j++) {
-                S[i][j] = Integer.parseInt(st.nextToken());
+                s[i][j] = Integer.parseInt(st.nextToken());
             }
         }
 
@@ -28,7 +28,7 @@ public class No14889 {
         W = new int[N][N];
         for (int i = 0; i < N; i++) {
             for (int j = i + 1; j < N; j++) {
-                W[i][j] = S[i][j] + S[j][i];
+                W[i][j] = s[i][j] + s[j][i];
             }
         }
 

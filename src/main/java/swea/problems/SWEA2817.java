@@ -7,9 +7,9 @@ public class SWEA2817 {
     public static String solve(BufferedReader br) throws Exception {
         StringBuilder result = new StringBuilder();
 
-        int T = Integer.parseInt(br.readLine().trim());
+        int testCaseCount = Integer.parseInt(br.readLine().trim());
 
-        for (int t = 1; t <= T; t++) {
+        for (int t = 1; t <= testCaseCount; t++) {
             StringTokenizer st = new StringTokenizer(br.readLine().trim());
             int n = Integer.parseInt(st.nextToken());
             int k = Integer.parseInt(st.nextToken());

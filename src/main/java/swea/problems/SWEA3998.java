@@ -24,10 +24,10 @@ public class SWEA3998 {
     }
 
     public static String solve(BufferedReader br) throws Exception {
-        int T = Integer.parseInt(br.readLine().trim());
+        int testCaseCount = Integer.parseInt(br.readLine().trim());
         StringBuilder sb = new StringBuilder();
 
-        for (int tc = 1; tc <= T; tc++) {
+        for (int tc = 1; tc <= testCaseCount; tc++) {
             N = Integer.parseInt(br.readLine().trim());
 
             for (int i = 1; i <= N; i++) {

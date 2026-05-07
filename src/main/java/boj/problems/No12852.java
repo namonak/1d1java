@@ -6,20 +6,20 @@ import java.io.IOException;
 public class No12852 {
 
     public static String solve(BufferedReader input) throws IOException {
-        int N = Integer.parseInt(input.readLine().trim());
+        int n = Integer.parseInt(input.readLine().trim());
 
         // dp[i]: i를 1로 만드는 최소 연산 횟수
-        int[] dp = new int[N + 1];
+        int[] dp = new int[n + 1];
 
         // prev[i]: i에 도달하기 직전의 숫자
-        int[] prev = new int[N + 1];
+        int[] prev = new int[n + 1];
 
         // 초기값
         dp[1] = 0;
         prev[1] = 0;
 
         // Bottom-Up DP
-        for (int i = 2; i <= N; i++) {
+        for (int i = 2; i <= n; i++) {
             // 1을 빼는 경우
             dp[i] = dp[i - 1] + 1;
             prev[i] = i - 1;
@@ -40,10 +40,10 @@ public class No12852 {
         StringBuilder sb = new StringBuilder();
 
         // 최소 연산 횟수 출력
-        sb.append(dp[N]).append('\n');
+        sb.append(dp[n]).append('\n');
 
         // 경로 복원
-        int current = N;
+        int current = n;
         while (current > 0) {
             sb.append(current).append(' ');
             if (current == 1) {

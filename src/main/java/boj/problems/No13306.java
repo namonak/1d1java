@@ -49,8 +49,8 @@ public class No13306 {
 
         // 명령 저장
         int[] type = new int[total];
-        int[] A = new int[total];
-        int[] B = new int[total];
+        int[] a = new int[total];
+        int[] b = new int[total];
 
         // type = 0 → delete (b)
         // type = 1 → query (c, d)
@@ -59,10 +59,10 @@ public class No13306 {
             type[i] = Integer.parseInt(st.nextToken());
 
             if (type[i] == 0) {
-                A[i] = Integer.parseInt(st.nextToken());
+                a[i] = Integer.parseInt(st.nextToken());
             } else {
-                A[i] = Integer.parseInt(st.nextToken());
-                B[i] = Integer.parseInt(st.nextToken());
+                a[i] = Integer.parseInt(st.nextToken());
+                b[i] = Integer.parseInt(st.nextToken());
             }
         }
 
@@ -79,11 +79,11 @@ public class No13306 {
 
         for (int i = total - 1; i >= 0; i--) {
             if (type[i] == 0) {
-                int b = A[i];
-                union(b, par[b]);
+                int node = a[i];
+                union(node, par[node]);
             } else {
                 // Connectivity 판별 후 즉시 boolean 결과 저장
-                answers[qIndex--] = (find(A[i]) == find(B[i]));
+                answers[qIndex--] = (find(a[i]) == find(b[i]));
             }
         }
 

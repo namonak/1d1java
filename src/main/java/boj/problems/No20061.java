@@ -17,9 +17,9 @@ public class No20061 {
         for (int r = 0; r < 6; r++) Arrays.fill(green[r], 0);
         for (int r = 0; r < 4; r++) Arrays.fill(blue[r], 0);
 
-        int N = Integer.parseInt(input.readLine());
+        int n = Integer.parseInt(input.readLine());
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             StringTokenizer st = new StringTokenizer(input.readLine());
             int t = Integer.parseInt(st.nextToken());
             int x = Integer.parseInt(st.nextToken());

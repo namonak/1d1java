@@ -7,12 +7,12 @@ import java.util.StringTokenizer;
 
 public class No10816 {
     public static String solve(BufferedReader input) throws IOException {
-        int N = Integer.parseInt(input.readLine());
+        int n = Integer.parseInt(input.readLine());
         StringTokenizer st = new StringTokenizer(input.readLine());
         HashMap<String, Integer> cards = new HashMap<>();
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < N; ++i) {
+        for (int i = 0; i < n; ++i) {
             int x = 1;
             String card = st.nextToken();
             if (cards.containsKey(card)) {
@@ -21,10 +21,10 @@ public class No10816 {
             cards.put(card, x);
         }
 
-        int M = Integer.parseInt(input.readLine());
+        int m = Integer.parseInt(input.readLine());
         st = new StringTokenizer(input.readLine());
 
-        for (int i = 0; i < M; ++i) {
+        for (int i = 0; i < m; ++i) {
             String card = st.nextToken();
             String result = cards.get(card) == null ? "0" : cards.get(card).toString();
 

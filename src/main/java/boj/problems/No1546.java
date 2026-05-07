@@ -7,11 +7,11 @@ import java.util.StringTokenizer;
 
 class No1546 {
     public static String solve(BufferedReader input) throws IOException {
-        int TestCase = Integer.parseInt(input.readLine());
+        int testCase = Integer.parseInt(input.readLine());
         StringTokenizer st = new StringTokenizer(input.readLine());
-        int[] arr = new int[TestCase];
+        int[] arr = new int[testCase];
 
-        for (int i = 0; i < TestCase; i++) {
+        for (int i = 0; i < testCase; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 

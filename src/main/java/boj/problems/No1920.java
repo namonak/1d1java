@@ -8,20 +8,20 @@ import java.util.StringTokenizer;
 
 public class No1920 {
     public static String solve(BufferedReader input) throws IOException {
-        int N = Integer.parseInt(input.readLine());
+        int n = Integer.parseInt(input.readLine());
         StringTokenizer tokens = new StringTokenizer(input.readLine());
         ArrayList<Integer> mList = new ArrayList<>();
         StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < N; ++i) {
+        for (int i = 0; i < n; ++i) {
             mList.add(Integer.parseInt(tokens.nextToken()));
         }
 
         Collections.sort(mList);
 
-        int M = Integer.parseInt(input.readLine());
+        int m = Integer.parseInt(input.readLine());
         tokens = new StringTokenizer(input.readLine());
-        for (int i = 0; i < M; ++i) {
+        for (int i = 0; i < m; ++i) {
             if (Collections.binarySearch(mList, Integer.parseInt(tokens.nextToken())) < 0) {
                 result.append("0\n");
             } else {

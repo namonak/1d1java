@@ -8,21 +8,21 @@ import java.util.StringTokenizer;
 
 public class No10815 {
     public static String solve(BufferedReader input) throws IOException {
-        int N = Integer.parseInt(input.readLine());
+        int n = Integer.parseInt(input.readLine());
         StringTokenizer st = new StringTokenizer(input.readLine());
         ArrayList<Integer> cardList = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < N; ++i) {
+        for (int i = 0; i < n; ++i) {
             cardList.add(Integer.parseInt(st.nextToken()));
         }
 
         Collections.sort(cardList);
 
-        int M = Integer.parseInt(input.readLine());
+        int m = Integer.parseInt(input.readLine());
         st = new StringTokenizer(input.readLine());
 
-        for (int i = 0; i < M; ++i) {
+        for (int i = 0; i < m; ++i) {
             if (Collections.binarySearch(cardList, Integer.parseInt(st.nextToken())) < 0) {
                 sb.append("0 ");
             } else {

@@ -12,22 +12,22 @@ public class SWEA5685 {
     public static String solve(BufferedReader br) throws Exception {
         StringBuilder result = new StringBuilder();
 
-        int T = Integer.parseInt(br.readLine().trim());
+        int testCaseCount = Integer.parseInt(br.readLine().trim());
 
-        for (int t = 1; t <= T; t++) {
-            int N = Integer.parseInt(br.readLine().trim());
-            int[] numbers = new int[N];
+        for (int t = 1; t <= testCaseCount; t++) {
+            int n = Integer.parseInt(br.readLine().trim());
+            int[] numbers = new int[n];
             StringTokenizer st = new StringTokenizer(br.readLine().trim());
 
-            for (int i = 0; i < N; i++) {
+            for (int i = 0; i < n; i++) {
                 numbers[i] = Integer.parseInt(st.nextToken());
             }
 
-            long[][] dp = new long[N - 1][COUNT];
+            long[][] dp = new long[n - 1][COUNT];
 
             dp[0][numbers[0]] = 1L;
 
-            for (int i = 1; i < N - 1; i++) {
+            for (int i = 1; i < n - 1; i++) {
                 int currentNum = numbers[i];
                 for (int prevSum = MIN; prevSum <= MAX; prevSum++) {
                     if (dp[i - 1][prevSum] == 0) continue;
@@ -45,7 +45,7 @@ public class SWEA5685 {
                 }
             }
 
-            result.append("#").append(t).append(" ").append(dp[N - 2][numbers[N - 1]]).append("\n");
+            result.append("#").append(t).append(" ").append(dp[n - 2][numbers[n - 1]]).append("\n");
         }
 
         return result.toString().trim();

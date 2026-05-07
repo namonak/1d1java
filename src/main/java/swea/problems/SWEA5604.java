@@ -7,14 +7,14 @@ public class SWEA5604 {
     public static String solve(BufferedReader br) throws Exception {
         StringBuilder sb = new StringBuilder();
 
-        int T = Integer.parseInt(br.readLine());
+        int testCaseCount = Integer.parseInt(br.readLine());
 
-        for (int tc = 1; tc <= T; tc++) {
+        for (int tc = 1; tc <= testCaseCount; tc++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
-            long A = Long.parseLong(st.nextToken());
-            long B = Long.parseLong(st.nextToken());
+            long a = Long.parseLong(st.nextToken());
+            long b = Long.parseLong(st.nextToken());
 
-            long result = sumDigitsRange(A, B);
+            long result = sumDigitsRange(a, b);
             sb.append('#').append(tc).append(' ').append(result).append('\n');
         }
 
@@ -22,22 +22,22 @@ public class SWEA5604 {
     }
 
     /** [A, B] 구간의 자리수 합 = f(B) - f(A - 1) */
-    private static long sumDigitsRange(long A, long B) {
-        if (A == 0) return f(B); // f(−1) = 0 처리
-        return f(B) - f(A - 1);
+    private static long sumDigitsRange(long a, long b) {
+        if (a == 0) return f(b); // f(−1) = 0 처리
+        return f(b) - f(a - 1);
     }
 
     /** f(N): 0부터 N까지의 모든 정수의 '자리수 합'을 계산 시간복잡도 O(log N) */
-    private static long f(long N) {
-        if (N <= 0) return 0;
+    private static long f(long n) {
+        if (n <= 0) return 0;
 
         long sum = 0;
         long factor = 1;
 
-        while (factor <= N) {
-            long high = N / (factor * 10);
-            long cur = (N / factor) % 10;
-            long low = N % factor;
+        while (factor <= n) {
+            long high = n / (factor * 10);
+            long cur = (n / factor) % 10;
+            long low = n % factor;
 
             for (int d = 1; d <= 9; d++) {
                 long cnt = high * factor;

@@ -6,13 +6,13 @@ public class SWEA4038 {
     public static String solve(BufferedReader br) throws Exception {
         StringBuilder result = new StringBuilder();
 
-        int T = Integer.parseInt(br.readLine().trim());
+        int testCaseCount = Integer.parseInt(br.readLine().trim());
 
-        for (int t = 1; t <= T; t++) {
-            String B = br.readLine().trim();
-            String S = br.readLine().trim();
+        for (int t = 1; t <= testCaseCount; t++) {
+            String b = br.readLine().trim();
+            String s = br.readLine().trim();
 
-            int count = kmpSearch(B, S);
+            int count = kmpSearch(b, s);
             result.append("#").append(t).append(" ").append(count).append("\n");
         }
 

@@ -12,24 +12,24 @@ public class SWEA10806 {
 
     public static String solve(BufferedReader br) throws IOException {
 
-        int T = Integer.parseInt(br.readLine().trim());
+        int testCaseCount = Integer.parseInt(br.readLine().trim());
         StringBuilder sb = new StringBuilder();
 
-        for (int tc = 1; tc <= T; tc++) {
+        for (int tc = 1; tc <= testCaseCount; tc++) {
 
-            int N = Integer.parseInt(br.readLine().trim());
-            A = new long[N];
+            int n = Integer.parseInt(br.readLine().trim());
+            A = new long[n];
 
             StringTokenizer st = new StringTokenizer(br.readLine());
-            for (int i = 0; i < N; i++) {
+            for (int i = 0; i < n; i++) {
                 A[i] = Long.parseLong(st.nextToken());
             }
 
-            long K = Long.parseLong(br.readLine().trim());
+            long k = Long.parseLong(br.readLine().trim());
 
             memo = new HashMap<>();
 
-            long answer = dfs(K);
+            long answer = dfs(k);
 
             sb.append("#").append(tc).append(" ").append(answer).append("\n");
         }

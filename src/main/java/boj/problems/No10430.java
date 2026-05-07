@@ -7,24 +7,24 @@ import java.util.StringTokenizer;
 public class No10430 {
     public static String solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
-        int A = Integer.parseInt(st.nextToken());
-        int B = Integer.parseInt(st.nextToken());
-        int C = Integer.parseInt(st.nextToken());
+        int a = Integer.parseInt(st.nextToken());
+        int b = Integer.parseInt(st.nextToken());
+        int c = Integer.parseInt(st.nextToken());
 
-        return getResult(A, B, C);
+        return getResult(a, b, c);
     }
 
-    private static String getResult(int A, int B, int C) {
-        if (C == 0) {
+    private static String getResult(int a, int b, int c) {
+        if (c == 0) {
             throw new IllegalArgumentException("C must not be zero.");
         }
 
-        return (A + B) % C
+        return (a + b) % c
                 + "\n"
-                + ((A % C) + (B % C)) % C
+                + ((a % c) + (b % c)) % c
                 + "\n"
-                + (A * B) % C
+                + (a * b) % c
                 + "\n"
-                + ((A % C) * (B % C)) % C;
+                + ((a % c) * (b % c)) % c;
     }
 }

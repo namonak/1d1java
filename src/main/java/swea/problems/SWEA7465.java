@@ -25,9 +25,9 @@ public class SWEA7465 {
     public static String solve(BufferedReader br) throws Exception {
         StringBuilder sb = new StringBuilder();
 
-        int T = Integer.parseInt(br.readLine().trim());
+        int testCaseCount = Integer.parseInt(br.readLine().trim());
 
-        for (int tc = 1; tc <= T; tc++) {
+        for (int tc = 1; tc <= testCaseCount; tc++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             int n = Integer.parseInt(st.nextToken());
             int m = Integer.parseInt(st.nextToken());

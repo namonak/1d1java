@@ -11,13 +11,13 @@ public class SWEA2005 {
         int testCasesCount = Integer.parseInt(br.readLine().trim());
 
         for (int t = 1; t <= testCasesCount; t++) {
-            int N = Integer.parseInt(br.readLine().trim());
+            int n = Integer.parseInt(br.readLine().trim());
 
-            memo = new int[N][N];
+            memo = new int[n][n];
 
             result.append('#').append(t).append("\n");
 
-            for (int i = 0; i < N; i++) {
+            for (int i = 0; i < n; i++) {
                 for (int j = 0; j <= i; j++) {
                     result.append(dp(i, j)).append(" ");
                 }

@@ -10,16 +10,16 @@ import java.util.StringTokenizer;
 public class No1764 {
     public static String solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
         HashSet<String> list = new HashSet<>();
         ArrayList<String> result = new ArrayList<>();
         int count = 0;
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < N + M; i++) {
+        for (int i = 0; i < n + m; i++) {
             String name = input.readLine();
-            if (i < N) list.add(name);
+            if (i < n) list.add(name);
             else {
                 if (list.contains(name)) {
                     result.add(name);

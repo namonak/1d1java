@@ -7,12 +7,12 @@ import java.util.List;
 
 public class No2581 {
     public static String solve(BufferedReader input) throws IOException {
-        int M = Integer.parseInt(input.readLine());
-        int N = Integer.parseInt(input.readLine());
+        int m = Integer.parseInt(input.readLine());
+        int n = Integer.parseInt(input.readLine());
         List<Integer> primeList = new ArrayList<>();
         int sum = 0;
 
-        for (int i = M; i <= N; i++) {
+        for (int i = m; i <= n; i++) {
             if (isPrime(i)) primeList.add(i);
         }
 

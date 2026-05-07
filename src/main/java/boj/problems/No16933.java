@@ -23,27 +23,27 @@ public class No16933 {
 
     public static String solve(BufferedReader input) throws IOException {
         StringTokenizer st = new StringTokenizer(input.readLine());
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
-        int K = Integer.parseInt(st.nextToken());
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
+        int k = Integer.parseInt(st.nextToken());
 
-        char[][] map = new char[N][M];
-        for (int i = 0; i < N; i++) {
+        char[][] map = new char[n][m];
+        for (int i = 0; i < n; i++) {
             map[i] = input.readLine().toCharArray();
         }
 
         // 🔥 visited[r][c][remainingBreak][day/night]
         // day = 0 → 밤, 1 → 낮
-        boolean[][][][] visited = new boolean[N][M][K + 1][2];
+        boolean[][][][] visited = new boolean[n][m][k + 1][2];
         ArrayDeque<State> q = new ArrayDeque<>();
 
-        visited[0][0][K][1] = true; // dist = 1 → 낮
-        q.offer(new State(0, 0, K, 1));
+        visited[0][0][k][1] = true; // dist = 1 → 낮
+        q.offer(new State(0, 0, k, 1));
 
         while (!q.isEmpty()) {
             State cur = q.poll();
 
-            if (cur.r == N - 1 && cur.c == M - 1) {
+            if (cur.r == n - 1 && cur.c == m - 1) {
                 return Integer.toString(cur.dist);
             }
 
@@ -54,7 +54,7 @@ public class No16933 {
                 int nr = cur.r + DR[d];
                 int nc = cur.c + DC[d];
 
-                if (nr < 0 || nr >= N || nc < 0 || nc >= M) continue;
+                if (nr < 0 || nr >= n || nc < 0 || nc >= m) continue;
 
                 // 빈 칸
                 if (map[nr][nc] == '0') {

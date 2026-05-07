@@ -10,21 +10,21 @@ public class SWEA7088 {
         StringBuilder sb = new StringBuilder(1 << 20); // 출력 버퍼 크게 확보
         StringTokenizer st;
 
-        int T = Integer.parseInt(input.readLine().trim());
+        int testCaseCount = Integer.parseInt(input.readLine().trim());
 
-        for (int tc = 1; tc <= T; tc++) {
+        for (int tc = 1; tc <= testCaseCount; tc++) {
 
             st = new StringTokenizer(input.readLine());
-            int N = Integer.parseInt(st.nextToken());
-            int Q = Integer.parseInt(st.nextToken());
+            int n = Integer.parseInt(st.nextToken());
+            int q = Integer.parseInt(st.nextToken());
 
             // 누적합 배열 (1-indexed)
-            int[] p1 = new int[N + 1];
-            int[] p2 = new int[N + 1];
-            int[] p3 = new int[N + 1];
+            int[] p1 = new int[n + 1];
+            int[] p2 = new int[n + 1];
+            int[] p3 = new int[n + 1];
 
             // 송아지 품종 입력
-            for (int i = 1; i <= N; i++) {
+            for (int i = 1; i <= n; i++) {
                 int breed = Integer.parseInt(input.readLine().trim());
 
                 // 이전 값 복사 (누적)
@@ -45,14 +45,14 @@ public class SWEA7088 {
             sb.append('#').append(tc).append('\n');
 
             // 질의 처리
-            for (int i = 0; i < Q; i++) {
+            for (int i = 0; i < q; i++) {
                 st = new StringTokenizer(input.readLine());
-                int L = Integer.parseInt(st.nextToken());
-                int R = Integer.parseInt(st.nextToken());
+                int l = Integer.parseInt(st.nextToken());
+                int r = Integer.parseInt(st.nextToken());
 
-                int c1 = p1[R] - p1[L - 1];
-                int c2 = p2[R] - p2[L - 1];
-                int c3 = p3[R] - p3[L - 1];
+                int c1 = p1[r] - p1[l - 1];
+                int c2 = p2[r] - p2[l - 1];
+                int c3 = p3[r] - p3[l - 1];
 
                 sb.append(c1).append(' ').append(c2).append(' ').append(c3).append('\n');
             }

@@ -23,11 +23,11 @@ public class SWEA5608 {
         int testCaseCount = Integer.parseInt(br.readLine().trim());
 
         for (int i = 1; i <= testCaseCount; i++) {
-            long M = Long.parseLong(br.readLine().trim());
+            long m = Long.parseLong(br.readLine().trim());
 
             memo = new HashMap<>();
 
-            Result res = solve(M);
+            Result res = solve(m);
 
             result.append("#")
                     .append(i)

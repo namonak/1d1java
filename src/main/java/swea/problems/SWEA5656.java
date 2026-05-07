@@ -13,10 +13,10 @@ public class SWEA5656 {
     static final int[] dc = {0, 0, -1, 1};
 
     public static String solve(BufferedReader br) throws Exception {
-        int T = Integer.parseInt(br.readLine());
+        int testCaseCount = Integer.parseInt(br.readLine());
         StringBuilder sb = new StringBuilder();
 
-        for (int tc = 1; tc <= T; tc++) {
+        for (int tc = 1; tc <= testCaseCount; tc++) {
 
             StringTokenizer st = new StringTokenizer(br.readLine());
             N = Integer.parseInt(st.nextToken());

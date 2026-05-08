@@ -2,12 +2,13 @@ package boj.problems;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Objects;
 
 public class No1157 {
     public static final int NUMBER_OF_LETTERS = 26;
 
     public static String solve(BufferedReader input) throws IOException {
-        String str = input.readLine();
+        String str = Objects.requireNonNull(input.readLine());
         int[] alphabet = new int[NUMBER_OF_LETTERS];
 
         for (int i = 0; i < str.length(); i++) {

@@ -2,6 +2,7 @@ package boj.problems;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Objects;
 
 class No1003 {
     private static final int MAX_N = 40;
@@ -14,10 +15,10 @@ class No1003 {
         }
 
         StringBuilder sb = new StringBuilder();
-        int testCase = Integer.parseInt(input.readLine().trim());
+        int testCase = Integer.parseInt(Objects.requireNonNull(input.readLine()).trim());
 
         for (int i = 0; i < testCase; i++) {
-            int n = Integer.parseInt(input.readLine().trim());
+            int n = Integer.parseInt(Objects.requireNonNull(input.readLine()).trim());
             if (n < 0 || n > MAX_N) {
                 throw new IllegalArgumentException("n must be between 0 and 40: " + n);
             }

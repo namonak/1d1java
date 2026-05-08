@@ -2,11 +2,12 @@ package boj.problems;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Objects;
 
 public class No12852 {
 
     public static String solve(BufferedReader input) throws IOException {
-        int n = Integer.parseInt(input.readLine().trim());
+        int n = Integer.parseInt(Objects.requireNonNull(input.readLine()).trim());
 
         // dp[i]: i를 1로 만드는 최소 연산 횟수
         int[] dp = new int[n + 1];

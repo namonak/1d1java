@@ -3,11 +3,12 @@ package boj.problems;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class No1183 {
     public static String solve(BufferedReader input) throws IOException {
-        int n = Integer.parseInt(input.readLine().trim());
+        int n = Integer.parseInt(Objects.requireNonNull(input.readLine()).trim());
 
         // [예외 차단] N이 비정상적으로 작거나 파일의 끝(EOF)인 경우 방어적 처리
         if (n <= 0) {
@@ -17,7 +18,7 @@ public class No1183 {
         int[] diffs = new int[n];
         StringTokenizer st;
         for (int i = 0; i < n; i++) {
-            st = new StringTokenizer(input.readLine());
+            st = new StringTokenizer(Objects.requireNonNull(input.readLine()));
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
             diffs[i] = b - a; // 각 마법사의 지각/일찍 온 시간의 차이 계산

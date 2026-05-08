@@ -3,6 +3,7 @@ package boj.problems;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayDeque;
+import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class No16933 {
@@ -22,14 +23,14 @@ public class No16933 {
     }
 
     public static String solve(BufferedReader input) throws IOException {
-        StringTokenizer st = new StringTokenizer(input.readLine());
+        StringTokenizer st = new StringTokenizer(Objects.requireNonNull(input.readLine()));
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
         int k = Integer.parseInt(st.nextToken());
 
         char[][] map = new char[n][m];
         for (int i = 0; i < n; i++) {
-            map[i] = input.readLine().toCharArray();
+            map[i] = Objects.requireNonNull(input.readLine()).toCharArray();
         }
 
         // 🔥 visited[r][c][remainingBreak][day/night]

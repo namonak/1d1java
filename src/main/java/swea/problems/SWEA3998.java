@@ -1,6 +1,7 @@
 package swea.problems;
 
 import java.io.BufferedReader;
+import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class SWEA3998 {
@@ -24,17 +25,17 @@ public class SWEA3998 {
     }
 
     public static String solve(BufferedReader br) throws Exception {
-        int testCaseCount = Integer.parseInt(br.readLine().trim());
+        int testCaseCount = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());
         StringBuilder sb = new StringBuilder();
 
         for (int tc = 1; tc <= testCaseCount; tc++) {
-            N = Integer.parseInt(br.readLine().trim());
+            N = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());
 
             for (int i = 1; i <= N; i++) {
                 tree[i] = 0;
             }
 
-            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+            StringTokenizer st = new StringTokenizer(Objects.requireNonNull(br.readLine()), " ");
             long inversionCount = 0;
 
             for (int i = 0; i < N; i++) {

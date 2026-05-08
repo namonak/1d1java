@@ -2,14 +2,15 @@ package boj.problems;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Objects;
 
 public class No8958 {
     public static String solve(BufferedReader input) throws IOException {
-        int n = Integer.parseInt(input.readLine());
+        int n = Integer.parseInt(Objects.requireNonNull(input.readLine()));
         StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < n; i++) {
-            String tmp = input.readLine();
+            String tmp = Objects.requireNonNull(input.readLine());
 
             result.append(getResult(tmp)).append("\n");
         }

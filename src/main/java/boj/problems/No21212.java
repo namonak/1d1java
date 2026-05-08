@@ -1,19 +1,20 @@
 package boj.problems;
 
 import java.io.BufferedReader;
+import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class No21212 {
     public static String solve(BufferedReader input) throws Exception {
         // 첫 번째 줄에서 재료의 개수 N을 읽어옵니다.
-        int n = Integer.parseInt(input.readLine().trim());
+        int n = Integer.parseInt(Objects.requireNonNull(input.readLine()).trim());
 
         // 만들 수 있는 최대 케이크 수를 저장할 변수입니다.
         // 최솟값을 찾아야 하므로 초기값은 가질 수 있는 가장 큰 정수로 설정합니다.
         int maxCakes = Integer.MAX_VALUE;
 
         for (int i = 0; i < n; i++) {
-            StringTokenizer st = new StringTokenizer(input.readLine(), " ");
+            StringTokenizer st = new StringTokenizer(Objects.requireNonNull(input.readLine()), " ");
             int required = Integer.parseInt(st.nextToken()); // 케이크 1개당 필요한 양
             int available = Integer.parseInt(st.nextToken()); // 주방에 있는 양
 

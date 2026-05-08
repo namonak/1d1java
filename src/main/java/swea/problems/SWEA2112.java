@@ -2,6 +2,7 @@ package swea.problems;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class SWEA2112 {
@@ -16,11 +17,11 @@ public class SWEA2112 {
 
     public static String solve(BufferedReader input) throws IOException {
         StringBuilder sb = new StringBuilder();
-        int testCaseCount = Integer.parseInt(input.readLine().trim());
+        int testCaseCount = Integer.parseInt(Objects.requireNonNull(input.readLine()).trim());
 
         for (int tc = 1; tc <= testCaseCount; tc++) {
 
-            StringTokenizer st = new StringTokenizer(input.readLine());
+            StringTokenizer st = new StringTokenizer(Objects.requireNonNull(input.readLine()));
             D = Integer.parseInt(st.nextToken());
             W = Integer.parseInt(st.nextToken());
             K = Integer.parseInt(st.nextToken());
@@ -29,7 +30,7 @@ public class SWEA2112 {
             backup = new int[D][W];
 
             for (int r = 0; r < D; r++) {
-                st = new StringTokenizer(input.readLine());
+                st = new StringTokenizer(Objects.requireNonNull(input.readLine()));
                 for (int c = 0; c < W; c++) {
                     film[r][c] = Integer.parseInt(st.nextToken());
                     backup[r][c] = film[r][c];

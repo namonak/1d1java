@@ -1,6 +1,7 @@
 package swea.problems;
 
 import java.io.BufferedReader;
+import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class SWEA7465 {
@@ -25,10 +26,10 @@ public class SWEA7465 {
     public static String solve(BufferedReader br) throws Exception {
         StringBuilder sb = new StringBuilder();
 
-        int testCaseCount = Integer.parseInt(br.readLine().trim());
+        int testCaseCount = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());
 
         for (int tc = 1; tc <= testCaseCount; tc++) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
+            StringTokenizer st = new StringTokenizer(Objects.requireNonNull(br.readLine()));
             int n = Integer.parseInt(st.nextToken());
             int m = Integer.parseInt(st.nextToken());
 
@@ -39,7 +40,7 @@ public class SWEA7465 {
             int groupCount = n;
 
             for (int i = 0; i < m; i++) {
-                st = new StringTokenizer(br.readLine());
+                st = new StringTokenizer(Objects.requireNonNull(br.readLine()));
                 int a = Integer.parseInt(st.nextToken());
                 int b = Integer.parseInt(st.nextToken());
 

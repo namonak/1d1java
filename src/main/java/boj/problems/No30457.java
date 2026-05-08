@@ -1,15 +1,16 @@
 package boj.problems;
 
 import java.io.BufferedReader;
+import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class No30457 {
     public static String solve(BufferedReader input) throws Exception {
         // 첫째 줄에서 학생의 수 N을 읽어옵니다.
-        int n = Integer.parseInt(input.readLine().trim());
+        int n = Integer.parseInt(Objects.requireNonNull(input.readLine()).trim());
 
         // 둘째 줄에서 학생들의 키 데이터를 읽어옵니다.
-        StringTokenizer st = new StringTokenizer(input.readLine(), " ");
+        StringTokenizer st = new StringTokenizer(Objects.requireNonNull(input.readLine()), " ");
 
         // 키의 범위가 1부터 1000까지이므로, 빈도를 저장할 배열을 1001 크기로 할당합니다.
         int[] counts = new int[1001];

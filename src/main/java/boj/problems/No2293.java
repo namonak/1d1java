@@ -2,16 +2,17 @@ package boj.problems;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Objects;
 
 public class No2293 {
     public static String solve(BufferedReader input) throws IOException {
-        String[] firstLine = input.readLine().split(" ");
+        String[] firstLine = Objects.requireNonNull(input.readLine()).split(" ");
         int n = Integer.parseInt(firstLine[0]);
         int k = Integer.parseInt(firstLine[1]);
 
         int[] coins = new int[n];
         for (int i = 0; i < n; i++) {
-            coins[i] = Integer.parseInt(input.readLine());
+            coins[i] = Integer.parseInt(Objects.requireNonNull(input.readLine()));
         }
 
         int[] dp = new int[k + 1];

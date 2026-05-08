@@ -1,16 +1,17 @@
 package swea.problems;
 
 import java.io.BufferedReader;
+import java.util.Objects;
 
 public class SWEA4065 {
     public static String solve(BufferedReader br) throws Exception {
         StringBuilder result = new StringBuilder();
 
-        int testCaseCount = Integer.parseInt(br.readLine().trim());
+        int testCaseCount = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());
 
         for (int t = 1; t <= testCaseCount; t++) {
-            String strA = br.readLine().trim();
-            String strB = br.readLine().trim();
+            String strA = Objects.requireNonNull(br.readLine()).trim();
+            String strB = Objects.requireNonNull(br.readLine()).trim();
 
             int tmp = lcsLen(strA, strB);
 

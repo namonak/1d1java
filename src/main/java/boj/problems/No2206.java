@@ -3,6 +3,7 @@ package boj.problems;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayDeque;
+import java.util.Objects;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
@@ -26,13 +27,13 @@ public class No2206 {
     }
 
     public static String solve(BufferedReader input) throws IOException {
-        StringTokenizer st = new StringTokenizer(input.readLine());
+        StringTokenizer st = new StringTokenizer(Objects.requireNonNull(input.readLine()));
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
 
         char[][] map = new char[n][m];
         for (int r = 0; r < n; r++) {
-            String line = input.readLine();
+            String line = Objects.requireNonNull(input.readLine());
             for (int c = 0; c < m; c++) {
                 map[r][c] = line.charAt(c);
             }

@@ -1,20 +1,22 @@
 package swea.problems;
 
 import java.io.BufferedReader;
+import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class SWEA2817 {
     public static String solve(BufferedReader br) throws Exception {
         StringBuilder result = new StringBuilder();
 
-        int testCaseCount = Integer.parseInt(br.readLine().trim());
+        int testCaseCount = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());
 
         for (int t = 1; t <= testCaseCount; t++) {
-            StringTokenizer st = new StringTokenizer(br.readLine().trim());
+            StringTokenizer st = new StringTokenizer(Objects.requireNonNull(br.readLine()).trim());
             int n = Integer.parseInt(st.nextToken());
             int k = Integer.parseInt(st.nextToken());
 
-            StringTokenizer numberStr = new StringTokenizer(br.readLine().trim());
+            StringTokenizer numberStr =
+                    new StringTokenizer(Objects.requireNonNull(br.readLine()).trim());
             int[] numbers = new int[n];
             for (int i = 0; i < n; i++) {
                 numbers[i] = Integer.parseInt(numberStr.nextToken());

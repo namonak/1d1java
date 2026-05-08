@@ -2,10 +2,11 @@ package boj.problems;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Objects;
 
 public class No2231 {
     public static String solve(BufferedReader input) throws IOException {
-        String strNumber = input.readLine();
+        String strNumber = Objects.requireNonNull(input.readLine());
         int number = Integer.parseInt(strNumber);
         int numberLength = strNumber.length();
         int result = 0;

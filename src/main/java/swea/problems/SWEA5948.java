@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.StringTokenizer;
 
@@ -18,13 +19,13 @@ public class SWEA5948 {
     public static String solve(BufferedReader br) throws Exception {
         StringBuilder result = new StringBuilder();
 
-        int testCaseCount = Integer.parseInt(br.readLine().trim());
+        int testCaseCount = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());
 
         for (int t = 1; t <= testCaseCount; t++) {
             numbers = new int[INPUT_SIZE];
             distinctSums = new HashSet<>();
 
-            StringTokenizer st = new StringTokenizer(br.readLine().trim());
+            StringTokenizer st = new StringTokenizer(Objects.requireNonNull(br.readLine()).trim());
             for (int i = 0; i < INPUT_SIZE; i++) {
                 numbers[i] = Integer.parseInt(st.nextToken());
             }

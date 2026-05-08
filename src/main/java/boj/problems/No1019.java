@@ -2,10 +2,11 @@ package boj.problems;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Objects;
 
 public class No1019 {
     public static String solve(BufferedReader input) throws IOException {
-        long n = Long.parseLong(input.readLine().trim());
+        long n = Long.parseLong(Objects.requireNonNull(input.readLine()).trim());
         long[] counts = new long[10];
 
         long factor = 1;

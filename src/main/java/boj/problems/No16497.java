@@ -2,17 +2,18 @@ package boj.problems;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Objects;
 
 public class No16497 {
     public static String solve(BufferedReader input) throws IOException {
-        int n = Integer.parseInt(input.readLine());
+        int n = Integer.parseInt(Objects.requireNonNull(input.readLine()));
 
         // 1일부터 31일까지 각 날짜별로 대출된 책의 누적 권수를 저장할 배열
         // 인덱스를 날짜와 직관적으로 일치시키기 위해 크기를 32로 할당합니다.
         int[] borrowedBooksPerDay = new int[32];
 
         for (int i = 0; i < n; i++) {
-            String[] parts = input.readLine().split(" ");
+            String[] parts = Objects.requireNonNull(input.readLine()).split(" ");
             int startDay = Integer.parseInt(parts[0]);
             int endDay = Integer.parseInt(parts[1]);
 
@@ -25,7 +26,7 @@ public class No16497 {
         }
 
         // 마지막 줄: 도서관에서 보유 중인 책의 총 개수 K
-        int k = Integer.parseInt(input.readLine());
+        int k = Integer.parseInt(Objects.requireNonNull(input.readLine()));
 
         // 1일부터 31일까지 순회하며 K권을 초과하여 대출된 날이 있는지 확인합니다.
         for (int day = 1; day <= 31; day++) {

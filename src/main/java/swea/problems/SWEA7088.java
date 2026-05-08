@@ -2,6 +2,7 @@ package swea.problems;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class SWEA7088 {
@@ -10,11 +11,11 @@ public class SWEA7088 {
         StringBuilder sb = new StringBuilder(1 << 20); // 출력 버퍼 크게 확보
         StringTokenizer st;
 
-        int testCaseCount = Integer.parseInt(input.readLine().trim());
+        int testCaseCount = Integer.parseInt(Objects.requireNonNull(input.readLine()).trim());
 
         for (int tc = 1; tc <= testCaseCount; tc++) {
 
-            st = new StringTokenizer(input.readLine());
+            st = new StringTokenizer(Objects.requireNonNull(input.readLine()));
             int n = Integer.parseInt(st.nextToken());
             int q = Integer.parseInt(st.nextToken());
 
@@ -25,7 +26,7 @@ public class SWEA7088 {
 
             // 송아지 품종 입력
             for (int i = 1; i <= n; i++) {
-                int breed = Integer.parseInt(input.readLine().trim());
+                int breed = Integer.parseInt(Objects.requireNonNull(input.readLine()).trim());
 
                 // 이전 값 복사 (누적)
                 p1[i] = p1[i - 1];
@@ -46,7 +47,7 @@ public class SWEA7088 {
 
             // 질의 처리
             for (int i = 0; i < q; i++) {
-                st = new StringTokenizer(input.readLine());
+                st = new StringTokenizer(Objects.requireNonNull(input.readLine()));
                 int l = Integer.parseInt(st.nextToken());
                 int r = Integer.parseInt(st.nextToken());
 

@@ -2,12 +2,13 @@ package boj.problems;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Objects;
 
 public class No10807 {
     public static String solve(BufferedReader input) throws IOException {
-        int number = Integer.parseInt(input.readLine());
-        String[] inputString = input.readLine().split(" ");
-        int target = Integer.parseInt(input.readLine());
+        int number = Integer.parseInt(Objects.requireNonNull(input.readLine()));
+        String[] inputString = Objects.requireNonNull(input.readLine()).split(" ");
+        int target = Integer.parseInt(Objects.requireNonNull(input.readLine()));
 
         return String.valueOf(getResult(number, inputString, target));
     }

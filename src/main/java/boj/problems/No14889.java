@@ -2,6 +2,7 @@ package boj.problems;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class No14889 {
@@ -11,14 +12,14 @@ public class No14889 {
     static int min;
 
     public static String solve(BufferedReader input) throws IOException {
-        N = Integer.parseInt(input.readLine().trim());
+        N = Integer.parseInt(Objects.requireNonNull(input.readLine()).trim());
 
         int[][] s = new int[N][N];
         selected = new boolean[N];
 
         // 입력
         for (int i = 0; i < N; i++) {
-            StringTokenizer st = new StringTokenizer(input.readLine());
+            StringTokenizer st = new StringTokenizer(Objects.requireNonNull(input.readLine()));
             for (int j = 0; j < N; j++) {
                 s[i][j] = Integer.parseInt(st.nextToken());
             }

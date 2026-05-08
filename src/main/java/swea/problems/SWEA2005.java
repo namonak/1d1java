@@ -1,6 +1,7 @@
 package swea.problems;
 
 import java.io.BufferedReader;
+import java.util.Objects;
 
 public class SWEA2005 {
     private static int[][] memo;
@@ -8,10 +9,10 @@ public class SWEA2005 {
     public static String solve(BufferedReader br) throws Exception {
         StringBuilder result = new StringBuilder();
 
-        int testCasesCount = Integer.parseInt(br.readLine().trim());
+        int testCasesCount = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());
 
         for (int t = 1; t <= testCasesCount; t++) {
-            int n = Integer.parseInt(br.readLine().trim());
+            int n = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());
 
             memo = new int[n][n];
 

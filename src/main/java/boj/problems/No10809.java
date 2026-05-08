@@ -3,12 +3,13 @@ package boj.problems;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class No10809 {
     public static final int ALPHABET_NUMBER = 26;
 
     public static String solve(BufferedReader input) throws IOException {
-        String word = input.readLine();
+        String word = Objects.requireNonNull(input.readLine());
         int[] alphabet = initAlphabetArray();
 
         updateAlphabetArray(word, alphabet);

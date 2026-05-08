@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class SWEA10806 {
@@ -12,20 +13,20 @@ public class SWEA10806 {
 
     public static String solve(BufferedReader br) throws IOException {
 
-        int testCaseCount = Integer.parseInt(br.readLine().trim());
+        int testCaseCount = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());
         StringBuilder sb = new StringBuilder();
 
         for (int tc = 1; tc <= testCaseCount; tc++) {
 
-            int n = Integer.parseInt(br.readLine().trim());
+            int n = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());
             A = new long[n];
 
-            StringTokenizer st = new StringTokenizer(br.readLine());
+            StringTokenizer st = new StringTokenizer(Objects.requireNonNull(br.readLine()));
             for (int i = 0; i < n; i++) {
                 A[i] = Long.parseLong(st.nextToken());
             }
 
-            long k = Long.parseLong(br.readLine().trim());
+            long k = Long.parseLong(Objects.requireNonNull(br.readLine()).trim());
 
             memo = new HashMap<>();
 

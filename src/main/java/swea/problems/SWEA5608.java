@@ -3,6 +3,7 @@ package swea.problems;
 import java.io.BufferedReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class SWEA5608 {
     static class Result {
@@ -20,10 +21,10 @@ public class SWEA5608 {
     public static String solve(BufferedReader br) throws Exception {
         StringBuilder result = new StringBuilder();
 
-        int testCaseCount = Integer.parseInt(br.readLine().trim());
+        int testCaseCount = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());
 
         for (int i = 1; i <= testCaseCount; i++) {
-            long m = Long.parseLong(br.readLine().trim());
+            long m = Long.parseLong(Objects.requireNonNull(br.readLine()).trim());
 
             memo = new HashMap<>();
 

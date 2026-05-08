@@ -1,26 +1,27 @@
 package boj.problems;
 
 import java.io.BufferedReader;
+import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class No9084 {
     public static String solve(BufferedReader input) throws Exception {
 
-        int testCaseCount = Integer.parseInt(input.readLine().trim());
+        int testCaseCount = Integer.parseInt(Objects.requireNonNull(input.readLine()).trim());
         StringBuilder sb = new StringBuilder();
 
         int[] dp = new int[10001]; // 최대 M = 10000
 
         while (testCaseCount-- > 0) {
-            int n = Integer.parseInt(input.readLine().trim());
+            int n = Integer.parseInt(Objects.requireNonNull(input.readLine()).trim());
 
             int[] coins = new int[n];
-            StringTokenizer st = new StringTokenizer(input.readLine());
+            StringTokenizer st = new StringTokenizer(Objects.requireNonNull(input.readLine()));
             for (int i = 0; i < n; i++) {
                 coins[i] = Integer.parseInt(st.nextToken());
             }
 
-            int m = Integer.parseInt(input.readLine().trim());
+            int m = Integer.parseInt(Objects.requireNonNull(input.readLine()).trim());
 
             // dp 초기화
             for (int i = 0; i <= m; i++) {

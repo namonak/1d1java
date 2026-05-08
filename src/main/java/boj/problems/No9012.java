@@ -2,16 +2,17 @@ package boj.problems;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Stack;
 
 public class No9012 {
     public static String solve(BufferedReader input) throws IOException {
         StringBuilder sb = new StringBuilder();
-        int number = Integer.parseInt(input.readLine());
+        int number = Integer.parseInt(Objects.requireNonNull(input.readLine()));
         Stack<String> stack = new Stack<>();
 
         for (int i = 0; i < number; i++) {
-            String[] line = input.readLine().split("");
+            String[] line = Objects.requireNonNull(input.readLine()).split("");
             getResult(sb, stack, line);
         }
         return sb.toString().trim();

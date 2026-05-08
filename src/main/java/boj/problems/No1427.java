@@ -4,10 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Objects;
 
 public class No1427 {
     public static String solve(BufferedReader input) throws IOException {
-        String number = input.readLine();
+        String number = Objects.requireNonNull(input.readLine());
         Integer[] arr = new Integer[number.length()];
 
         for (int i = 0; i < number.length(); ++i) {

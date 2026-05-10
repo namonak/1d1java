@@ -114,7 +114,7 @@ public class No2261 {
     }
 
     private static long distance(Point a, Point b) {
-        long dx = a.x - b.x;
+        long dx = (long) a.x - b.x;
         long dy = a.y - b.y;
         return dx * dx + dy * dy;
     }

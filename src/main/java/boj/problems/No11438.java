@@ -42,13 +42,8 @@ public class No11438 {
             int u = fs.nextInt();
             int v = fs.nextInt();
 
-            to[idx] = v;
-            next[idx] = head[u];
-            head[u] = idx++;
-
-            to[idx] = u;
-            next[idx] = head[v];
-            head[v] = idx++;
+            idx = addEdge(head, to, next, idx, u, v);
+            idx = addEdge(head, to, next, idx, v, u);
         }
 
         int log = 1;
@@ -127,5 +122,12 @@ public class No11438 {
         }
 
         return parent[0][a];
+    }
+
+    private static int addEdge(int[] head, int[] to, int[] next, int idx, int from, int dest) {
+        to[idx] = dest;
+        next[idx] = head[from];
+        head[from] = idx;
+        return idx + 1;
     }
 }

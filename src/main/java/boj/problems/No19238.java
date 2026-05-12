@@ -5,11 +5,9 @@ import java.util.ArrayDeque;
 import java.util.StringTokenizer;
 
 public class No19238 {
-    private static int N, M;
-    private static int fuel;
+    private static int N;
     private static int[][] board;
     private static int[][] passengerStart; // 승객 시작 위치 → passenger id
-    private static int[][] passengerDest; // passenger id → 목적지
     private static int taxiR, taxiC;
 
     private static final int[] DR = {-1, 0, 0, 1}; // 상, 좌, 우, 하 (행 우선 탐색 정렬에 도움)
@@ -18,12 +16,12 @@ public class No19238 {
     public static String solve(BufferedReader br) throws Exception {
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
-        fuel = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
+        int fuel = Integer.parseInt(st.nextToken());
 
         board = new int[N][N];
         passengerStart = new int[N][N];
-        passengerDest = new int[M + 1][2];
+        int[][] passengerDest = new int[m + 1][2];
 
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
@@ -36,7 +34,7 @@ public class No19238 {
         taxiR = Integer.parseInt(st.nextToken()) - 1;
         taxiC = Integer.parseInt(st.nextToken()) - 1;
 
-        for (int i = 1; i <= M; i++) {
+        for (int i = 1; i <= m; i++) {
             st = new StringTokenizer(br.readLine());
             int sr = Integer.parseInt(st.nextToken()) - 1;
             int sc = Integer.parseInt(st.nextToken()) - 1;
@@ -48,11 +46,11 @@ public class No19238 {
             passengerDest[i][1] = dc;
         }
 
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i < m; i++) {
 
             // 1️. 가장 가까운 승객 찾기
             int[] result = findNearestPassenger();
-            if (result == null) return "-1";
+            if (result.length == 0) return "-1";
 
             int pr = result[0];
             int pc = result[1];
@@ -131,7 +129,7 @@ public class No19238 {
             }
         }
 
-        if (targetR == -1) return null;
+        if (targetR == -1) return new int[0];
         return new int[] {targetR, targetC, minDist};
     }
 

@@ -3,10 +3,14 @@ package boj.problems;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class No1197 {
 
-    private static class Edge implements Comparable<Edge> {
+    private static final Comparator<Edge> BY_WEIGHT =
+            (left, right) -> Integer.compare(left.weight, right.weight);
+
+    private static class Edge {
         int from;
         int to;
         int weight;
@@ -15,11 +19,6 @@ public class No1197 {
             this.from = from;
             this.to = to;
             this.weight = weight;
-        }
-
-        @Override
-        public int compareTo(Edge other) {
-            return Integer.compare(this.weight, other.weight);
         }
     }
 
@@ -108,7 +107,7 @@ public class No1197 {
             edges[i] = new Edge(a, b, c);
         }
 
-        Arrays.sort(edges);
+        Arrays.sort(edges, BY_WEIGHT);
 
         UnionFind uf = new UnionFind(v);
         long totalWeight = 0L;

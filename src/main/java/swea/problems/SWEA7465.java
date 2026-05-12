@@ -9,7 +9,9 @@ public class SWEA7465 {
 
     public static int find(int x) {
         if (parent[x] == x) return x;
-        return parent[x] = find(parent[x]);
+        int root = find(parent[x]);
+        parent[x] = root;
+        return root;
     }
 
     public static boolean union(int a, int b) {

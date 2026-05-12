@@ -7,11 +7,10 @@ import java.util.StringTokenizer;
 public class No1978 {
     public static String solve(BufferedReader input) throws IOException {
         int result = 0;
-        // N은 사용하지 않음
-        input.readLine();
+        int n = Integer.parseInt(input.readLine());
         StringTokenizer st = new StringTokenizer(input.readLine(), " ");
 
-        while (st.hasMoreTokens()) {
+        for (int i = 0; i < n; i++) {
             if (isPrime(Integer.parseInt(st.nextToken()))) {
                 result++;
             }

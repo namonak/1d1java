@@ -30,7 +30,9 @@ public class No2738 {
 
     private static void getRowsOfResult(int m, StringBuilder sb, String[] tmp, int[] matrixA) {
         for (int j = 0; j < m; j++) {
-            sb.append((matrixA[j] += Integer.parseInt(tmp[j]))).append(" ");
+            int sum = matrixA[j] + Integer.parseInt(tmp[j]);
+            matrixA[j] = sum;
+            sb.append(sum).append(" ");
             if (j == m - 1) {
                 sb.deleteCharAt(sb.length() - 1);
             }

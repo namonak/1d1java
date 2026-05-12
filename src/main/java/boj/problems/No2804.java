@@ -16,21 +16,9 @@ public class No2804 {
         int n = wordA.length();
         int m = wordB.length();
 
-        int intersectA = -1; // 단어 A에서의 교차 인덱스 (열 위치)
-        int intersectB = -1; // 단어 B에서의 교차 인덱스 (행 위치)
-
-        // 1. 교차 지점 찾기 (A에서 먼저 등장하는 순서 기준)
-        outer:
-        for (int i = 0; i < n; i++) {
-            char target = wordA.charAt(i);
-            for (int j = 0; j < m; j++) {
-                if (target == wordB.charAt(j)) {
-                    intersectA = i;
-                    intersectB = j;
-                    break outer; // 가장 먼저 발견된 지점에서 정지
-                }
-            }
-        }
+        int[] intersection = findIntersection(wordA, wordB);
+        int intersectA = intersection[0]; // 단어 A에서의 교차 인덱스 (열 위치)
+        int intersectB = intersection[1]; // 단어 B에서의 교차 인덱스 (행 위치)
 
         // 2. 결과 그리드 생성
         StringBuilder sb = new StringBuilder();
@@ -54,5 +42,17 @@ public class No2804 {
         }
 
         return sb.toString();
+    }
+
+    private static int[] findIntersection(String wordA, String wordB) {
+        for (int i = 0; i < wordA.length(); i++) {
+            char target = wordA.charAt(i);
+            for (int j = 0; j < wordB.length(); j++) {
+                if (target == wordB.charAt(j)) {
+                    return new int[] {i, j};
+                }
+            }
+        }
+        return new int[] {-1, -1};
     }
 }

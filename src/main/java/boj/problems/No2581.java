@@ -16,14 +16,14 @@ public class No2581 {
             if (isPrime(i)) primeList.add(i);
         }
 
-        for (Object o : primeList) {
-            sum += (int) o;
+        for (int prime : primeList) {
+            sum += prime;
         }
 
         if (primeList.isEmpty()) {
             return String.valueOf(-1);
         }
-        return String.format("%d\n%d", sum, primeList.get(0));
+        return sum + "\n" + primeList.get(0);
     }
 
     private static boolean isPrime(int number) {

@@ -21,7 +21,7 @@ public class No1162 {
         }
     }
 
-    private static class State implements Comparable<State> {
+    private static class State {
         int city;
         int paved;
         long cost;
@@ -30,11 +30,6 @@ public class No1162 {
             this.city = city;
             this.paved = paved;
             this.cost = cost;
-        }
-
-        @Override
-        public int compareTo(State other) {
-            return Long.compare(this.cost, other.cost);
         }
     }
 
@@ -87,7 +82,7 @@ public class No1162 {
             Arrays.fill(distance[i], INF);
         }
 
-        PriorityQueue<State> pq = new PriorityQueue<>();
+        PriorityQueue<State> pq = new PriorityQueue<>((a, b) -> Long.compare(a.cost, b.cost));
         distance[1][0] = 0L;
         pq.offer(new State(1, 0, 0L));
 

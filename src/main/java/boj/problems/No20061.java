@@ -25,8 +25,8 @@ public class No20061 {
             int x = Integer.parseInt(st.nextToken());
             int y = Integer.parseInt(st.nextToken());
 
-            dropGreen(t, x, y);
-            dropBlue(t, x, y);
+            dropGreen(t, y);
+            dropBlue(t, x);
 
             clearGreenLines();
             clearBlueLines();
@@ -38,7 +38,7 @@ public class No20061 {
         return score + "\n" + countBlocks();
     }
 
-    private static void dropGreen(int t, int x, int y) {
+    private static void dropGreen(int t, int y) {
         int r = 0;
 
         if (t == 1) {
@@ -66,7 +66,7 @@ public class No20061 {
         }
     }
 
-    private static void dropBlue(int t, int x, int y) {
+    private static void dropBlue(int t, int x) {
         int c = 0;
 
         if (t == 1) {
@@ -95,7 +95,8 @@ public class No20061 {
     }
 
     private static void clearGreenLines() {
-        for (int r = 5; r >= 2; r--) {
+        int r = 5;
+        while (r >= 2) {
             boolean full = true;
             for (int c = 0; c < 4; c++) {
                 if (green[r][c] == 0) {
@@ -105,22 +106,16 @@ public class No20061 {
             }
             if (full) {
                 score++;
-                // 행 삭제
-                for (int row = r; row >= 1; row--) {
-                    for (int col = 0; col < 4; col++) {
-                        green[row][col] = green[row - 1][col];
-                    }
-                }
-                // 최상단 비우기
-                for (int col = 0; col < 4; col++) green[0][col] = 0;
-
-                r++; // 삭제 후 한 번 더 검사 (압축으로 인해 새로운 full row 생길 수 있음)
+                shiftGreenRowsDownFrom(r);
+            } else {
+                r--;
             }
         }
     }
 
     private static void clearBlueLines() {
-        for (int c = 5; c >= 2; c--) {
+        int c = 5;
+        while (c >= 2) {
             boolean full = true;
             for (int r = 0; r < 4; r++) {
                 if (blue[r][c] == 0) {
@@ -130,16 +125,9 @@ public class No20061 {
             }
             if (full) {
                 score++;
-                // 열 삭제 + 오른쪽으로 밀기
-                for (int col = c; col >= 1; col--) {
-                    for (int row = 0; row < 4; row++) {
-                        blue[row][col] = blue[row][col - 1];
-                    }
-                }
-                // 최좌측 비움
-                for (int row = 0; row < 4; row++) blue[row][0] = 0;
-
-                c++; // 새로운 full column 발생 가능성 반영
+                shiftBlueColsRightFrom(c);
+            } else {
+                c--;
             }
         }
     }
@@ -162,12 +150,7 @@ public class No20061 {
 
         // 맨 아래 cnt개 행 삭제(4~5행)
         for (int i = 0; i < cnt; i++) {
-            for (int r = 5; r >= 1; r--) {
-                for (int c = 0; c < 4; c++) {
-                    green[r][c] = green[r - 1][c];
-                }
-            }
-            for (int c = 0; c < 4; c++) green[0][c] = 0;
+            shiftGreenRowsDownFrom(5);
         }
     }
 
@@ -205,5 +188,21 @@ public class No20061 {
         for (int r = 0; r < 4; r++) for (int c = 0; c < 6; c++) cnt += blue[r][c];
 
         return cnt;
+    }
+
+    private static void shiftGreenRowsDownFrom(int startRow) {
+        for (int row = startRow; row >= 1; row--) {
+            System.arraycopy(green[row - 1], 0, green[row], 0, 4);
+        }
+        Arrays.fill(green[0], 0);
+    }
+
+    private static void shiftBlueColsRightFrom(int startCol) {
+        for (int col = startCol; col >= 1; col--) {
+            for (int row = 0; row < 4; row++) {
+                blue[row][col] = blue[row][col - 1];
+            }
+        }
+        for (int row = 0; row < 4; row++) blue[row][0] = 0;
     }
 }

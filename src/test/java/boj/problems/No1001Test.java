@@ -11,7 +11,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class No1001Test {
+class No1001Test {
     @ParameterizedTest(name = "Case {index}: expected {1}")
     @MethodSource("provideTestCases")
     @DisplayName("A-B : https://www.acmicpc.net/problem/1001")

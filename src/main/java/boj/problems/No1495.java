@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 
 public class No1495 {
 
-    public static String solve(BufferedReader input) throws Exception {
+    public static String solve(BufferedReader input) throws IOException {
         FastScanner scanner = new FastScanner(input);
 
         int n = scanner.nextInt();

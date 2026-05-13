@@ -1,12 +1,13 @@
 package swea.problems;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Objects;
 
 public class SWEA2005 {
     private static int[][] memo;
 
-    public static String solve(BufferedReader br) throws Exception {
+    public static String solve(BufferedReader br) throws IOException {
         StringBuilder result = new StringBuilder();
 
         int testCasesCount = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());

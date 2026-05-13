@@ -1,6 +1,7 @@
 package boj.problems;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.StringTokenizer;
 
@@ -13,7 +14,7 @@ public class No19238 {
     private static final int[] DR = {-1, 0, 0, 1}; // 상, 좌, 우, 하 (행 우선 탐색 정렬에 도움)
     private static final int[] DC = {0, -1, 1, 0};
 
-    public static String solve(BufferedReader br) throws Exception {
+    public static String solve(BufferedReader br) throws IOException {
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());

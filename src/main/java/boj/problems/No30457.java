@@ -1,11 +1,12 @@
 package boj.problems;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class No30457 {
-    public static String solve(BufferedReader input) throws Exception {
+    public static String solve(BufferedReader input) throws IOException {
         // 첫째 줄에서 학생의 수 N을 읽어옵니다.
         int n = Integer.parseInt(Objects.requireNonNull(input.readLine()).trim());
 

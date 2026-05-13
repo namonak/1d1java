@@ -1,11 +1,12 @@
 package boj.problems;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class No21212 {
-    public static String solve(BufferedReader input) throws Exception {
+    public static String solve(BufferedReader input) throws IOException {
         // 첫 번째 줄에서 재료의 개수 N을 읽어옵니다.
         int n = Integer.parseInt(Objects.requireNonNull(input.readLine()).trim());
 

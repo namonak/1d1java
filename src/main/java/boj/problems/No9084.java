@@ -1,11 +1,12 @@
 package boj.problems;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class No9084 {
-    public static String solve(BufferedReader input) throws Exception {
+    public static String solve(BufferedReader input) throws IOException {
 
         int testCaseCount = Integer.parseInt(Objects.requireNonNull(input.readLine()).trim());
         StringBuilder sb = new StringBuilder();

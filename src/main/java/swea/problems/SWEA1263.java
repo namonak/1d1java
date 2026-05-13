@@ -1,6 +1,7 @@
 package swea.problems;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Objects;
 import java.util.StringTokenizer;
 
@@ -8,7 +9,7 @@ public class SWEA1263 {
 
     private static final int INF = 1_000_000; // 안전한 최대값
 
-    public static String solve(BufferedReader br) throws Exception {
+    public static String solve(BufferedReader br) throws IOException {
         int testCaseCount = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());
         StringBuilder sb = new StringBuilder(8 * testCaseCount);
 

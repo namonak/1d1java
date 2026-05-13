@@ -1,10 +1,11 @@
 package swea.problems;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class SWEA5604 {
-    public static String solve(BufferedReader br) throws Exception {
+    public static String solve(BufferedReader br) throws IOException {
         StringBuilder sb = new StringBuilder();
 
         int testCaseCount = Integer.parseInt(br.readLine());

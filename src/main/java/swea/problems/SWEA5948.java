@@ -1,6 +1,7 @@
 package swea.problems;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -16,7 +17,7 @@ public class SWEA5948 {
     private static int[] numbers;
     private static Set<Integer> distinctSums;
 
-    public static String solve(BufferedReader br) throws Exception {
+    public static String solve(BufferedReader br) throws IOException {
         StringBuilder result = new StringBuilder();
 
         int testCaseCount = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());

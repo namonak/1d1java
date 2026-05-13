@@ -1,6 +1,7 @@
 package swea.problems;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -18,7 +19,7 @@ public class SWEA5608 {
 
     static Map<Long, Result> memo;
 
-    public static String solve(BufferedReader br) throws Exception {
+    public static String solve(BufferedReader br) throws IOException {
         StringBuilder result = new StringBuilder();
 
         int testCaseCount = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());

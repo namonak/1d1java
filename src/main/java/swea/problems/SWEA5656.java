@@ -1,6 +1,7 @@
 package swea.problems;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.StringTokenizer;
 
@@ -12,7 +13,7 @@ public class SWEA5656 {
     static final int[] dr = {-1, 1, 0, 0};
     static final int[] dc = {0, 0, -1, 1};
 
-    public static String solve(BufferedReader br) throws Exception {
+    public static String solve(BufferedReader br) throws IOException {
         int testCaseCount = Integer.parseInt(br.readLine());
         StringBuilder sb = new StringBuilder();
 

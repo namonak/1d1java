@@ -1,6 +1,7 @@
 package swea.problems;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Objects;
 import java.util.StringTokenizer;
 
@@ -10,7 +11,7 @@ public class SWEA5685 {
     private static final int COUNT = MAX + 1;
     private static final int MOD = 1234567891;
 
-    public static String solve(BufferedReader br) throws Exception {
+    public static String solve(BufferedReader br) throws IOException {
         StringBuilder result = new StringBuilder();
 
         int testCaseCount = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());

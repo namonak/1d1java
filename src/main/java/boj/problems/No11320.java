@@ -18,6 +18,10 @@ public class No11320 {
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
 
+            if (b == 0) {
+                throw new IllegalArgumentException("Triangle side length must not be zero.");
+            }
+
             // 한 변에 들어가는 작은 삼각형의 개수 n = A / B
             int n = a / b;
 

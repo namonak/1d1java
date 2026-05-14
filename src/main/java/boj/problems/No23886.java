@@ -4,12 +4,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 public class No23886 {
+    private static final String NON_ALPSOO = "NON ALPSOO";
+
     public static String solve(BufferedReader input) throws IOException {
         String x = input.readLine();
 
         // 입력값이 비정상적인 경우 처리 (문제 조건상 길이는 3 이상)
         if (x == null || x.trim().isEmpty()) {
-            return "NON ALPSOO";
+            return NON_ALPSOO;
         }
         x = x.trim();
 
@@ -21,13 +23,13 @@ public class No23886 {
             diff[i] = x.charAt(i + 1) - x.charAt(i);
             // 기울기가 0이면 평지이므로 알프수가 아님
             if (diff[i] == 0) {
-                return "NON ALPSOO";
+                return NON_ALPSOO;
             }
         }
 
         // 2. 처음이 오르막(양의 기울기), 마지막이 내리막(음의 기울기)인지 확인
         if (diff[0] < 0 || diff[diff.length - 1] > 0) {
-            return "NON ALPSOO";
+            return NON_ALPSOO;
         }
 
         // 3. 오르막 또는 내리막 구간 내에서 경사(기울기)가 일정한지 확인
@@ -36,7 +38,7 @@ public class No23886 {
             if ((diff[i] > 0 && diff[i + 1] > 0) || (diff[i] < 0 && diff[i + 1] < 0)) {
                 // 경사가 달라지면 알프수가 아님
                 if (diff[i] != diff[i + 1]) {
-                    return "NON ALPSOO";
+                    return NON_ALPSOO;
                 }
             }
         }

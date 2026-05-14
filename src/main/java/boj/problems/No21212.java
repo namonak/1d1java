@@ -19,6 +19,10 @@ public class No21212 {
             int required = Integer.parseInt(st.nextToken()); // 케이크 1개당 필요한 양
             int available = Integer.parseInt(st.nextToken()); // 주방에 있는 양
 
+            if (required == 0) {
+                throw new IllegalArgumentException("Required amount must not be zero.");
+            }
+
             // 현재 재료로 만들 수 있는 케이크의 수
             int possibleCakes = available / required;
 

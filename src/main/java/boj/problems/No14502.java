@@ -9,7 +9,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class No14502 {
-    private static int N, M;
+    private static int n, m;
     private static int[][] lab;
     private static final List<int[]> emptyList = new ArrayList<>();
     private static final List<int[]> virusList = new ArrayList<>();
@@ -25,14 +25,14 @@ public class No14502 {
         int emptyCount = 0;
 
         StringTokenizer st = new StringTokenizer(input.readLine());
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
 
-        lab = new int[N][M];
+        lab = new int[n][m];
 
-        for (int r = 0; r < N; r++) {
+        for (int r = 0; r < n; r++) {
             st = new StringTokenizer(input.readLine());
-            for (int c = 0; c < M; c++) {
+            for (int c = 0; c < m; c++) {
                 lab[r][c] = Integer.parseInt(st.nextToken());
 
                 if (lab[r][c] == 0) {
@@ -92,7 +92,7 @@ public class No14502 {
                 int nr = r + DR[d];
                 int nc = c + DC[d];
 
-                if (nr < 0 || nr >= N || nc < 0 || nc >= M) continue;
+                if (nr < 0 || nr >= n || nc < 0 || nc >= m) continue;
 
                 if (copy[nr][nc] == 0) {
                     copy[nr][nc] = 2;
@@ -106,9 +106,9 @@ public class No14502 {
     }
 
     private static int[][] copyLab() {
-        int[][] copy = new int[N][M];
-        for (int r = 0; r < N; r++) {
-            System.arraycopy(lab[r], 0, copy[r], 0, M);
+        int[][] copy = new int[n][m];
+        for (int r = 0; r < n; r++) {
+            System.arraycopy(lab[r], 0, copy[r], 0, m);
         }
         return copy;
     }

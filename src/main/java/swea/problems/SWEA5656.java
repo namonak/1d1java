@@ -6,7 +6,7 @@ import java.util.ArrayDeque;
 import java.util.StringTokenizer;
 
 public class SWEA5656 {
-    static int N, W, H;
+    static int n, w, h;
     static int answer;
     static int[][] original;
 
@@ -20,15 +20,15 @@ public class SWEA5656 {
         for (int tc = 1; tc <= testCaseCount; tc++) {
 
             StringTokenizer st = new StringTokenizer(br.readLine());
-            N = Integer.parseInt(st.nextToken());
-            W = Integer.parseInt(st.nextToken());
-            H = Integer.parseInt(st.nextToken());
+            n = Integer.parseInt(st.nextToken());
+            w = Integer.parseInt(st.nextToken());
+            h = Integer.parseInt(st.nextToken());
 
-            original = new int[H][W];
+            original = new int[h][w];
 
-            for (int r = 0; r < H; r++) {
+            for (int r = 0; r < h; r++) {
                 st = new StringTokenizer(br.readLine());
-                for (int c = 0; c < W; c++) {
+                for (int c = 0; c < w; c++) {
                     original[r][c] = Integer.parseInt(st.nextToken());
                 }
             }
@@ -45,12 +45,12 @@ public class SWEA5656 {
     static void dfs(int depth, int[][] map) {
         if (answer == 0) return;
 
-        if (depth == N) {
+        if (depth == n) {
             answer = Math.min(answer, count(map));
             return;
         }
 
-        for (int col = 0; col < W; col++) {
+        for (int col = 0; col < w; col++) {
 
             int row = findTop(map, col);
             if (row == -1) {
@@ -68,7 +68,7 @@ public class SWEA5656 {
     }
 
     static int findTop(int[][] map, int col) {
-        for (int r = 0; r < H; r++) {
+        for (int r = 0; r < h; r++) {
             if (map[r][col] > 0) return r;
         }
         return -1;
@@ -96,7 +96,7 @@ public class SWEA5656 {
                     nr += dr[d];
                     nc += dc[d];
 
-                    if (nr < 0 || nr >= H || nc < 0 || nc >= W) break;
+                    if (nr < 0 || nr >= h || nc < 0 || nc >= w) break;
 
                     if (map[nr][nc] == 0) continue;
 
@@ -111,10 +111,10 @@ public class SWEA5656 {
     }
 
     static void gravity(int[][] map) {
-        for (int c = 0; c < W; c++) {
-            int write = H - 1;
+        for (int c = 0; c < w; c++) {
+            int write = h - 1;
 
-            for (int r = H - 1; r >= 0; r--) {
+            for (int r = h - 1; r >= 0; r--) {
                 if (map[r][c] > 0) {
                     map[write][c] = map[r][c];
                     if (write != r) map[r][c] = 0;
@@ -129,17 +129,17 @@ public class SWEA5656 {
     }
 
     static int[][] copyMap(int[][] src) {
-        int[][] dst = new int[H][W];
-        for (int i = 0; i < H; i++) {
-            System.arraycopy(src[i], 0, dst[i], 0, W);
+        int[][] dst = new int[h][w];
+        for (int i = 0; i < h; i++) {
+            System.arraycopy(src[i], 0, dst[i], 0, w);
         }
         return dst;
     }
 
     static int count(int[][] map) {
         int cnt = 0;
-        for (int r = 0; r < H; r++) {
-            for (int c = 0; c < W; c++) {
+        for (int r = 0; r < h; r++) {
+            for (int c = 0; c < w; c++) {
                 if (map[r][c] != 0) cnt++;
             }
         }

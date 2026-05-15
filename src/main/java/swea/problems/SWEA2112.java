@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class SWEA2112 {
-    private static int D, W, K;
+    private static int d, w, k;
     private static int[][] film; // 원본 필름
     private static int[][] backup; // 변경 전 원본 저장용 (행 단위 복구)
     private static int answer; // 최소 약품 투입 횟수
@@ -22,31 +22,31 @@ public class SWEA2112 {
         for (int tc = 1; tc <= testCaseCount; tc++) {
 
             StringTokenizer st = new StringTokenizer(Objects.requireNonNull(input.readLine()));
-            D = Integer.parseInt(st.nextToken());
-            W = Integer.parseInt(st.nextToken());
-            K = Integer.parseInt(st.nextToken());
+            d = Integer.parseInt(st.nextToken());
+            w = Integer.parseInt(st.nextToken());
+            k = Integer.parseInt(st.nextToken());
 
-            film = new int[D][W];
-            backup = new int[D][W];
+            film = new int[d][w];
+            backup = new int[d][w];
 
-            for (int r = 0; r < D; r++) {
+            for (int r = 0; r < d; r++) {
                 st = new StringTokenizer(Objects.requireNonNull(input.readLine()));
-                for (int c = 0; c < W; c++) {
+                for (int c = 0; c < w; c++) {
                     film[r][c] = Integer.parseInt(st.nextToken());
                     backup[r][c] = film[r][c];
                 }
             }
 
             // 단순화 최적화: K == 1 → 무조건 통과 → 약품 필요 없음
-            if (K == 1) {
+            if (k == 1) {
                 sb.append("#").append(tc).append(" 0\n");
                 continue;
             }
 
             // 미리 all-A_row, all-B_row 생성
-            drugA = new int[W];
-            drugB = new int[W];
-            for (int c = 0; c < W; c++) {
+            drugA = new int[w];
+            drugB = new int[w];
+            for (int c = 0; c < w; c++) {
                 drugA[c] = 0;
                 drugB[c] = 1;
             }
@@ -55,7 +55,7 @@ public class SWEA2112 {
             answer = Integer.MAX_VALUE;
 
             // 0회부터 시작하여 점점 증가시키며 검사 (가지치기)
-            for (int use = 0; use <= D; use++) {
+            for (int use = 0; use <= d; use++) {
                 if (dfsSelectRows(0, 0, use, new int[use])) break;
             }
 
@@ -83,10 +83,10 @@ public class SWEA2112 {
         }
 
         // 더 이상 선택 불가
-        if (idx >= D) return false;
+        if (idx >= d) return false;
 
         // 가지치기: 남은 행으로도 목표 개수를 못 채우면 중단
-        if (D - idx < use - depth) return false;
+        if (d - idx < use - depth) return false;
 
         // 선택 O
         selectedRows[depth] = idx;
@@ -140,14 +140,14 @@ public class SWEA2112 {
         for (int i = 0; i < rows.length; i++) {
             int r = rows[i];
             int[] src = (assign[i] == 0 ? drugA : drugB);
-            System.arraycopy(src, 0, film[r], 0, W);
+            System.arraycopy(src, 0, film[r], 0, w);
         }
     }
 
     /** 변경된 행의 값을 원본(backup)으로 복원 */
     private static void restoreRows(int[] rows) {
         for (int r : rows) {
-            System.arraycopy(backup[r], 0, film[r], 0, W);
+            System.arraycopy(backup[r], 0, film[r], 0, w);
         }
     }
 
@@ -155,15 +155,15 @@ public class SWEA2112 {
     private static boolean check() {
 
         // 각 열을 검사
-        for (int c = 0; c < W; c++) {
+        for (int c = 0; c < w; c++) {
             boolean ok = false;
 
             int cnt = 1;
 
-            for (int r = 1; r < D; r++) {
+            for (int r = 1; r < d; r++) {
                 if (film[r][c] == film[r - 1][c]) {
                     cnt++;
-                    if (cnt >= K) {
+                    if (cnt >= k) {
                         ok = true;
                         break;
                     }

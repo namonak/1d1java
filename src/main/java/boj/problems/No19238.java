@@ -6,7 +6,7 @@ import java.util.ArrayDeque;
 import java.util.StringTokenizer;
 
 public class No19238 {
-    private static int N;
+    private static int n;
     private static int[][] board;
     private static int[][] passengerStart; // 승객 시작 위치 → passenger id
     private static int taxiR, taxiC;
@@ -16,17 +16,17 @@ public class No19238 {
 
     public static String solve(BufferedReader br) throws IOException {
         StringTokenizer st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
+        n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
         int fuel = Integer.parseInt(st.nextToken());
 
-        board = new int[N][N];
-        passengerStart = new int[N][N];
+        board = new int[n][n];
+        passengerStart = new int[n][n];
         int[][] passengerDest = new int[m + 1][2];
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             st = new StringTokenizer(br.readLine());
-            for (int j = 0; j < N; j++) {
+            for (int j = 0; j < n; j++) {
                 board[i][j] = Integer.parseInt(st.nextToken());
             }
         }
@@ -90,7 +90,7 @@ public class No19238 {
 
     private static int[] findNearestPassenger() {
 
-        boolean[][] visited = new boolean[N][N];
+        boolean[][] visited = new boolean[n][n];
         ArrayDeque<int[]> queue = new ArrayDeque<>();
 
         queue.offer(new int[] {taxiR, taxiC, 0});
@@ -122,7 +122,7 @@ public class No19238 {
                 int nr = r + DR[d];
                 int nc = c + DC[d];
 
-                if (nr < 0 || nr >= N || nc < 0 || nc >= N) continue;
+                if (nr < 0 || nr >= n || nc < 0 || nc >= n) continue;
                 if (visited[nr][nc] || board[nr][nc] == 1) continue;
 
                 visited[nr][nc] = true;
@@ -136,7 +136,7 @@ public class No19238 {
 
     private static int bfsToDestination(int sr, int sc, int dr, int dc) {
 
-        boolean[][] visited = new boolean[N][N];
+        boolean[][] visited = new boolean[n][n];
         ArrayDeque<int[]> queue = new ArrayDeque<>();
 
         queue.offer(new int[] {sr, sc, 0});
@@ -154,7 +154,7 @@ public class No19238 {
                 int nr = r + DR[d];
                 int nc = c + DC[d];
 
-                if (nr < 0 || nr >= N || nc < 0 || nc >= N) continue;
+                if (nr < 0 || nr >= n || nc < 0 || nc >= n) continue;
                 if (visited[nr][nc] || board[nr][nc] == 1) continue;
 
                 visited[nr][nc] = true;

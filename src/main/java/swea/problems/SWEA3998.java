@@ -7,10 +7,10 @@ import java.util.StringTokenizer;
 
 public class SWEA3998 {
     static int[] tree = new int[100005];
-    static int N;
+    static int n;
 
     static void update(int i, int diff) {
-        while (i <= N) {
+        while (i <= n) {
             tree[i] += diff;
             i += (i & -i);
         }
@@ -30,19 +30,19 @@ public class SWEA3998 {
         StringBuilder sb = new StringBuilder();
 
         for (int tc = 1; tc <= testCaseCount; tc++) {
-            N = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());
+            n = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());
 
-            for (int i = 1; i <= N; i++) {
+            for (int i = 1; i <= n; i++) {
                 tree[i] = 0;
             }
 
             StringTokenizer st = new StringTokenizer(Objects.requireNonNull(br.readLine()), " ");
             long inversionCount = 0;
 
-            for (int i = 0; i < N; i++) {
+            for (int i = 0; i < n; i++) {
                 int num = Integer.parseInt(st.nextToken());
 
-                inversionCount += (sum(N) - sum(num));
+                inversionCount += (sum(n) - sum(num));
 
                 update(num, 1);
             }

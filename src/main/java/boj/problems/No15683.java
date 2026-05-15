@@ -19,7 +19,7 @@ public class No15683 {
         {{0, 1, 2, 3}} // 5번
     };
 
-    private static int N, M;
+    private static int n, m;
     private static int[][] cctvList;
     private static int cctvCount;
     private static int minBlind = Integer.MAX_VALUE;
@@ -27,16 +27,16 @@ public class No15683 {
     public static String solve(BufferedReader input) throws IOException {
 
         StringTokenizer st = new StringTokenizer(input.readLine());
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
 
-        int[][] map = new int[N][M];
+        int[][] map = new int[n][m];
         cctvList = new int[8][3]; // 최대 8개 CCTV (r, c, type 저장)
         cctvCount = 0;
 
-        for (int r = 0; r < N; r++) {
+        for (int r = 0; r < n; r++) {
             st = new StringTokenizer(input.readLine());
-            for (int c = 0; c < M; c++) {
+            for (int c = 0; c < m; c++) {
                 map[r][c] = Integer.parseInt(st.nextToken());
 
                 if (map[r][c] >= 1 && map[r][c] <= 5) {
@@ -87,7 +87,7 @@ public class No15683 {
             nc += DC[dir];
 
             // ★ 경계 초과 방지: 반드시 즉시 break
-            if (nr < 0 || nr >= N || nc < 0 || nc >= M) break;
+            if (nr < 0 || nr >= n || nc < 0 || nc >= m) break;
 
             // ★ 벽을 만나면 감시 종료
             if (map[nr][nc] == 6) break;
@@ -102,8 +102,8 @@ public class No15683 {
     // 사각지대(0)의 개수 계산
     private static int countBlind(int[][] map) {
         int cnt = 0;
-        for (int r = 0; r < N; r++) {
-            for (int c = 0; c < M; c++) {
+        for (int r = 0; r < n; r++) {
+            for (int c = 0; c < m; c++) {
                 if (map[r][c] == 0) cnt++;
             }
         }
@@ -112,9 +112,9 @@ public class No15683 {
 
     // 배열 복사 (안전하며 JDK8 기준 충분히 빠름)
     private static int[][] copyMap(int[][] src) {
-        int[][] dest = new int[N][M];
-        for (int i = 0; i < N; i++) {
-            System.arraycopy(src[i], 0, dest[i], 0, M);
+        int[][] dest = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            System.arraycopy(src[i], 0, dest[i], 0, m);
         }
         return dest;
     }

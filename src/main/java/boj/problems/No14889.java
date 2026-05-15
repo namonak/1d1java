@@ -6,30 +6,30 @@ import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class No14889 {
-    static int N;
-    static int[][] W; // S[i][j] + S[j][i] 를 미리 계산
+    static int n;
+    static int[][] w; // S[i][j] + S[j][i] 를 미리 계산
     static boolean[] selected;
     static int min;
 
     public static String solve(BufferedReader input) throws IOException {
-        N = Integer.parseInt(Objects.requireNonNull(input.readLine()).trim());
+        n = Integer.parseInt(Objects.requireNonNull(input.readLine()).trim());
 
-        int[][] s = new int[N][N];
-        selected = new boolean[N];
+        int[][] s = new int[n][n];
+        selected = new boolean[n];
 
         // 입력
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             StringTokenizer st = new StringTokenizer(Objects.requireNonNull(input.readLine()));
-            for (int j = 0; j < N; j++) {
+            for (int j = 0; j < n; j++) {
                 s[i][j] = Integer.parseInt(st.nextToken());
             }
         }
 
         // W 미리 계산 (i < j만 의미 있음)
-        W = new int[N][N];
-        for (int i = 0; i < N; i++) {
-            for (int j = i + 1; j < N; j++) {
-                W[i][j] = s[i][j] + s[j][i];
+        w = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                w[i][j] = s[i][j] + s[j][i];
             }
         }
 
@@ -47,16 +47,16 @@ public class No14889 {
         if (min == 0) return;
 
         // 팀 완성
-        if (count == N / 2) {
+        if (count == n / 2) {
             int startTeam = 0;
             int linkTeam = 0;
 
-            for (int i = 0; i < N; i++) {
-                for (int j = i + 1; j < N; j++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = i + 1; j < n; j++) {
                     if (selected[i] && selected[j]) {
-                        startTeam += W[i][j];
+                        startTeam += w[i][j];
                     } else if (!selected[i] && !selected[j]) {
-                        linkTeam += W[i][j];
+                        linkTeam += w[i][j];
                     }
                 }
             }
@@ -66,9 +66,9 @@ public class No14889 {
         }
 
         // 가지치기
-        if (N - start < (N / 2 - count)) return;
+        if (n - start < (n / 2 - count)) return;
 
-        for (int i = start; i < N; i++) {
+        for (int i = start; i < n; i++) {
             selected[i] = true;
             dfs(i + 1, count + 1);
             selected[i] = false;

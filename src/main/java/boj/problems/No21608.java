@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class No21608 {
-    private static int N;
+    private static int n;
     private static int[][] classroom;
     private static boolean[][] like;
     private static int[] order;
@@ -21,10 +21,10 @@ public class No21608 {
     }
 
     private static void readInput(BufferedReader input) throws IOException {
-        N = Integer.parseInt(input.readLine());
-        int totalStudents = N * N;
+        n = Integer.parseInt(input.readLine());
+        int totalStudents = n * n;
 
-        classroom = new int[N + 1][N + 1];
+        classroom = new int[n + 1][n + 1];
         like = new boolean[totalStudents + 1][totalStudents + 1];
         order = new int[totalStudents];
 
@@ -52,8 +52,8 @@ public class No21608 {
         int bestRow = Integer.MAX_VALUE;
         int bestCol = Integer.MAX_VALUE;
 
-        for (int r = 1; r <= N; r++) {
-            for (int c = 1; c <= N; c++) {
+        for (int r = 1; r <= n; r++) {
+            for (int c = 1; c <= n; c++) {
 
                 if (classroom[r][c] != 0) continue;
 
@@ -64,7 +64,7 @@ public class No21608 {
                     int nr = r + DR[d];
                     int nc = c + DC[d];
 
-                    if (nr < 1 || nr > N || nc < 1 || nc > N) continue;
+                    if (nr < 1 || nr > n || nc < 1 || nc > n) continue;
 
                     if (classroom[nr][nc] == 0) {
                         emptyCount++;
@@ -94,8 +94,8 @@ public class No21608 {
     private static int calculateSatisfaction() {
         int totalScore = 0;
 
-        for (int r = 1; r <= N; r++) {
-            for (int c = 1; c <= N; c++) {
+        for (int r = 1; r <= n; r++) {
+            for (int c = 1; c <= n; c++) {
 
                 int student = classroom[r][c];
                 int count = 0;
@@ -104,7 +104,7 @@ public class No21608 {
                     int nr = r + DR[d];
                     int nc = c + DC[d];
 
-                    if (nr < 1 || nr > N || nc < 1 || nc > N) continue;
+                    if (nr < 1 || nr > n || nc < 1 || nc > n) continue;
 
                     int neighbor = classroom[nr][nc];
                     if (neighbor != 0 && like[student][neighbor]) {

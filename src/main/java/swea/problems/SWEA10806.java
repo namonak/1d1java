@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class SWEA10806 {
-    static long[] A;
+    static long[] a;
     static Map<Long, Long> memo;
 
     public static String solve(BufferedReader br) throws IOException {
@@ -19,11 +19,11 @@ public class SWEA10806 {
         for (int tc = 1; tc <= testCaseCount; tc++) {
 
             int n = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());
-            A = new long[n];
+            a = new long[n];
 
             StringTokenizer st = new StringTokenizer(Objects.requireNonNull(br.readLine()));
             for (int i = 0; i < n; i++) {
-                A[i] = Long.parseLong(st.nextToken());
+                a[i] = Long.parseLong(st.nextToken());
             }
 
             long k = Long.parseLong(Objects.requireNonNull(br.readLine()).trim());
@@ -45,11 +45,11 @@ public class SWEA10806 {
 
         long res = x; // 모두 1로 더하는 경우
 
-        for (long a : A) {
-            if (a > x) continue;
+        for (long value : a) {
+            if (value > x) continue;
 
-            long r = x % a;
-            long next = x / a;
+            long r = x % value;
+            long next = x / value;
 
             // r은 1씩 더해야 하는 비용
             long candidate = r + dfs(next);

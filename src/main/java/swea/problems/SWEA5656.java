@@ -6,7 +6,9 @@ import java.util.ArrayDeque;
 import java.util.StringTokenizer;
 
 public class SWEA5656 {
-    static int n, w, h;
+    static int n;
+    static int w;
+    static int h;
     static int answer;
     static int[][] original;
 
@@ -83,7 +85,9 @@ public class SWEA5656 {
 
         while (!q.isEmpty()) {
             int[] cur = q.poll();
-            int r = cur[0], c = cur[1], p = cur[2];
+            int r = cur[0];
+            int c = cur[1];
+            int p = cur[2];
 
             if (p <= 1) continue;
 

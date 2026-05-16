@@ -9,7 +9,8 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class No14502 {
-    private static int n, m;
+    private static int n;
+    private static int m;
     private static int[][] lab;
     private static final List<int[]> emptyList = new ArrayList<>();
     private static final List<int[]> virusList = new ArrayList<>();

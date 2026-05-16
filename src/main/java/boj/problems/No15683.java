@@ -19,7 +19,8 @@ public class No15683 {
         {{0, 1, 2, 3}} // 5번
     };
 
-    private static int n, m;
+    private static int n;
+    private static int m;
     private static int[][] cctvList;
     private static int cctvCount;
     private static int minBlind = Integer.MAX_VALUE;

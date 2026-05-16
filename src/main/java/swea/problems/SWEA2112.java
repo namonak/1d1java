@@ -6,7 +6,9 @@ import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class SWEA2112 {
-    private static int d, w, k;
+    private static int d;
+    private static int w;
+    private static int k;
     private static int[][] film; // 원본 필름
     private static int[][] backup; // 변경 전 원본 저장용 (행 단위 복구)
     private static int answer; // 최소 약품 투입 횟수

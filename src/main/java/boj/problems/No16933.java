@@ -12,7 +12,10 @@ public class No16933 {
     private static final int[] DC = {0, 0, -1, 1};
 
     private static class State {
-        int r, c, k, dist;
+        int r;
+        int c;
+        int k;
+        int dist;
 
         State(int r, int c, int k, int dist) {
             this.r = r;

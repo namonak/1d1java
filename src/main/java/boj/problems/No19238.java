@@ -9,7 +9,8 @@ public class No19238 {
     private static int n;
     private static int[][] board;
     private static int[][] passengerStart; // 승객 시작 위치 → passenger id
-    private static int taxiR, taxiC;
+    private static int taxiR;
+    private static int taxiC;
 
     private static final int[] DR = {-1, 0, 0, 1}; // 상, 좌, 우, 하 (행 우선 탐색 정렬에 도움)
     private static final int[] DC = {0, -1, 1, 0};

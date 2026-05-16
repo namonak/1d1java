@@ -30,7 +30,8 @@ public class No16236 {
         }
         int[][] map = new int[n][n];
 
-        int sr = 0, sc = 0; // 상어 위치
+        int sr = 0; // 상어 위치 행
+        int sc = 0; // 상어 위치 열
         boolean sharkFound = false;
         for (int r = 0; r < n; r++) {
             StringTokenizer st = new StringTokenizer(input.readLine());

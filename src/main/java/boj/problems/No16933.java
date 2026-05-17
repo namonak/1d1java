@@ -68,22 +68,18 @@ public class No16933 {
                     }
                 }
                 // 벽
-                else {
-                    if (cur.k > 0 && day == 1) { // 낮일 때만 부술 수 있음
-                        if (!visited[nr][nc][cur.k - 1][1 - day]) {
-                            visited[nr][nc][cur.k - 1][1 - day] = true;
-                            q.offer(new State(nr, nc, cur.k - 1, cur.dist + 1));
-                        }
-                    }
+                else if (cur.k > 0
+                        && day == 1
+                        && !visited[nr][nc][cur.k - 1][1 - day]) { // 낮일 때만 부술 수 있음
+                    visited[nr][nc][cur.k - 1][1 - day] = true;
+                    q.offer(new State(nr, nc, cur.k - 1, cur.dist + 1));
                 }
             }
 
             // WAIT (밤일 때만)
-            if (day == 0) { // 밤
-                if (!visited[cur.r][cur.c][cur.k][1 - day]) {
-                    visited[cur.r][cur.c][cur.k][1 - day] = true;
-                    q.offer(new State(cur.r, cur.c, cur.k, cur.dist + 1));
-                }
+            if (day == 0 && !visited[cur.r][cur.c][cur.k][1 - day]) { // 밤
+                visited[cur.r][cur.c][cur.k][1 - day] = true;
+                q.offer(new State(cur.r, cur.c, cur.k, cur.dist + 1));
             }
         }
 

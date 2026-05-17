@@ -35,11 +35,9 @@ public class No23886 {
         // 3. 오르막 또는 내리막 구간 내에서 경사(기울기)가 일정한지 확인
         for (int i = 0; i < diff.length - 1; i++) {
             // 연속된 두 기울기의 부호가 같을 때 (즉, 같은 오르막이거나 같은 내리막 구간일 때)
-            if ((diff[i] > 0 && diff[i + 1] > 0) || (diff[i] < 0 && diff[i + 1] < 0)) {
-                // 경사가 달라지면 알프수가 아님
-                if (diff[i] != diff[i + 1]) {
-                    return NON_ALPSOO;
-                }
+            if (((diff[i] > 0 && diff[i + 1] > 0) || (diff[i] < 0 && diff[i + 1] < 0))
+                    && diff[i] != diff[i + 1]) {
+                return NON_ALPSOO;
             }
         }
 

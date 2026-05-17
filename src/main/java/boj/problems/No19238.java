@@ -109,14 +109,14 @@ public class No19238 {
 
             if (dist > minDist) break;
 
-            if (passengerStart[r][c] != 0) {
-                if (dist < minDist
-                        || (dist == minDist && (r < targetR || (r == targetR && c < targetC)))) {
+            if (passengerStart[r][c] != 0
+                    && (dist < minDist
+                            || (dist == minDist
+                                    && (r < targetR || (r == targetR && c < targetC))))) {
 
-                    minDist = dist;
-                    targetR = r;
-                    targetC = c;
-                }
+                minDist = dist;
+                targetR = r;
+                targetC = c;
             }
 
             for (int d = 0; d < 4; d++) {

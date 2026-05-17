@@ -100,11 +100,11 @@ public class No16236 {
             if (foundDist != -1 && dist > foundDist) break;
 
             // 먹을 수 있는 물고기
-            if (isEdibleFish(map[r][c], size)) {
-                if (bestTarget == null || isHigherPriority(r, c, bestTarget.row, bestTarget.col)) {
-                    bestTarget = new FishTarget(r, c, dist);
-                    foundDist = dist;
-                }
+            if (isEdibleFish(map[r][c], size)
+                    && (bestTarget == null
+                            || isHigherPriority(r, c, bestTarget.row, bestTarget.col))) {
+                bestTarget = new FishTarget(r, c, dist);
+                foundDist = dist;
             }
 
             // BFS 확장

@@ -87,11 +87,9 @@ public class No15683 {
             nr += DR[dir];
             nc += DC[dir];
 
-            // ★ 경계 초과 방지: 반드시 즉시 break
-            if (nr < 0 || nr >= n || nc < 0 || nc >= m) break;
-
-            // ★ 벽을 만나면 감시 종료
-            if (map[nr][nc] == 6) break;
+            if (nr < 0 || nr >= n || nc < 0 || nc >= m || map[nr][nc] == 6) {
+                return;
+            }
 
             // CCTV 통과 가능. 빈 칸만 감시 표시(-1)
             if (map[nr][nc] == 0) {

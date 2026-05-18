@@ -123,11 +123,10 @@ public class No19238 {
                 int nr = r + DR[d];
                 int nc = c + DC[d];
 
-                if (nr < 0 || nr >= n || nc < 0 || nc >= n) continue;
-                if (visited[nr][nc] || board[nr][nc] == 1) continue;
-
-                visited[nr][nc] = true;
-                queue.offer(new int[] {nr, nc, dist + 1});
+                if (canVisit(nr, nc, visited)) {
+                    visited[nr][nc] = true;
+                    queue.offer(new int[] {nr, nc, dist + 1});
+                }
             }
         }
 
@@ -155,14 +154,17 @@ public class No19238 {
                 int nr = r + DR[d];
                 int nc = c + DC[d];
 
-                if (nr < 0 || nr >= n || nc < 0 || nc >= n) continue;
-                if (visited[nr][nc] || board[nr][nc] == 1) continue;
-
-                visited[nr][nc] = true;
-                queue.offer(new int[] {nr, nc, dist + 1});
+                if (canVisit(nr, nc, visited)) {
+                    visited[nr][nc] = true;
+                    queue.offer(new int[] {nr, nc, dist + 1});
+                }
             }
         }
 
         return -1;
+    }
+
+    private static boolean canVisit(int r, int c, boolean[][] visited) {
+        return r >= 0 && r < n && c >= 0 && c < n && !visited[r][c] && board[r][c] != 1;
     }
 }

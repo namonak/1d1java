@@ -21,30 +21,23 @@ public class No1918 {
 
             if (isOperand(ch)) {
                 result.append(ch);
-                continue;
-            }
-
-            if (ch == '(') {
+            } else if (ch == '(') {
                 operators.push(ch);
-                continue;
-            }
-
-            if (ch == ')') {
+            } else if (ch == ')') {
                 while (!operators.isEmpty() && operators.peek() != '(') {
                     result.append(operators.pop());
                 }
                 if (!operators.isEmpty() && operators.peek() == '(') {
                     operators.pop();
                 }
-                continue;
+            } else {
+                while (!operators.isEmpty()
+                        && operators.peek() != '('
+                        && precedence(operators.peek()) >= precedence(ch)) {
+                    result.append(operators.pop());
+                }
+                operators.push(ch);
             }
-
-            while (!operators.isEmpty()
-                    && operators.peek() != '('
-                    && precedence(operators.peek()) >= precedence(ch)) {
-                result.append(operators.pop());
-            }
-            operators.push(ch);
         }
 
         while (!operators.isEmpty()) {

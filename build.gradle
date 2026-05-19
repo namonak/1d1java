@@ -73,13 +73,21 @@ sonarqube {
         property 'sonar.organization', 'namonak'
         property 'sonar.host.url', 'https://sonarcloud.io'
         property 'sonar.coverage.jacoco.xmlReportPaths', "${buildDir}/reports/jacoco/test/jacocoTestReport.xml"
-        property 'sonar.issue.ignore.multicriteria', 'e1,e2,e3'
+        property 'sonar.issue.ignore.multicriteria', 'e1,e2,e3,e4,e5'
         property 'sonar.issue.ignore.multicriteria.e1.ruleKey', 'java:S1118'
         property 'sonar.issue.ignore.multicriteria.e1.resourceKey', '**/src/main/java/**/problems/*.java'
         property 'sonar.issue.ignore.multicriteria.e2.ruleKey', 'java:S106'
         property 'sonar.issue.ignore.multicriteria.e2.resourceKey', '**/src/main/java/**/problems/Main.java'
         property 'sonar.issue.ignore.multicriteria.e3.ruleKey', 'javabugs:S6466'
         property 'sonar.issue.ignore.multicriteria.e3.resourceKey', '**/src/main/java/**/problems/*.java'
+
+        // java:S135는 아래 알고리즘 시뮬레이션 풀이 2개에만 예외 적용한다.
+        // break/continue가 탐색 가지치기와 직선 진행 중단을 직접 표현하므로,
+        // 상태 플래그로 대체하면 풀이 흐름이 오히려 읽기 어려워진다.
+        property 'sonar.issue.ignore.multicriteria.e4.ruleKey', 'java:S135'
+        property 'sonar.issue.ignore.multicriteria.e4.resourceKey', '**/src/main/java/boj/problems/No17825.java'
+        property 'sonar.issue.ignore.multicriteria.e5.ruleKey', 'java:S135'
+        property 'sonar.issue.ignore.multicriteria.e5.resourceKey', '**/src/main/java/swea/problems/SWEA5656.java'
     }
 }
 

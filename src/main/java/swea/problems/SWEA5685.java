@@ -18,38 +18,49 @@ public class SWEA5685 {
 
         for (int t = 1; t <= testCaseCount; t++) {
             int n = Integer.parseInt(Objects.requireNonNull(br.readLine()).trim());
-            int[] numbers = new int[n];
-            StringTokenizer st = new StringTokenizer(Objects.requireNonNull(br.readLine()).trim());
-
-            for (int i = 0; i < n; i++) {
-                numbers[i] = Integer.parseInt(st.nextToken());
-            }
-
-            long[][] dp = new long[n - 1][COUNT];
-
-            dp[0][numbers[0]] = 1L;
-
-            for (int i = 1; i < n - 1; i++) {
-                int currentNum = numbers[i];
-                for (int prevSum = MIN; prevSum <= MAX; prevSum++) {
-                    if (dp[i - 1][prevSum] == 0) continue;
-
-                    long currentWays = dp[i - 1][prevSum];
-
-                    if (prevSum + currentNum <= MAX) {
-                        dp[i][prevSum + currentNum] =
-                                (dp[i][prevSum + currentNum] + currentWays) % MOD;
-                    }
-                    if (prevSum - currentNum >= MIN) {
-                        dp[i][prevSum - currentNum] =
-                                (dp[i][prevSum - currentNum] + currentWays) % MOD;
-                    }
-                }
-            }
-
-            result.append("#").append(t).append(" ").append(dp[n - 2][numbers[n - 1]]).append("\n");
+            int[] numbers = readNumbers(br, n);
+            result.append("#").append(t).append(" ").append(countExpressions(numbers)).append("\n");
         }
 
         return result.toString().trim();
+    }
+
+    private static int[] readNumbers(BufferedReader br, int count) throws IOException {
+        int[] numbers = new int[count];
+        StringTokenizer st = new StringTokenizer(Objects.requireNonNull(br.readLine()).trim());
+        for (int i = 0; i < count; i++) {
+            numbers[i] = Integer.parseInt(st.nextToken());
+        }
+        return numbers;
+    }
+
+    private static long countExpressions(int[] numbers) {
+        long[][] dp = new long[numbers.length - 1][COUNT];
+        dp[0][numbers[0]] = 1L;
+
+        for (int i = 1; i < numbers.length - 1; i++) {
+            updateWays(dp, i, numbers[i]);
+        }
+
+        return dp[numbers.length - 2][numbers[numbers.length - 1]];
+    }
+
+    private static void updateWays(long[][] dp, int index, int currentNum) {
+        long[] previous = dp[index - 1];
+        long[] current = dp[index];
+
+        for (int prevSum = MIN; prevSum <= MAX; prevSum++) {
+            long currentWays = previous[prevSum];
+            if (currentWays > 0) {
+                addWays(current, prevSum + currentNum, currentWays);
+                addWays(current, prevSum - currentNum, currentWays);
+            }
+        }
+    }
+
+    private static void addWays(long[] row, int sum, long ways) {
+        if (sum >= MIN && sum <= MAX) {
+            row[sum] = (row[sum] + ways) % MOD;
+        }
     }
 }

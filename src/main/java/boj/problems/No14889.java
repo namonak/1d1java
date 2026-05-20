@@ -48,20 +48,7 @@ public class No14889 {
 
         // 팀 완성
         if (count == n / 2) {
-            int startTeam = 0;
-            int linkTeam = 0;
-
-            for (int i = 0; i < n; i++) {
-                for (int j = i + 1; j < n; j++) {
-                    if (selected[i] && selected[j]) {
-                        startTeam += w[i][j];
-                    } else if (!selected[i] && !selected[j]) {
-                        linkTeam += w[i][j];
-                    }
-                }
-            }
-
-            min = Math.min(min, Math.abs(startTeam - linkTeam));
+            updateMinimumDifference();
             return;
         }
 
@@ -73,5 +60,26 @@ public class No14889 {
             dfs(i + 1, count + 1);
             selected[i] = false;
         }
+    }
+
+    private static void updateMinimumDifference() {
+        min = Math.min(min, calculateTeamDifference());
+    }
+
+    private static int calculateTeamDifference() {
+        int startTeam = 0;
+        int linkTeam = 0;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (selected[i] && selected[j]) {
+                    startTeam += w[i][j];
+                } else if (!selected[i] && !selected[j]) {
+                    linkTeam += w[i][j];
+                }
+            }
+        }
+
+        return Math.abs(startTeam - linkTeam);
     }
 }

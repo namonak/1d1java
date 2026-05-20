@@ -21,43 +21,54 @@ public class No1495 {
         boolean[] prev = new boolean[m + 1];
         prev[s] = true;
 
-        for (int i = 0; i < n; i++) {
-            boolean[] next = new boolean[m + 1];
-            boolean hasAny = false;
-            int d = diff[i];
+        return String.valueOf(findMaximumVolume(prev, diff, m));
+    }
 
-            for (int v = 0; v <= m; v++) {
-                if (!prev[v]) {
-                    continue;
-                }
-
-                int plus = v + d;
-                if (plus <= m) {
-                    next[plus] = true;
-                    hasAny = true;
-                }
-
-                int minus = v - d;
-                if (minus >= 0) {
-                    next[minus] = true;
-                    hasAny = true;
-                }
-            }
-
-            if (!hasAny) {
-                return "-1";
-            }
-
-            prev = next;
-        }
-
-        for (int v = m; v >= 0; v--) {
-            if (prev[v]) {
-                return String.valueOf(v);
+    private static int findMaximumVolume(boolean[] reachable, int[] changes, int maxVolume) {
+        boolean[] current = reachable;
+        for (int change : changes) {
+            current = moveReachableVolumes(current, change, maxVolume);
+            if (!hasReachableVolume(current)) {
+                return -1;
             }
         }
 
-        return "-1";
+        return findHighestReachableVolume(current);
+    }
+
+    private static boolean[] moveReachableVolumes(boolean[] current, int change, int maxVolume) {
+        boolean[] next = new boolean[maxVolume + 1];
+        for (int volume = 0; volume <= maxVolume; volume++) {
+            if (current[volume]) {
+                markReachable(next, volume + change);
+                markReachable(next, volume - change);
+            }
+        }
+        return next;
+    }
+
+    private static void markReachable(boolean[] volumes, int volume) {
+        if (volume >= 0 && volume < volumes.length) {
+            volumes[volume] = true;
+        }
+    }
+
+    private static boolean hasReachableVolume(boolean[] volumes) {
+        for (boolean reachable : volumes) {
+            if (reachable) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static int findHighestReachableVolume(boolean[] volumes) {
+        for (int volume = volumes.length - 1; volume >= 0; volume--) {
+            if (volumes[volume]) {
+                return volume;
+            }
+        }
+        return -1;
     }
 
     private static class FastScanner {

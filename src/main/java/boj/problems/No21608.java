@@ -14,6 +14,36 @@ public class No21608 {
     private static final int[] DC = {0, 0, -1, 1};
     private static final int[] SCORE = {0, 1, 10, 100, 1000};
 
+    private static class SeatCandidate {
+        private final int row;
+        private final int col;
+        private final int likeCount;
+        private final int emptyCount;
+
+        private SeatCandidate(int row, int col, int likeCount, int emptyCount) {
+            this.row = row;
+            this.col = col;
+            this.likeCount = likeCount;
+            this.emptyCount = emptyCount;
+        }
+
+        private boolean isBetterThan(SeatCandidate other) {
+            if (other == null) {
+                return true;
+            }
+            if (likeCount != other.likeCount) {
+                return likeCount > other.likeCount;
+            }
+            if (emptyCount != other.emptyCount) {
+                return emptyCount > other.emptyCount;
+            }
+            if (row != other.row) {
+                return row < other.row;
+            }
+            return col < other.col;
+        }
+    }
+
     public static String solve(BufferedReader input) throws IOException {
         readInput(input);
         placeStudents();
@@ -47,48 +77,41 @@ public class No21608 {
     }
 
     private static void placeStudent(int student) {
-        int bestLike = -1;
-        int bestEmpty = -1;
-        int bestRow = Integer.MAX_VALUE;
-        int bestCol = Integer.MAX_VALUE;
+        SeatCandidate best = null;
 
         for (int r = 1; r <= n; r++) {
             for (int c = 1; c <= n; c++) {
 
                 if (classroom[r][c] != 0) continue;
 
-                int likeCount = 0;
-                int emptyCount = 0;
-
-                for (int d = 0; d < 4; d++) {
-                    int nr = r + DR[d];
-                    int nc = c + DC[d];
-
-                    if (nr < 1 || nr > n || nc < 1 || nc > n) continue;
-
-                    if (classroom[nr][nc] == 0) {
-                        emptyCount++;
-                    } else if (like[student][classroom[nr][nc]]) {
-                        likeCount++;
-                    }
-                }
-
-                if (likeCount > bestLike
-                        || (likeCount == bestLike && emptyCount > bestEmpty)
-                        || (likeCount == bestLike && emptyCount == bestEmpty && r < bestRow)
-                        || (likeCount == bestLike
-                                && emptyCount == bestEmpty
-                                && r == bestRow
-                                && c < bestCol)) {
-                    bestLike = likeCount;
-                    bestEmpty = emptyCount;
-                    bestRow = r;
-                    bestCol = c;
+                SeatCandidate candidate = evaluateSeat(student, r, c);
+                if (candidate.isBetterThan(best)) {
+                    best = candidate;
                 }
             }
         }
 
-        classroom[bestRow][bestCol] = student;
+        classroom[best.row][best.col] = student;
+    }
+
+    private static SeatCandidate evaluateSeat(int student, int row, int col) {
+        int likeCount = 0;
+        int emptyCount = 0;
+
+        for (int d = 0; d < 4; d++) {
+            int nr = row + DR[d];
+            int nc = col + DC[d];
+
+            if (!isInside(nr, nc)) continue;
+
+            if (classroom[nr][nc] == 0) {
+                emptyCount++;
+            } else if (like[student][classroom[nr][nc]]) {
+                likeCount++;
+            }
+        }
+
+        return new SeatCandidate(row, col, likeCount, emptyCount);
     }
 
     private static int calculateSatisfaction() {
@@ -98,24 +121,32 @@ public class No21608 {
             for (int c = 1; c <= n; c++) {
 
                 int student = classroom[r][c];
-                int count = 0;
-
-                for (int d = 0; d < 4; d++) {
-                    int nr = r + DR[d];
-                    int nc = c + DC[d];
-
-                    if (nr < 1 || nr > n || nc < 1 || nc > n) continue;
-
-                    int neighbor = classroom[nr][nc];
-                    if (neighbor != 0 && like[student][neighbor]) {
-                        count++;
-                    }
-                }
-
-                totalScore += SCORE[count];
+                totalScore += SCORE[countLikedNeighbors(student, r, c)];
             }
         }
 
         return totalScore;
+    }
+
+    private static int countLikedNeighbors(int student, int row, int col) {
+        int count = 0;
+
+        for (int d = 0; d < 4; d++) {
+            int nr = row + DR[d];
+            int nc = col + DC[d];
+
+            if (!isInside(nr, nc)) continue;
+
+            int neighbor = classroom[nr][nc];
+            if (neighbor != 0 && like[student][neighbor]) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    private static boolean isInside(int row, int col) {
+        return row >= 1 && row <= n && col >= 1 && col <= n;
     }
 }

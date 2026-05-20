@@ -14,59 +14,77 @@ public class SWEA1263 {
         StringBuilder sb = new StringBuilder(8 * testCaseCount);
 
         for (int tc = 1; tc <= testCaseCount; tc++) {
-
-            StringTokenizer st = new StringTokenizer(Objects.requireNonNull(br.readLine()));
-            int n = Integer.parseInt(st.nextToken());
-
-            int[][] dist = new int[n][n];
-
-            // --- 초기화 ---
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    int val = Integer.parseInt(st.nextToken());
-                    if (i == j) {
-                        dist[i][j] = 0;
-                    } else {
-                        dist[i][j] = (val == 1) ? 1 : INF;
-                    }
-                }
-            }
-
-            // --- Floyd–Warshall ---
-            for (int k = 0; k < n; k++) {
-                int[] distK = dist[k]; // 캐시 최적화
-                for (int i = 0; i < n; i++) {
-                    int[] distI = dist[i];
-                    int viaIK = distI[k];
-
-                    if (viaIK == INF) continue; // pruning
-
-                    for (int j = 0; j < n; j++) {
-                        int alt = viaIK + distK[j];
-                        if (alt < distI[j]) {
-                            distI[j] = alt;
-                        }
-                    }
-                }
-            }
-
-            // --- 정답 계산: 각 행의 합 중 최솟값 ---
-            int answer = Integer.MAX_VALUE;
-
-            for (int i = 0; i < n; i++) {
-                int sum = 0;
-                int[] row = dist[i];
-
-                for (int j = 0; j < n; j++) {
-                    sum += row[j];
-                }
-
-                if (sum < answer) answer = sum;
-            }
-
+            int answer = solveCase(br);
             sb.append('#').append(tc).append(' ').append(answer).append('\n');
         }
 
         return sb.toString().trim();
+    }
+
+    private static int solveCase(BufferedReader br) throws IOException {
+        StringTokenizer st = new StringTokenizer(Objects.requireNonNull(br.readLine()));
+        int n = Integer.parseInt(st.nextToken());
+        int[][] dist = readDistances(st, n);
+
+        floydWarshall(dist);
+        return findMinimumPathSum(dist);
+    }
+
+    private static int[][] readDistances(StringTokenizer st, int n) {
+        int[][] dist = new int[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                int value = Integer.parseInt(st.nextToken());
+                dist[i][j] = initialDistance(i, j, value);
+            }
+        }
+
+        return dist;
+    }
+
+    private static int initialDistance(int from, int to, int value) {
+        if (from == to) {
+            return 0;
+        }
+        return value == 1 ? 1 : INF;
+    }
+
+    private static void floydWarshall(int[][] dist) {
+        for (int k = 0; k < dist.length; k++) {
+            int[] distK = dist[k];
+            for (int i = 0; i < dist.length; i++) {
+                relaxRow(dist[i], distK, dist[i][k]);
+            }
+        }
+    }
+
+    private static void relaxRow(int[] distI, int[] distK, int viaIK) {
+        if (viaIK == INF) return;
+
+        for (int j = 0; j < distI.length; j++) {
+            int alt = viaIK + distK[j];
+            if (alt < distI[j]) {
+                distI[j] = alt;
+            }
+        }
+    }
+
+    private static int findMinimumPathSum(int[][] dist) {
+        int answer = Integer.MAX_VALUE;
+
+        for (int[] row : dist) {
+            answer = Math.min(answer, sum(row));
+        }
+
+        return answer;
+    }
+
+    private static int sum(int[] values) {
+        int total = 0;
+        for (int value : values) {
+            total += value;
+        }
+        return total;
     }
 }

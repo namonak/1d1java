@@ -10,51 +10,72 @@ public class No11066 {
         int t = Integer.parseInt(input.readLine());
 
         while (t-- > 0) {
-            int k = Integer.parseInt(input.readLine());
-
-            long[] prefix = new long[k + 1];
-            StringTokenizer st = new StringTokenizer(input.readLine());
-            for (int i = 1; i <= k; i++) {
-                prefix[i] = prefix[i - 1] + Long.parseLong(st.nextToken());
-            }
-
-            long[][] dp = new long[k + 2][k + 2];
-            int[][] opt = new int[k + 2][k + 2];
-
-            for (int i = 1; i <= k; i++) {
-                opt[i][i] = i;
-            }
-
-            for (int len = 2; len <= k; len++) {
-                for (int i = 1; i + len - 1 <= k; i++) {
-                    int j = i + len - 1;
-                    dp[i][j] = Long.MAX_VALUE;
-
-                    long sum = prefix[j] - prefix[i - 1];
-
-                    int start = opt[i][j - 1];
-                    int end = opt[i + 1][j];
-
-                    if (start < i) {
-                        start = i;
-                    }
-                    if (end == 0 || end > j - 1) {
-                        end = j - 1;
-                    }
-
-                    for (int mid = start; mid <= end; mid++) {
-                        long cost = dp[i][mid] + dp[mid + 1][j] + sum;
-                        if (cost < dp[i][j]) {
-                            dp[i][j] = cost;
-                            opt[i][j] = mid;
-                        }
-                    }
-                }
-            }
-
-            sb.append(dp[1][k]).append('\n');
+            sb.append(solveCase(input)).append('\n');
         }
 
         return sb.toString();
+    }
+
+    private static long solveCase(BufferedReader input) throws IOException {
+        int fileCount = Integer.parseInt(input.readLine());
+        long[] prefix = readPrefixSums(input, fileCount);
+        return computeMinimumMergeCost(fileCount, prefix);
+    }
+
+    private static long[] readPrefixSums(BufferedReader input, int fileCount) throws IOException {
+        long[] prefix = new long[fileCount + 1];
+        StringTokenizer st = new StringTokenizer(input.readLine());
+        for (int i = 1; i <= fileCount; i++) {
+            prefix[i] = prefix[i - 1] + Long.parseLong(st.nextToken());
+        }
+        return prefix;
+    }
+
+    private static long computeMinimumMergeCost(int fileCount, long[] prefix) {
+        long[][] dp = new long[fileCount + 2][fileCount + 2];
+        int[][] opt = new int[fileCount + 2][fileCount + 2];
+
+        initializeOptimalSplit(opt, fileCount);
+        for (int len = 2; len <= fileCount; len++) {
+            fillCostsByLength(dp, opt, prefix, fileCount, len);
+        }
+
+        return dp[1][fileCount];
+    }
+
+    private static void initializeOptimalSplit(int[][] opt, int fileCount) {
+        for (int i = 1; i <= fileCount; i++) {
+            opt[i][i] = i;
+        }
+    }
+
+    private static void fillCostsByLength(
+            long[][] dp, int[][] opt, long[] prefix, int fileCount, int len) {
+        for (int i = 1; i + len - 1 <= fileCount; i++) {
+            updateIntervalCost(dp, opt, prefix, i, i + len - 1);
+        }
+    }
+
+    private static void updateIntervalCost(
+            long[][] dp, int[][] opt, long[] prefix, int start, int end) {
+        dp[start][end] = Long.MAX_VALUE;
+        long sum = prefix[end] - prefix[start - 1];
+        int splitStart = Math.max(opt[start][end - 1], start);
+        int splitEnd = normalizeSplitEnd(opt[start + 1][end], end);
+
+        for (int mid = splitStart; mid <= splitEnd; mid++) {
+            long cost = dp[start][mid] + dp[mid + 1][end] + sum;
+            if (cost < dp[start][end]) {
+                dp[start][end] = cost;
+                opt[start][end] = mid;
+            }
+        }
+    }
+
+    private static int normalizeSplitEnd(int splitEnd, int intervalEnd) {
+        if (splitEnd == 0 || splitEnd > intervalEnd - 1) {
+            return intervalEnd - 1;
+        }
+        return splitEnd;
     }
 }

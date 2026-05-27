@@ -2,18 +2,19 @@ package boj.problems;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class No10773 {
     public static String solve(BufferedReader input) throws IOException {
         int number = Integer.parseInt(input.readLine());
-        Stack<Integer> stack = new Stack<>();
+        Deque<Integer> stack = new ArrayDeque<>();
         makeStack(input, number, stack);
 
         return String.valueOf(makeOutput(stack));
     }
 
-    private static int makeOutput(Stack<Integer> stack) {
+    private static int makeOutput(Deque<Integer> stack) {
         int sum = 0;
         for (int num : stack) {
             sum += num;
@@ -21,7 +22,7 @@ public class No10773 {
         return sum;
     }
 
-    private static void makeStack(BufferedReader input, int number, Stack<Integer> stack)
+    private static void makeStack(BufferedReader input, int number, Deque<Integer> stack)
             throws IOException {
         for (int i = 0; i < number; i++) {
             int value = Integer.parseInt(input.readLine());
@@ -29,7 +30,7 @@ public class No10773 {
         }
     }
 
-    private static void addValue(Stack<Integer> stack, int value) {
+    private static void addValue(Deque<Integer> stack, int value) {
         if (value == 0) {
             stack.pop();
             return;

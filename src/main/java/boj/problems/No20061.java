@@ -39,30 +39,36 @@ public class No20061 {
     }
 
     private static void dropGreen(int t, int y) {
-        int r = 0;
+        int height = t == 3 ? 2 : 1;
+        int width = t == 2 ? 2 : 1;
+        int row = findGreenDropRow(y, height, width);
 
-        if (t == 1) {
-            for (int row = 0; row < 6; row++) {
-                if (green[row][y] == 1) break; // 충돌
-                r = row;
-            }
-            green[r][y] = 1;
+        fillGreenBlock(row, y, height, width);
+    }
 
-        } else if (t == 2) {
-            for (int row = 0; row < 6; row++) {
-                if (green[row][y] == 1 || green[row][y + 1] == 1) break;
-                r = row;
-            }
-            green[r][y] = 1;
-            green[r][y + 1] = 1;
+    private static int findGreenDropRow(int startCol, int height, int width) {
+        int dropRow = 0;
+        for (int row = 0; row <= green.length - height; row++) {
+            if (!canPlaceGreenBlock(row, startCol, height, width)) break;
+            dropRow = row;
+        }
+        return dropRow;
+    }
 
-        } else {
-            for (int row = 0; row < 5; row++) {
-                if (green[row][y] == 1 || green[row + 1][y] == 1) break;
-                r = row;
+    private static boolean canPlaceGreenBlock(int startRow, int startCol, int height, int width) {
+        for (int row = startRow; row < startRow + height; row++) {
+            for (int col = startCol; col < startCol + width; col++) {
+                if (green[row][col] == 1) return false;
             }
-            green[r][y] = 1;
-            green[r + 1][y] = 1;
+        }
+        return true;
+    }
+
+    private static void fillGreenBlock(int startRow, int startCol, int height, int width) {
+        for (int row = startRow; row < startRow + height; row++) {
+            for (int col = startCol; col < startCol + width; col++) {
+                green[row][col] = 1;
+            }
         }
     }
 

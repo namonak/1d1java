@@ -109,11 +109,7 @@ public class No19238 {
 
             if (dist > minDist) break;
 
-            if (passengerStart[r][c] != 0
-                    && (dist < minDist
-                            || (dist == minDist
-                                    && (r < targetR || (r == targetR && c < targetC))))) {
-
+            if (isPreferredPassenger(r, c, dist, targetR, targetC, minDist)) {
                 minDist = dist;
                 targetR = r;
                 targetC = c;
@@ -132,6 +128,15 @@ public class No19238 {
 
         if (targetR == -1) return new int[0];
         return new int[] {targetR, targetC, minDist};
+    }
+
+    private static boolean isPreferredPassenger(
+            int row, int column, int distance, int targetRow, int targetColumn, int minDistance) {
+        return passengerStart[row][column] != 0
+                && (distance < minDistance
+                        || (distance == minDistance
+                                && (row < targetRow
+                                        || (row == targetRow && column < targetColumn))));
     }
 
     private static int bfsToDestination(int sr, int sc, int dr, int dc) {

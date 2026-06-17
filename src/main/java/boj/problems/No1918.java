@@ -13,38 +13,70 @@ public class No1918 {
             return "";
         }
 
+        return toPostfix(expression);
+    }
+
+    private static String toPostfix(String expression) {
         StringBuilder result = new StringBuilder(expression.length());
         Deque<Character> operators = new ArrayDeque<>();
 
         for (int i = 0; i < expression.length(); i++) {
-            char ch = expression.charAt(i);
-
-            if (isOperand(ch)) {
-                result.append(ch);
-            } else if (ch == '(') {
-                operators.push(ch);
-            } else if (ch == ')') {
-                while (!operators.isEmpty() && operators.peek() != '(') {
-                    result.append(operators.pop());
-                }
-                if (!operators.isEmpty() && operators.peek() == '(') {
-                    operators.pop();
-                }
-            } else {
-                while (!operators.isEmpty()
-                        && operators.peek() != '('
-                        && precedence(operators.peek()) >= precedence(ch)) {
-                    result.append(operators.pop());
-                }
-                operators.push(ch);
-            }
+            appendToken(expression.charAt(i), result, operators);
         }
 
-        while (!operators.isEmpty()) {
+        appendRemainingOperators(result, operators);
+
+        return result.toString();
+    }
+
+    private static void appendToken(char ch, StringBuilder result, Deque<Character> operators) {
+        if (isOperand(ch)) {
+            result.append(ch);
+            return;
+        }
+
+        if (ch == '(') {
+            operators.push(ch);
+            return;
+        }
+
+        if (ch == ')') {
+            appendClosingParenthesis(result, operators);
+            return;
+        }
+
+        appendOperator(ch, result, operators);
+    }
+
+    private static void appendClosingParenthesis(StringBuilder result, Deque<Character> operators) {
+        while (!operators.isEmpty() && operators.peek() != '(') {
             result.append(operators.pop());
         }
 
-        return result.toString();
+        if (!operators.isEmpty() && operators.peek() == '(') {
+            operators.pop();
+        }
+    }
+
+    private static void appendOperator(
+            char operator, StringBuilder result, Deque<Character> operators) {
+        while (hasPrecedenceOverNext(operators, operator)) {
+            result.append(operators.pop());
+        }
+
+        operators.push(operator);
+    }
+
+    private static boolean hasPrecedenceOverNext(Deque<Character> operators, char operator) {
+        return !operators.isEmpty()
+                && operators.peek() != '('
+                && precedence(operators.peek()) >= precedence(operator);
+    }
+
+    private static void appendRemainingOperators(StringBuilder result, Deque<Character> operators) {
+        while (!operators.isEmpty()) {
+            result.append(operators.pop());
+        }
     }
 
     private static boolean isOperand(char ch) {

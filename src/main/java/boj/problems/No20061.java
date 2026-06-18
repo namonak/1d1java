@@ -73,30 +73,34 @@ public class No20061 {
     }
 
     private static void dropBlue(int t, int x) {
-        int c = 0;
+        int height = t == 3 ? 2 : 1;
+        int width = t == 2 ? 2 : 1;
+        int col = findBlueDropCol(x, height);
 
-        if (t == 1) {
-            for (int col = 0; col < 6; col++) {
-                if (blue[x][col] == 1) break;
-                c = col;
-            }
-            blue[x][c] = 1;
+        fillBlueBlock(x, col, height, width);
+    }
 
-        } else if (t == 2) {
-            for (int col = 0; col < 6; col++) {
-                if (blue[x][col] == 1) break;
-                c = col;
-            }
-            blue[x][c] = 1;
-            blue[x][c - 1] = 1;
+    private static int findBlueDropCol(int startRow, int height) {
+        int dropCol = 0;
+        for (int col = 0; col < blue[0].length; col++) {
+            if (!canPlaceBlueLeadingEdge(startRow, col, height)) break;
+            dropCol = col;
+        }
+        return dropCol;
+    }
 
-        } else {
-            for (int col = 0; col < 6; col++) {
-                if (blue[x][col] == 1 || blue[x + 1][col] == 1) break;
-                c = col;
+    private static boolean canPlaceBlueLeadingEdge(int startRow, int col, int height) {
+        for (int row = startRow; row < startRow + height; row++) {
+            if (blue[row][col] == 1) return false;
+        }
+        return true;
+    }
+
+    private static void fillBlueBlock(int startRow, int endCol, int height, int width) {
+        for (int row = startRow; row < startRow + height; row++) {
+            for (int col = endCol - width + 1; col <= endCol; col++) {
+                blue[row][col] = 1;
             }
-            blue[x][c] = 1;
-            blue[x + 1][c] = 1;
         }
     }
 

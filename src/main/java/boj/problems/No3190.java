@@ -68,49 +68,54 @@ public class No3190 {
         while (true) {
             time++;
 
-            Cell head = snake.getLast();
-            int nr = head.row + DR[dir];
-            int nc = head.col + DC[dir];
-
-            // --- 1. 벽 충돌 체크 ---
-            if (!isInsideBoard(n, nr, nc)
-                    || !isValidIndex(apple, nr, nc)
-                    || !isValidIndex(occupied, nr, nc)) {
+            Cell nextHead = moveHead(snake.getLast(), dir);
+            if (hasCollision(n, apple, occupied, nextHead)) {
                 return time;
             }
 
-            // --- 2. 자기 몸 충돌 체크 ---
-            if (occupied[nr][nc]) {
-                return time;
-            }
-
-            // --- 3. 머리 이동 ---
-            snake.addLast(new Cell(nr, nc));
-            occupied[nr][nc] = true;
-
-            // --- 4. 사과 여부 판단 ---
-            if (apple[nr][nc]) {
-                // 사과가 있으면 꼬리 유지
-                apple[nr][nc] = false;
-            } else {
-                // 사과 없으면 꼬리 줄이기
-                Cell tail = snake.removeFirst();
-                if (!isValidIndex(occupied, tail.row, tail.col)) {
-                    throw new IllegalStateException("Snake tail is outside of board.");
-                }
-                occupied[tail.row][tail.col] = false;
-            }
-
-            // --- 5. 방향 전환 ---
-            Character turn = turnInfo.get(time);
-            if (turn != null) {
-                if (turn == 'L') {
-                    dir = (dir + 3) % 4;
-                } else {
-                    dir = (dir + 1) % 4;
-                }
-            }
+            moveSnake(snake, apple, occupied, nextHead);
+            dir = turnDirection(dir, turnInfo.get(time));
         }
+    }
+
+    private static Cell moveHead(Cell head, int direction) {
+        return new Cell(head.row + DR[direction], head.col + DC[direction]);
+    }
+
+    private static boolean hasCollision(
+            int n, boolean[][] apple, boolean[][] occupied, Cell nextHead) {
+        return !isInsideBoard(n, nextHead.row, nextHead.col)
+                || !isValidIndex(apple, nextHead.row, nextHead.col)
+                || !isValidIndex(occupied, nextHead.row, nextHead.col)
+                || occupied[nextHead.row][nextHead.col];
+    }
+
+    private static void moveSnake(
+            Deque<Cell> snake, boolean[][] apple, boolean[][] occupied, Cell nextHead) {
+        snake.addLast(nextHead);
+        occupied[nextHead.row][nextHead.col] = true;
+
+        if (apple[nextHead.row][nextHead.col]) {
+            apple[nextHead.row][nextHead.col] = false;
+            return;
+        }
+
+        removeTail(snake, occupied);
+    }
+
+    private static void removeTail(Deque<Cell> snake, boolean[][] occupied) {
+        Cell tail = snake.removeFirst();
+        if (!isValidIndex(occupied, tail.row, tail.col)) {
+            throw new IllegalStateException("Snake tail is outside of board.");
+        }
+        occupied[tail.row][tail.col] = false;
+    }
+
+    private static int turnDirection(int direction, Character turn) {
+        if (turn == null) {
+            return direction;
+        }
+        return turn == 'L' ? (direction + 3) % 4 : (direction + 1) % 4;
     }
 
     private static boolean isInsideBoard(int boardSize, int row, int col) {

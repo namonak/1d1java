@@ -89,29 +89,47 @@ public class SWEA5656 {
             int c = cur[1];
             int p = cur[2];
 
-            if (p <= 1) continue;
-
-            for (int d = 0; d < 4; d++) {
-                int nr = r;
-                int nc = c;
-
-                for (int k = 1; k < p; k++) {
-
-                    nr += dr[d];
-                    nc += dc[d];
-
-                    if (nr < 0 || nr >= h || nc < 0 || nc >= w) break;
-
-                    if (map[nr][nc] == 0) continue;
-
-                    int np = map[nr][nc];
-
-                    q.offer(new int[] {nr, nc, np});
-
-                    map[nr][nc] = 0;
-                }
+            if (p > 1) {
+                spreadExplosion(map, q, r, c, p);
             }
         }
+    }
+
+    private static void spreadExplosion(
+            int[][] map, ArrayDeque<int[]> q, int row, int col, int power) {
+        for (int direction = 0; direction < 4; direction++) {
+            spreadExplosionInDirection(map, q, row, col, power, direction);
+        }
+    }
+
+    private static void spreadExplosionInDirection(
+            int[][] map, ArrayDeque<int[]> q, int row, int col, int power, int direction) {
+        int nextRow = row;
+        int nextCol = col;
+
+        for (int distance = 1; distance < power; distance++) {
+            nextRow += dr[direction];
+            nextCol += dc[direction];
+
+            if (isOutside(nextRow, nextCol)) {
+                return;
+            }
+
+            enqueueBrick(map, q, nextRow, nextCol);
+        }
+    }
+
+    private static void enqueueBrick(int[][] map, ArrayDeque<int[]> q, int row, int col) {
+        if (map[row][col] == 0) {
+            return;
+        }
+
+        q.offer(new int[] {row, col, map[row][col]});
+        map[row][col] = 0;
+    }
+
+    private static boolean isOutside(int row, int col) {
+        return row < 0 || row >= h || col < 0 || col >= w;
     }
 
     static void gravity(int[][] map) {

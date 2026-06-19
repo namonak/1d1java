@@ -47,29 +47,39 @@ public class No15681 {
 
         while (!stack.isEmpty()) {
             State current = stack.pop();
-
-            if (!current.processed) {
-                stack.push(new State(current.node, current.parent, true));
-
-                for (int next : graph[current.node]) {
-                    if (next == current.parent) {
-                        continue;
-                    }
-                    stack.push(new State(next, current.node, false));
-                }
-            } else {
-                subtreeSize[current.node] = 1;
-
-                for (int child : graph[current.node]) {
-                    if (child == current.parent) {
-                        continue;
-                    }
-                    subtreeSize[current.node] += subtreeSize[child];
-                }
-            }
+            processState(graph, subtreeSize, stack, current);
         }
 
         return subtreeSize;
+    }
+
+    private static void processState(
+            List<Integer>[] graph, int[] subtreeSize, Deque<State> stack, State current) {
+        if (current.processed) {
+            subtreeSize[current.node] = sumSubtreeSize(graph, subtreeSize, current);
+            return;
+        }
+
+        stack.push(new State(current.node, current.parent, true));
+        pushChildren(graph, stack, current);
+    }
+
+    private static void pushChildren(List<Integer>[] graph, Deque<State> stack, State current) {
+        for (int next : graph[current.node]) {
+            if (next != current.parent) {
+                stack.push(new State(next, current.node, false));
+            }
+        }
+    }
+
+    private static int sumSubtreeSize(List<Integer>[] graph, int[] subtreeSize, State current) {
+        int size = 1;
+        for (int child : graph[current.node]) {
+            if (child != current.parent) {
+                size += subtreeSize[child];
+            }
+        }
+        return size;
     }
 
     private static class State {
